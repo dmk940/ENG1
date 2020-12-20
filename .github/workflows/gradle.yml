@@ -26,6 +26,5 @@ jobs:
       run: ./gradlew dist
     - uses: actions/upload-artifact@v2
       with:
-        name: game.jar
-        path: build/libs 
-        # Current task dist doesn't produce a valid jar - Main-Class .mf file error.
+        name: artifact
+        path: desktop/build/libs 
