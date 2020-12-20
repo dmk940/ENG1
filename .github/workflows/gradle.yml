@@ -1,7 +1,7 @@
 # Build a Java project, with Gradle
 # see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: Java CI, gradle
+name: Build Java project using Gradle
 
 on:
   workflow_dispatch:
@@ -28,3 +28,4 @@ jobs:
       with:
         name: game.jar
         path: build/libs 
+        # Current task dist doesn't produce a valid jar - Main-Class .mf file error.
