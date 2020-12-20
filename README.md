@@ -5,7 +5,7 @@ This is team 19's fork of Team 21's Assessment 1 Project.
 
 The latest source code can be found [here](https://github.com/dmk940/ENG1). 
 
-The latest .jar file can be found here.
+The latest .jar file can be found here (not generated yet).
 
 ## Deliverables ##
 
