@@ -23,9 +23,8 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build using Gradle
-      run: ./gradlew build
+      run: ./gradlew dist
     - uses: actions/upload-artifact@v2
       with:
-        name: package
+        name: game.jar
         path: build/libs 
-        # This currently fails - the build doesn't output anything to this directory
