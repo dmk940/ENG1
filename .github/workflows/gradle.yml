@@ -21,26 +21,29 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build using Gradle
       run: ./gradlew desktop:dist
       
-    - uses: actions/checkout@master
+    - name: Push .jar as a release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-        ref: website
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-    - name: Create local changes
-      run: |
-         git add desktop/build/libs
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action Test"
-        git commit -m "Push new .jar to website" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ GITHUB_RUN_NUMBER }}
+          body: Latest commit ${{ github.event.head_commit.message }}
+          draft: false
+          prerelease: false
+      
+    - name: Upload .jar file
+      uses: actions/upload-release-asset@v1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: website
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./desktop/builds/
+        asset_name: game-${{ GITHUB_RUN_NUMER }}.jar
