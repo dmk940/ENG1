@@ -6,8 +6,14 @@ name: Build Java project using Gradle
 on:
   workflow_dispatch:
   push:
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/gradle.yml'
     branches: [ master ]
   pull_request:
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/gradle.yml'
     branches: [ master ]
 
 jobs:
