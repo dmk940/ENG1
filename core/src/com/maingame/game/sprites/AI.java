@@ -60,8 +60,8 @@ public class AI {
 
     /**
      * Moves the AI boat to the right depending on the weight and the boat's maneuverability.
-     * @param weight an integer controlling the direction of the movement of the AI
-     * @see Boat#setPosX(int),Boat#maneuverability
+     * @param weight an integer controlling the direction of the movement of the AI.
+     * @see Boat#setPosX(int),Boat#maneuverability.
      */
     private void moveRight(int weight) {
         while (weight < 0){
