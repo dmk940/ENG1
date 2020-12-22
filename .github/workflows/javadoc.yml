@@ -36,12 +36,9 @@ jobs:
     
     - name: Commit and push changes to docs/
       run: |
-          git status
           rm -rf docs/javadocs
-          git status
           mv core/build/docs/javadoc docs/javadocs
-          git status
-          git add -A
+          git add --all
           
           git config --local user.email "action@github.com"
           git config --local user.name "Update JavaDocs"
