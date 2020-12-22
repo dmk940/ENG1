@@ -31,22 +31,15 @@ jobs:
     - name: Generate JavaDocs using Gradle
       run: |
           ./gradlew javadoc
-          ls desktop
-          ls desktop/build
-          ls desktop/build/docs
         
     - name: Checkout website branch
       uses: actions/checkout@v2
       with:
         ref: website
+        clean: false
     
     - name: Push to website branch
       run: |
-          ls
-          ls desktop
-          ls desktop/build
-          ls desktop/build/docs
-          mv desktop/build/docs/javadoc ./
           git add javadoc
           
           git config --local user.email "action@github.com"
