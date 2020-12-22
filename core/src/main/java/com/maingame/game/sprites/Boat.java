@@ -209,9 +209,7 @@ public class Boat {
      *
      * @return the health
      */
-    public int getHealth() {
-        return health;
-    }
+    public int getHealth() { return health; }
 
     /**
      * Sets health.
