@@ -25,7 +25,7 @@ jobs:
     - name: Generate .pdf of user manual
       uses: docker://pandoc/latex:2.9
       with:
-        args: "docs/user_manual.md -o docs/user_manual.pdf"
+        args: "pandoc -o docs/user_manual.pdf docs/user_manual.md"
           
     - name: Add pdf to commit for branch
       run: |
