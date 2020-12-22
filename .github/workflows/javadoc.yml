@@ -1,0 +1,56 @@
+name: Generate JavaDocs and push to website
+
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/**'
+    branches: [ master ]
+  pull_request:
+    paths-ignore:
+      - 'README.md'
+      - '.github/workflows/**'
+    branches: [ master ]
+
+jobs:
+  javadocs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout master branch
+      uses: actions/checkout@v2
+    
+    - name: Set up JDK 1.8 environment
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Generate JavaDocs using Gradle
+      run: ./gradlew javadoc
+    
+    - name: Checkout website branch
+      uses: actions/checkout@v2
+      with:
+        ref: website
+    
+    - name: Push to website branch
+      run: |
+          ls
+          ls desktop
+          ls desktop/build
+          ls desktop/build/docs
+          mv desktop/build/docs/javadoc ./
+          git add javadoc
+          
+          git config --local user.email "action@github.com"
+          git config --local user.name "Update JavaDocs"
+          
+          git commit -m "Push updated javadocs" -a
+          git push
+    
+
+
+ 
