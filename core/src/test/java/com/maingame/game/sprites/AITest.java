@@ -9,6 +9,6 @@ public class AITest {
 
     @Test
     public void testUpdate() {
-        Assert.assertTrue(true);
+        Assert.assertTrue(false);
     }
 }
