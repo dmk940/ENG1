@@ -33,12 +33,11 @@ jobs:
     - name: Generate JavaDocs using Gradle
       run: |
           ./gradlew javadoc
-    
-    - name: Push to website docs/ folder
-      run: |
           rm -rf docs/javadocs
           mv core/build/docs/javadoc docs/javadocs
-          
+    
+    - name: Commit and push changes to docs/
+      run: |
           git add --all
           
           git config --local user.email "action@github.com"
