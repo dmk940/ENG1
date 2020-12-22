@@ -45,7 +45,8 @@ jobs:
           
           git commit -m "Push updated javadocs"
           git push
-    - continue-on-error: true # So it doesn't fail when docs aren't updated
+     
+      continue-on-error: true # So it doesn't fail when there are no change to docs
     
 
 
