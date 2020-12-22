@@ -1,4 +1,4 @@
-name: Generate JavaDocs and push to website
+name: JavaDocs (website)
 
 on:
   workflow_dispatch:
