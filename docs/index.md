@@ -8,6 +8,8 @@ A .jar file automatically built from this can be found [here](https://github.com
 
 The user manual can be found [here](https://dmk940.github.io/ENG1/user_manual) (alternatively, as a .pdf [here](https://raw.githubusercontent.com/dmk940/ENG1/website/pdf/user_manual.pdf)).
 
+The JavaDocs can be found [here](https://dmk940.github.io/ENG1/javadocs/index.html).
+
 ## Deliverables ##
 
 _Before submitting these need to be converted to PDFs, hosted on the GitHub, and named Change2.pdf, Impl2.pdf, Test2.pdf, CI2.pdf._
