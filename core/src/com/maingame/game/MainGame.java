@@ -18,7 +18,7 @@ public class MainGame extends ApplicationAdapter {
 
 	/**
 	 * {@inheritDoc}
-	 * Shows the WelcomeState when the game first starts
+	 * Shows the WelcomeState when the game first starts.
 	 * @see WelcomeState
 	 */
 	@Override
