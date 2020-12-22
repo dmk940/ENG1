@@ -21,22 +21,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: ls
-      run: ls
-    - name: ls docs
-      run: ls docs
-    - name: ls /docs
-      run: ls /docs
         
     - name: Generate .pdf of user manual
       uses: docker://pandoc/latex:2.9
       with:
-        args: "docs/user_manual.md -o docs/user_manual.pdf"
+        args: "user_manual.md -o user_manual.pdf"
           
     - name: Add pdf to commit for branch
       run: |
-          git add docs/user_manual.pdf
+          git add user_manual.pdf
           git config --local user.email "action@github.com"
           git config --local user.name "Auto-generate manual PDF"
           git commit -m "Push generated .pdf" -a
