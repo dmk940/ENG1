@@ -4,11 +4,13 @@ on:
   workflow_dispatch:
   push:
     paths-ignore:
+      - 'docs/**'
       - 'README.md'
       - '.github/workflows/**'
     branches: [ master ]
   pull_request:
     paths-ignore:
+      - 'docs/**'
       - 'README.md'
       - '.github/workflows/**'
     branches: [ master ]
@@ -31,21 +33,18 @@ jobs:
     - name: Generate JavaDocs using Gradle
       run: |
           ./gradlew javadoc
-        
-    - name: Checkout website branch
-      uses: actions/checkout@v2
-      with:
-        ref: website
-        clean: false
     
-    - name: Push to website branch
+    - name: Push to website docs/ folder
       run: |
-          git add javadoc
+          rm -rf docs/javadocs
+          mv core/build/docs/javadoc docs/javadocs
+          
+          git add --all
           
           git config --local user.email "action@github.com"
           git config --local user.name "Update JavaDocs"
           
-          git commit -m "Push updated javadocs" -a
+          git commit -m "Push updated javadocs"
           git push
     
 

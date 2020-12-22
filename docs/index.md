@@ -2,12 +2,13 @@
 This is team 19's fork of Team 21's Assessment 1 Project.
 
 ## Download the game ##
-
 The latest source code can be found [here](https://github.com/dmk940/ENG1). 
 
 A .jar file automatically built from this can be found [here](https://github.com/dmk940/ENG1/releases/latest) (under assets, _game.jar_).
 
 The user manual can be found [here](https://dmk940.github.io/ENG1/user_manual) (alternatively, as a .pdf [here](https://raw.githubusercontent.com/dmk940/ENG1/website/pdf/user_manual.pdf)).
+
+The JavaDocs can be found [here](https://dmk940.github.io/ENG1/javadocs/index.html).
 
 ## Deliverables ##
 
