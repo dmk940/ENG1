@@ -22,6 +22,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: ls
+      run: ls
+    - name: ls docs
+      run: ls docs
+    - name: ls /docs
+      run: ls /docs
+        
     - name: Generate .pdf of user manual
       uses: docker://pandoc/latex:2.9
       with:
