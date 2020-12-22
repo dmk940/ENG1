@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * A class to hold all the logic and attribute for boats.
+ * A class to hold all the logic and attribute for boats
  */
 public class Boat {
     public final String colour;
