@@ -8,12 +8,12 @@ on:
   push:
     paths-ignore:
       - 'README.md'
-      - '.github/workflows/gradle.yml'
+      - '.github/workflows/**'
     branches: [ master ]
   pull_request:
     paths-ignore:
       - 'README.md'
-      - '.github/workflows/gradle.yml'
+      - '.github/workflows/**'
     branches: [ master ]
 
 jobs:
@@ -21,7 +21,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout master branch
+      uses: actions/checkout@v2
     
     - name: Set up JDK 1.8 environment
       uses: actions/setup-java@v1
@@ -32,13 +33,8 @@ jobs:
       run: chmod +x gradlew
     - name: Build using Gradle
       run: ./gradlew desktop:dist
-    
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        path: desktop/build/libs
       
-    - name: Push .jar as a release
+    - name: Create a new release
       id: create_release
       uses: actions/create-release@v1
       env:
@@ -50,7 +46,7 @@ jobs:
           draft: false
           prerelease: false
       
-    - name: Upload .jar file
+    - name: Upload .jar file to release
       uses: actions/upload-release-asset@v1
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
