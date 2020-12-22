@@ -19,7 +19,27 @@ on:
     branches: [ master ]
 
 jobs:
+  test: 
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout master branch
+      uses: actions/checkout@v2
+    
+    - name: Set up JDK 1.8 environment
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Test using Gradle
+      run: ./gradlew test
+    
+   
   build:
+    needs: test # thus will be skipped if test fails
+    
     runs-on: ubuntu-latest
 
     steps:
