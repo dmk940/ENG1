@@ -4,11 +4,13 @@ on:
   workflow_dispatch:
   push:
     paths-ignore:
+      - 'docs/**'
       - 'README.md'
       - '.github/workflows/**'
     branches: [ master ]
   pull_request:
     paths-ignore:
+      - 'docs/**'
       - 'README.md'
       - '.github/workflows/**'
     branches: [ master ]
