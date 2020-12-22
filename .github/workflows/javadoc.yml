@@ -38,7 +38,7 @@ jobs:
     
     - name: Commit and push changes to docs/
       run: |
-          git add --all
+          git add .
           
           git config --local user.email "action@github.com"
           git config --local user.name "Update JavaDocs"
