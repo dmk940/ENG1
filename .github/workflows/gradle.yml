@@ -1,7 +1,7 @@
 # Build a Java project, with Gradle
 # see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: Java Build (Gradle)
+name: Passes all tests and builds (Gradle)
 
 on:
   workflow_dispatch:
