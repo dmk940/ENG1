@@ -29,8 +29,12 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Generate JavaDocs using Gradle
-      run: ./gradlew javadoc
-    
+      run: |
+          ./gradlew javadoc
+          ls desktop
+          ls desktop/build
+          ls desktop/build/docs
+        
     - name: Checkout website branch
       uses: actions/checkout@v2
       with:
