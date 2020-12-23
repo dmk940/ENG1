@@ -1,16 +1,16 @@
 # Downloads #
 
-- [Latest source code](https://github.com/dmk940/ENG1) or [release](https://github.com/dmk940/ENG1/releases/), and the associated [JavaDocs](https://dmk940.github.io/ENG1/javadocs/index.html)
+- [Latest source code](https://github.com/dmk940/ENG1) or [release](https://github.com/dmk940/ENG1/releases/latest), and the associated [JavaDocs](https://dmk940.github.io/ENG1/javadocs/index.html)
 
-- A direct link to the latest [game.jar](https://github.com/dmk940/ENG1/blob/master/game.jar)
+- A direct link to the latest [game.jar](https://raw.githubusercontent.com/dmk940/ENG1/master/game.jar)
 
-- [User manual](https://dmk940.github.io/ENG1/user_manual) (alternatively, as a [.pdf](https://raw.githubusercontent.com/dmk940/ENG1/website/pdf/user_manual.pdf)).
+- [User manual](https://dmk940.github.io/ENG1/user_manual) (alternatively, as a [.pdf](https://raw.githubusercontent.com/dmk940/ENG1/docs/user_manual.pdf)).
 
 # Deliverables #
 
 _Before submitting these need to be converted to PDFs, hosted on the GitHub, and named Change2.pdf, Impl2.pdf, Test2.pdf, CI2.pdf._
 
-- [Change Management Report](https://docs.google.com/document/d/1fJNhM1hIgq8jTjLIWI9mm0rVmfdJC5XLgA4qqQ1VfM0/edit) 
+-  [Change Management Report](https://docs.google.com/document/d/1fJNhM1hIgq8jTjLIWI9mm0rVmfdJC5XLgA4qqQ1VfM0/edit) 
 
 - [Implementation Report](https://docs.google.com/document/d/1FBVD_6HIKa3srIV6r3XkTGi4hUGbE6B0pHvTVXktcWc/edit)
 
