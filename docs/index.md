@@ -1,14 +1,14 @@
-## Downloads ##
+# Downloads #
 
-[Source code (github)](https://github.com/dmk940/ENG1), or [latest release](https://github.com/dmk940/ENG1/releases)
+[Latest source code](https://github.com/dmk940/ENG1) or [release](https://github.com/dmk940/ENG1/releases)
 
-[game.jar](https://github.com/dmk940/ENG1/blob/master/game.jar)
+The most recently built [game.jar](https://github.com/dmk940/ENG1/blob/master/game.jar)
 
 [JavaDocs](https://dmk940.github.io/ENG1/javadocs/index.html)
 
 [User manual](https://dmk940.github.io/ENG1/user_manual) (alternatively, as a [.pdf](https://raw.githubusercontent.com/dmk940/ENG1/website/pdf/user_manual.pdf)).
 
-## Deliverables ##
+# Deliverables #
 
 _Before submitting these need to be converted to PDFs, hosted on the GitHub, and named Change2.pdf, Impl2.pdf, Test2.pdf, CI2.pdf._
 
@@ -20,7 +20,7 @@ _Before submitting these need to be converted to PDFs, hosted on the GitHub, and
 
 [Continuous Integration Report](https://docs.google.com/document/d/1uPOeCuq9njOT-iumFfcvIN9Zi4aBj53KgcBZkbaZHK0/edit)
 
-### Assessment 1 deliverables ###
+## Assessment 1 Deliverables ##
 
 _Before submitting these need to be converted to PDFs, hosted on the GitHub, and named Req1.pdf, Arch1.pdf, Plan1.pdf, Risk1.pdf, Impl1.pdf._
 
