@@ -5,13 +5,13 @@ on:
 
   push:
     paths:
-      - 'user_manual.md'
+      - 'docs/user_manual.md'
     branches: 
       - master
   
   pull_request:
     paths:
-      - 'user_manual.md'
+      - 'docs/user_manual.md'
     branches: 
       - master
 
