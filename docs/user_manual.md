@@ -1,4 +1,7 @@
-# User Manual for The Boat Race Game #
+# User Manual #
+
+Read on to learn about how to play The Dragon Boat Race.
+
 ## Aim and mechanics ##
 You must beat the other boats in the boat race! Win each leg by crossing the **finish line** in the fastest time. There are three legs, then a **final**!
 
