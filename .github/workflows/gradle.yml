@@ -1,7 +1,7 @@
 # Build a Java project, with Gradle
 # see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: Passes all tests and builds (Gradle)
+name: CI and deployment
 
 on:
   workflow_dispatch:
@@ -37,8 +37,8 @@ jobs:
       run: ./gradlew test
     
    
-  build:
-    needs: test # thus will be skipped if test fails
+  build_and_deploy:
+    needs: test # this makes it so build + deploy will be skipped if test fails
     
     runs-on: ubuntu-latest
 
@@ -74,6 +74,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: desktop/build/libs/game-1.0.jar
+        asset_path: desktop/build/libs/game.jar
         asset_content_type: application/java-archive
         asset_name: game.jar
+        
+    - name: Update .jar in repo linked to on website
+      run: |
+          mv desktop/build/libs/game.jar ./
+          git add game.jar
+          
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          
+          git commit -m "Update .jar file" -a
+          git push
