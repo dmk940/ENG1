@@ -4,7 +4,7 @@
 
 - A direct link to the latest [game.jar](https://raw.githubusercontent.com/dmk940/ENG1/master/game.jar)
 
-- [User manual](https://dmk940.github.io/ENG1/user_manual) (alternatively, as a [.pdf](https://raw.githubusercontent.com/dmk940/ENG1/docs/user_manual.pdf)).
+- [User manual](https://dmk940.github.io/ENG1/user_manual) (or, as a [.pdf](https://raw.githubusercontent.com/dmk940/ENG1/docs/user_manual.pdf)).
 
 # Deliverables #
 
