@@ -1,10 +1,10 @@
 # Downloads #
 
-- [Latest source code](https://github.com/dmk940/ENG1) or [release](https://github.com/dmk940/ENG1/releases/latest), and the associated [JavaDocs](https://dmk940.github.io/ENG1/javadocs/index.html)
+- [Latest source code](https://github.com/dmk940/ENG1-002) or [release](https://github.com/dmk940/ENG1-002/releases/latest), and the associated [JavaDocs](https://dmk940.github.io/ENG1-002/javadocs/index.html)
 
-- A direct link to the latest [game.jar](https://raw.githubusercontent.com/dmk940/ENG1/master/game.jar)
+- A direct link to the latest [game.jar](https://raw.githubusercontent.com/dmk940/ENG1-002/master/game.jar)
 
-- [User manual](https://dmk940.github.io/ENG1/user_manual) (or, as a [.pdf](https://raw.githubusercontent.com/dmk940/ENG1/master/docs/user_manual.pdf)).
+- [User manual](https://dmk940.github.io/ENG1-002/user_manual) (or, as a [.pdf](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/user_manual.pdf)).
 
 # Deliverables #
 
