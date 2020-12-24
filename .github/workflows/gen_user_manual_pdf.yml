@@ -34,5 +34,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "Auto-generate manual PDF"
           git commit -m "Push generated .pdf" -a
-          chmod +x ./_push_merge
-          ./_push_merge
+          git pull --rebase
+          git push

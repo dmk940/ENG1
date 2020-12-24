@@ -92,7 +92,5 @@ jobs:
           git config --local user.name "GitHub Actions"
           
           git commit -m "Update .jar file" -a
-          chmod +x ./_push_merge
-          ./_push_merge
-      # This is linked to on the website. We want to do this only for master because otherwise in feature-branches
-      #the new .jar becomes a commit - causing a complex merge conflict, as git cannot compare these binaries.
+          git pull --rebase
+          git push

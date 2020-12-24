@@ -7,11 +7,6 @@ on:
       - 'core/**'
       - 'desktop/**'
     branches: [ master ]
-  pull_request:
-    paths:
-      - 'core/**'
-      - 'desktop/**'
-    branches: [ master ]
 
 jobs:
   javadocs:
@@ -41,9 +36,8 @@ jobs:
           git config --local user.name "Update JavaDocs"
           
           git commit -m "Push updated javadocs"
-          chmod +x ./_push_merge
-          ls
-          ./_push_merge
+          git pull --rebase
+          git push
      
       continue-on-error: true # So it doesn't fail when there are no change to docs
     
