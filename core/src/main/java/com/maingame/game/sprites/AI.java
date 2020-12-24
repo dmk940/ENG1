@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A class to define the AI for non-player boats.
+ * A class to define the Artificial Intelligence for non-player boats.
  */
 public class AI {
     private final Boat boat;
