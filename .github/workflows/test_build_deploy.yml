@@ -5,25 +5,27 @@ name: CI and deployment
 
 on:
   workflow_dispatch:
+  
   push:
     paths-ignore:
       - 'docs/**'
       - 'README.md'
+      - 'game.jar'
       - '.github/workflows/**'
-    branches: [ master ]
+    
   pull_request:
     paths-ignore:
       - 'docs/**'
       - 'README.md'
+      - 'game.jar'
       - '.github/workflows/**'
-    branches: [ master ]
 
 jobs:
-  test: 
+  test_and_build: 
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout master branch
+    - name: Checkout ${{ github.workspace }} # This is the branch that triggered the workflow
       uses: actions/checkout@v2
     
     - name: Set up JDK 1.8 environment
@@ -36,12 +38,26 @@ jobs:
     - name: Test using Gradle
       run: ./gradlew test
     
+    - name: Build using Gradle
+      run: ./gradlew desktop:dist
+    
+    - name: Update .jar in repo # In the case of master branch this is what's linked to on the website
+      run: |
+          mv desktop/build/libs/game.jar ./
+          git add game.jar
+          
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          
+          git commit -m "Update .jar file" -a
+          git push
    
-  build_and_deploy:
-    needs: test # this makes it so build + deploy will be skipped if test fails
+  deploy:
+    needs: test_and_build # this makes it so deploy will be skipped if test_and_build fails
     
     runs-on: ubuntu-latest
 
+    if: github.ref == 'refs/heads/master' # Only deploy if branch that triggered workflow is master
     steps:
     - name: Checkout master branch
       uses: actions/checkout@v2
@@ -73,18 +89,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: desktop/build/libs/game.jar
         asset_content_type: application/java-archive
         asset_name: game.jar
-        
-    - name: Update .jar in repo linked to on website
-      run: |
-          mv desktop/build/libs/game.jar ./
-          git add game.jar
-          
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Actions"
-          
-          git commit -m "Update .jar file" -a
-          git push
