@@ -52,9 +52,6 @@ jobs:
           
           git commit -m "Update .jar file" -a
           ./_push_merge
-    # It is necessary to do git pull because of the other workflow tasks that push to the repo (e.g. Javadocs)
-    # When they run in parallel, they will modify other (non-conflicting files) causing this push to fail.
-    # git pull fixes this issue.
    
   deploy:
     needs: test_and_build # this makes it so deploy will be skipped if test_and_build fails
