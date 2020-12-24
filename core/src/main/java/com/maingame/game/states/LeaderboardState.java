@@ -130,7 +130,7 @@ public class LeaderboardState extends State{
                 for (Boat boat:boatsInOrder) {
                     boat.setPosY(0);
                     boat.setHealth(100);
-                    boat.setFatigue(300);
+                    boat.setFatigue(600);
                     boat.setTotalLegTime(0);
                 }
                 boatsInOrder.remove(player);
@@ -141,7 +141,7 @@ public class LeaderboardState extends State{
             for (Boat boat:boatsInOrder) {
                 boat.setPosY(0);
                 boat.setHealth(100);
-                boat.setFatigue(300);
+                boat.setFatigue(600);
                 boat.setTotalLegTime(0);
             }
             boatsInOrder.remove(player);

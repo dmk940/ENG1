@@ -21,7 +21,7 @@ public class Boat {
     private int cumulativeLegTime;
     private int health=100;
     private int penaltyBar = 100;
-    private int fatigue = 300;
+    private int fatigue = 600;
     private int posX;
     private int posY;
     private final HashMap<String, List<Texture>> boatImg = new HashMap<>(); //Contains the images for the boats in an array of strings. The strings are the file names of the images.

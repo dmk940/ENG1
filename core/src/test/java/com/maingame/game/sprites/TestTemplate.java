@@ -3,12 +3,10 @@ package com.maingame.game.sprites;
 import org.junit.Test;
 import org.junit.Assert;
 
-import static org.junit.Assert.*;
-
-public class AITest {
+public class TestTemplate {
 
     @Test
-    public void testUpdate() {
+    public void testMethod() {
         Assert.assertTrue(true);
     }
 }

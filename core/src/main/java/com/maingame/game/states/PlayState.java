@@ -114,15 +114,16 @@ public class PlayState extends State{
             time = System.currentTimeMillis();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W) || (Gdx.input.isKeyPressed(Input.Keys.UP))){
-            if (player.getFatigue() -1 < 0){
-                player.setFatigue(0);
-            }else {
+            if (player.getFatigue() > 0){
                 player.setPosY(player.getPosY() + player.acceleration);
-                player.setFatigue((int) (player.getFatigue() - 0.00001));
+                player.setFatigue(player.getFatigue() - 2);
                 cam.position.y += player.acceleration;
             }
-
+        } else {
+            // user is not currently boosting, slowly restore fatigue
+            if (player.getFatigue() < 600) { player.setFatigue(player.getFatigue() + 1); }
         }
+
         if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)){
             player.setPosX(player.getPosX() - player.maneuverability/2);
         }
@@ -202,7 +203,7 @@ public class PlayState extends State{
         Texture pix = new Texture(fatigueMap);
         font.draw(sb,"Fatigue: ",cam.position.x/2 - pix.getWidth() - 200,cam.position.y + 358);
         sb.draw(pix2,cam.position.x/2 - pix2.getWidth() ,cam.position.y + 310);
-        int fatigueBar = (player.getFatigue() * 200)/300;
+        int fatigueBar = (player.getFatigue() * 200)/600;
         sb.draw(pix,cam.position.x/2 - pix.getWidth() - 5,cam.position.y + 315,fatigueBar,30);
         pix2 = new Texture(healthMap2);
         pix = new Texture(healthMap);
@@ -279,7 +280,7 @@ public class PlayState extends State{
         }else if (player.getHealth() <= 75){
             healthMap.setColor(Color.valueOf(YELLOW));
         }
-        int fatiguePercent = player.getFatigue()*100/300;
+        int fatiguePercent = player.getFatigue()*100/600;
         if (fatiguePercent <= 25){
             fatigueMap.setColor(Color.valueOf(RED));
         }else if (fatiguePercent <=50){
