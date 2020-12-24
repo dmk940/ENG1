@@ -45,7 +45,7 @@ jobs:
           git config --local user.name "Update JavaDocs"
           
           git commit -m "Push updated javadocs"
-          git push
+          ./_push_merge
      
       continue-on-error: true # So it doesn't fail when there are no change to docs
     
