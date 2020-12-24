@@ -43,6 +43,7 @@ jobs:
     
     - name: Update .jar in repo # In the case of master branch this is what's linked to on the website
       run: |
+          git pull
           mv desktop/build/libs/game.jar ./
           git add game.jar
           
@@ -51,6 +52,9 @@ jobs:
           
           git commit -m "Update .jar file" -a
           git push
+    # It is necessary to do git pull because of the other workflow tasks that push to the repo (e.g. Javadocs)
+    # When they run in parallel, they will modify other (non-conflicting files) causing this push to fail.
+    # git pull fixes this issue.
    
   deploy:
     needs: test_and_build # this makes it so deploy will be skipped if test_and_build fails
