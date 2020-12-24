@@ -40,19 +40,6 @@ jobs:
     
     - name: Build using Gradle
       run: ./gradlew desktop:dist
-    
-    - name: Update .jar in repo # In the case of master branch this is what's linked to on the website
-      run: |
-          git pull
-          mv desktop/build/libs/game.jar ./docs
-          git add docs/game.jar
-          
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Actions"
-          
-          git commit -m "Update .jar file" -a
-          chmod +x ./_push_merge
-          ./_push_merge
    
   deploy:
     needs: test_and_build # this makes it so deploy will be skipped if test_and_build fails
@@ -92,6 +79,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: docs/game.jar
+        asset_path: desktop/build/libs/game.jar
         asset_content_type: application/java-archive
         asset_name: game.jar
+        
+    - name: Update .jar in repo
+      run: |
+          git pull
+          mv desktop/build/libs/game.jar ./docs
+          git add docs/game.jar
+          
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          
+          git commit -m "Update .jar file" -a
+          chmod +x ./_push_merge
+          ./_push_merge
+      # This is linked to on the website. We want to do this only for master because otherwise in feature-branches
+      #the new .jar becomes a commit - causing a complex merge conflict, as git cannot compare these binaries.
