@@ -13,7 +13,6 @@ on:
       - '.gitignore'
       - 'README.md'
       
-    
   pull_request:
     paths-ignore:
       - '.github/workflows/**'
