@@ -3,18 +3,14 @@ name: JavaDocs (website)
 on:
   workflow_dispatch:
   push:
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'game.jar'
-      - '.github/workflows/**'
+    paths:
+      - 'core/**'
+      - 'desktop/**'
     branches: [ master ]
   pull_request:
-    paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'game.jar'
-      - '.github/workflows/**'
+    paths:
+      - 'core/**'
+      - 'desktop/**'
     branches: [ master ]
 
 jobs:
@@ -45,6 +41,8 @@ jobs:
           git config --local user.name "Update JavaDocs"
           
           git commit -m "Push updated javadocs"
+          chmod +x ./_push_merge
+          ls
           ./_push_merge
      
       continue-on-error: true # So it doesn't fail when there are no change to docs

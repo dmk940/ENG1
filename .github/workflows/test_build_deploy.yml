@@ -8,17 +8,18 @@ on:
   
   push:
     paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'game.jar'
       - '.github/workflows/**'
+      - 'docs/**'
+      - '.gitignore'
+      - 'README.md'
+      
     
   pull_request:
     paths-ignore:
-      - 'docs/**'
-      - 'README.md'
-      - 'game.jar'
       - '.github/workflows/**'
+      - 'docs/**'
+      - '.gitignore'
+      - 'README.md'
 
 jobs:
   test_and_build: 
@@ -44,13 +45,14 @@ jobs:
     - name: Update .jar in repo # In the case of master branch this is what's linked to on the website
       run: |
           git pull
-          mv desktop/build/libs/game.jar ./
-          git add game.jar
+          mv desktop/build/libs/game.jar ./docs
+          git add docs/game.jar
           
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions"
           
           git commit -m "Update .jar file" -a
+          chmod +x ./_push_merge
           ./_push_merge
    
   deploy:
@@ -91,6 +93,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: desktop/build/libs/game.jar
+        asset_path: docs/game.jar
         asset_content_type: application/java-archive
         asset_name: game.jar
