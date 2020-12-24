@@ -51,7 +51,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           
           git commit -m "Update .jar file" -a
-          git push
+          ./_push_merge
     # It is necessary to do git pull because of the other workflow tasks that push to the repo (e.g. Javadocs)
     # When they run in parallel, they will modify other (non-conflicting files) causing this push to fail.
     # git pull fixes this issue.
