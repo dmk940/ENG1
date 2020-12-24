@@ -85,7 +85,6 @@ jobs:
         
     - name: Update .jar in repo
       run: |
-          git pull
           mv desktop/build/libs/game.jar ./docs
           git add docs/game.jar
           
