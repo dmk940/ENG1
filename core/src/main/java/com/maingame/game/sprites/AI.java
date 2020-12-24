@@ -4,7 +4,9 @@ import com.badlogic.gdx.math.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * A class to define the AI for non-player boats.
+ */
 public class AI {
     private final Boat boat;
     private final List<Obstacle> obstacleList;
