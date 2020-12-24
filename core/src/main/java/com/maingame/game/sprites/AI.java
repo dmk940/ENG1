@@ -118,9 +118,9 @@ public class AI {
 
     /**
      * Checks if the AI boat is near other boats using collision bounds and adjusts the input weight.
-     * @param weight an integer controlling the direction of the movement of the AI
-     * @return the updated integer weight
-     * @see Boat#collisionBounds
+     * @param weight an integer controlling the direction of the movement of the AI.
+     * @return the updated integer weight.
+     * @see Boat#collisionBounds.
      */
     private int isNearBoats(int weight) {
         for (Boat enemyBoat : boats) {
