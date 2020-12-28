@@ -25,7 +25,7 @@ public class MainGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
-		music = Gdx.audio.newMusic(Gdx.files.internal("game3.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("synth_pop_game.mp3"));
 		music.setLooping(true);
 		music.setVolume(0.1f);
 		music.play();
