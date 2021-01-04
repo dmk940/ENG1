@@ -22,6 +22,8 @@ _Before submitting these need to be converted to PDFs, hosted on the GitHub, and
 
 _Before submitting these need to be converted to PDFs, hosted on the GitHub, and named Req1.pdf, Arch1.pdf, Plan1.pdf, Risk1.pdf, Impl1.pdf._
 
+### [Changelog of the below](https://docs.google.com/document/d/1k61Wg650iQLQjronkTEW4EfHVgtKKOUg5CahM-15H5s/edit) ###
+
 ### [Requirements](https://docs.google.com/document/d/19fdPYbHeBCcetLBsKJ8jMJbGSVPP-ZfQ/edit) ###
 
 ### [Architecture](https://docs.google.com/document/d/14XOxfdx9k772uunp7oCNqeZKcUW2ZWd8/edit) ###
