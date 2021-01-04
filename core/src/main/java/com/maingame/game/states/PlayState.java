@@ -49,6 +49,8 @@ public class PlayState extends State{
     private static final String ORANGE = "F95738";
     private static final String YELLOW ="F2BB05";
 
+    private static final int LEG_TIME = 20;
+
     public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg){
         super(gsm);
         finishLine = new Texture("finishLine.png");
@@ -114,7 +116,7 @@ public class PlayState extends State{
             time = System.currentTimeMillis();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W) || (Gdx.input.isKeyPressed(Input.Keys.UP))){
-            if (player.getFatigue() > 0){
+            if (player.getFatigue() > 0 && (System.currentTimeMillis() - countDown/1000 > LEG_TIME) && finishLinePosition == 0){
                 player.setPosY(player.getPosY() + player.acceleration);
                 player.setFatigue(player.getFatigue() - 2);
                 cam.position.y += player.acceleration;
@@ -159,7 +161,7 @@ public class PlayState extends State{
             player.update(dt);
             player.hasCollided(boats,player);
             checkBoatHealth();
-            if ((System.currentTimeMillis() - countDown)/1000> 48 && finishLinePosition == 0) {
+            if ((System.currentTimeMillis() - countDown)/1000> LEG_TIME && finishLinePosition == 0) {
                 finishLinePosition = getWinningBoat().getPosY() + river.getHeight() +100;
                 finishLineBounds = new Rectangle(0,finishLinePosition,finishLine.getWidth(),finishLine.getHeight());
             }
@@ -187,7 +189,7 @@ public class PlayState extends State{
         sb.draw(river, (float) river.getWidth() * 4, riverPos1);
         sb.draw(riverReversed, (float) river.getWidth() * 4, riverPos2);
 
-        if ((System.currentTimeMillis() - countDown)/1000> 48) {
+        if ((System.currentTimeMillis() - countDown)/1000> 10) {
             sb.draw(finishLine,0,finishLinePosition);
         }
         drawBoats(leg,sb);
@@ -287,6 +289,8 @@ public class PlayState extends State{
             fatigueMap.setColor(Color.valueOf(ORANGE));
         }else if (fatiguePercent <= 75){
             fatigueMap.setColor(Color.valueOf(YELLOW));
+        } else if (fatiguePercent > 76){
+            fatigueMap.setColor(Color.valueOf(GREEN));
         }
         if (player.getPenaltyBar() <= 25){
             penaltyMap.setColor(Color.valueOf(RED));
