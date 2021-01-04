@@ -25,7 +25,7 @@ There are various boats you can choose from - all with different stats!
 
 Some boats are faster (higher top **Speed**), others accelerate more quickly (**Acceleration**).
 
-A faster boat will have a lower **robustness**. There's also **manoeuvrability ** to consider - useful when trying to avoid obstacles!
+A faster boat will have a lower **robustness**. There's also **manoeuvrability** to consider - useful when trying to avoid obstacles!
 
 ## Tips ##
 Look as far forward as you can to give yourself as much time as possible to avoid obstacles! _Good luck!_ 
