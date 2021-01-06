@@ -1,0 +1,22 @@
+
+package com.maingame.game.sprites;
+
+public class TestMoveRight{
+@Test
+@DisplayName("Checking collisions are being recorded")
+hasCollided tester = new hasCollided();
+public void collisionsAssertions(){
+  assertTrue(,hasCollided)
+
+
+public void checkHit(Boat boat) {
+    if (collisionBounds.overlaps(boat.collisionBounds) && (boat.isHasNotLost())){
+        boat.setHealth(boat.getHealth() - obstacleDamage.get(name));
+        posX = -9000;
+        posY = -9000;
+        collisionBounds.setPosition(posX,posY);
+        if (boat.getHealth() < 0) {
+            boat.setHealth(0);
+        }
+    }
+}

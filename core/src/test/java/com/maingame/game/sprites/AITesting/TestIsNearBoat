@@ -1,0 +1,11 @@
+package com.maingame.game.sprites;
+
+public class TestMoveRight{
+@Test
+@DisplayName("Checking collisions are being recorded")
+hasCollided tester = new hasCollided();
+public void collisionsAssertions(){
+  assertTrue(,hasCollided)
+}
+
+}

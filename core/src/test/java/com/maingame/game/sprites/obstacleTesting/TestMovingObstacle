@@ -1,0 +1,19 @@
+package com.maingame.game.sprites;
+
+public class TestMoveRight{
+@Test
+@DisplayName("Checking collisions are being recorded")
+hasCollided tester = new hasCollided();
+public void collisionsAssertions(){
+  assertTrue(,hasCollided)
+
+
+public void moveObstacle() {
+    if (isMovable) {
+        if (!direction){
+            posX += 1;
+        }else {
+            posX -= 1;
+        }
+    }
+}

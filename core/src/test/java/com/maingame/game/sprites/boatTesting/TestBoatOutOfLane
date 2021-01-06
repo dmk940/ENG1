@@ -1,0 +1,12 @@
+package com.maingame.game.sprites;
+import java.util.HashMap;
+
+public class TestBoatOutOfLane{
+@Test
+@DisplayName("Checking if boat is out of bound")
+public void boatAssertions(){
+  assertTrue(expectedMap.equals(hashMap));
+  assertEquals()
+}
+}
+buildBoatData()

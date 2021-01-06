@@ -1,0 +1,23 @@
+package com.maingame.game.sprites;
+
+public class TestGameStart{
+  @Test
+  @DisplayName("Checking The game is (╯°□°)╯︵ ┻━┻")
+  public void assertTrue()
+
+}
+public class TestTimePenalty(){
+@Test
+@DisplayName("Checking time is increasing")
+public void assertTrue()
+}
+public class TestGameOver{
+@Test
+@DisplayName("Checking The game is ending correctly")
+public void assertTrue()
+}
+public class TestGame{
+@Test
+@DisplayName("Checking")
+public void assertTrue()
+}

@@ -1,0 +1,12 @@
+package com.maingame.game.sprites;
+
+public class TestCommands{
+
+@Test
+@DisplayName("Checking commands are working")
+public void commandsAssertions(){
+assertEquals(isPressed(ARROW_LEFT),left());
+assertEquals(isPressed(ARROW_RIGHT), Right());
+assertEquals(isPressed(ARROW_UP), acceleration());
+}
+}

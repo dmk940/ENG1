@@ -1,0 +1,31 @@
+package com.maingame.game.sprites;
+
+public class TestMoveRight{
+@Test
+@DisplayName("Checking collisions are being recorded")
+hasCollided tester = new hasCollided();
+public void collisionsAssertions(){
+  assertTrue(,hasCollided)
+
+  /**
+   * Updates the collision bounds to match the current obstacle position.
+   */
+  public void updateCollisionBounds() {
+      switch (name) {
+          case ROCK_1:
+              collisionBounds = new Rectangle((float) posX + 20, (float) posY + 20, 30, 30);
+              break;
+          case ROCK_2:
+              collisionBounds = new Rectangle((float) posX + 5, (float) posY + 35, 30, 25);
+              break;
+          case "goose":
+              collisionBounds = new Rectangle(posX, (float) posY + 10, 70, 60);
+              break;
+          case "duck1":
+              collisionBounds = new Rectangle((float) posX + 20, (float) posY + 27, 33, 33);
+              break;
+          default:
+              collisionBounds = new Rectangle((float) posX + 10, (float) posY + 10, 40, 50);
+              break;
+      }
+  }
