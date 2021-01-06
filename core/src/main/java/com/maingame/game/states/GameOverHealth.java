@@ -22,8 +22,8 @@ public class GameOverHealth extends State {
 	public GameOverHealth(GameStateManager gsm) {
 		super(gsm);
 		background = new Texture("background.png");
-		gameOverBtn = new Texture("gameover.png");
-		info = new Texture("gameoverhealth.png");
+		gameOverBtn = new Texture("gameOver.png");
+		info = new Texture("gameOverHealth.png");
 		countDown = System.currentTimeMillis();
 	}
 

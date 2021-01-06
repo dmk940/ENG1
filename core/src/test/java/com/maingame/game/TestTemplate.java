@@ -1,12 +1,12 @@
-package com.maingame.game.sprites;
+package com.maingame.game;
 
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import org.junit.Assert;
 
 public class TestTemplate {
 
     @Test
     public void testMethod() {
-        Assert.assertTrue(true);
+        assertTrue(true);
     }
 }
