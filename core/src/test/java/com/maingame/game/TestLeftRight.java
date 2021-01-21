@@ -12,46 +12,20 @@ public class TestLeftRight extends TestMovement {
     }
 
     @Test
-    public void testA() {
+    public void testLeft() {
         createPlayer();
         int START_X = player.getPosX();
-        //input_proc.keyDown(Input.Keys.A);
-        //playstate.handleInput();
-        assertEquals(player.getPosX(),  START_X);
-        //assertEquals(player.getPosX(),  START_X + player.maneuverability/2);
-        
+        playstate.left_pressed = true;
+        playstate.handleInputLogic();
+        assertEquals(START_X - player.maneuverability/2, player.getPosX());
     }
 
     @Test
-    public void testD() {
+    public void testRight() {
         createPlayer();
         int START_X = player.getPosX();
-        //input_proc.keyDown(Input.Keys.A);
-        //playstate.handleInput();
-        assertEquals(player.getPosX(),  START_X);
-        //assertEquals(player.getPosX(),  START_X - player.maneuverability/2);
-        
+        playstate.right_pressed = true;
+        playstate.handleInputLogic();
+        assertEquals(START_X + player.maneuverability/2, player.getPosX());
     }
-
-    @Test
-    public void testLEFTArrow() {
-        createPlayer();
-        int START_X = player.getPosX();
-        //input_proc.keyDown(Input.Keys.LEFT);
-        //playstate.handleInput();
-        assertEquals(player.getPosX(),  START_X);
-        //assertEquals(player.getPosX(),  START_X + player.maneuverability/2);
-    }
-
-    @Test
-    public void testRIGHTArrow() {
-        createPlayer();
-        int START_X = player.getPosX();
-        //input_proc.keyDown(Input.Keys.LEFT);
-        //playstate.handleInput();
-        assertEquals(player.getPosX(),  START_X);
-        //assertEquals(player.getPosX(),  START_X - player.maneuverability/2);
-    }
-
-    
 }

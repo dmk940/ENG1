@@ -13,10 +13,9 @@ public class TestForwardBack extends TestMovement {
 
     @Test
     public void testDefaultSpeed() {
-        // This is with no input
         createPlayer();
         int START_Y = player.getPosY();
-        playstate.handleInput();
+        playstate.handleInputLogic(); // This is with no input
         assertEquals(START_Y + player.speed, player.getPosY());
     }
 
@@ -27,49 +26,36 @@ public class TestForwardBack extends TestMovement {
     }
 
     @Test
-    public void testMoveFatigueW() {
+    public void testMoveFatigueUp() {
         createPlayer();
-        //input_proc.keyDown(Input.Keys.W);
-        //playstate.handleInput();
-        assertEquals(FATIGUE_INITIAL_VALUE, player.getFatigue());
-        //assertEquals(FATIGUE_INITIAL_VALUE - FATIGUE_FRAME_DECREASE_VALUE, player.getFatigue());
+        playstate.up_pressed = true;
+        playstate.handleInputLogic();
+        assertEquals(FATIGUE_INITIAL_VALUE - FATIGUE_FRAME_DECREASE_VALUE, player.getFatigue());
     }
 
     @Test
-    public void testMoveFatigueS() {
+    public void testMoveFatigueDown() {
         createPlayer();
-        //input_proc.keyDown(Input.Keys.S);
-        //playstate.handleInput();
+        playstate.down_pressed = true;
+        playstate.handleInputLogic();
         assertEquals(FATIGUE_INITIAL_VALUE, player.getFatigue());
     }
-
-    @Test
-    public void testMoveFatigueUP() {
-        createPlayer();
-        //input_proc.keyDown(Input.Keys.UP);
-        //playstate.handleInput();
-        assertEquals(FATIGUE_INITIAL_VALUE, player.getFatigue());
-        //assertEquals(FATIGUE_INITIAL_VALUE - FATIGUE_FRAME_DECREASE_VALUE, player.getFatigue());
-    }
-
-    @Test
-    public void testW() {
-        createPlayer();
-        int START_Y = player.getPosY();
-        //input_proc.keyDown(Input.Keys.W);
-        //playstate.handleInput();
-        assertEquals(START_Y, player.getPosY());
-        //assertEquals(START_Y + player.speed + player.acceleration, player.getPosY());
-        
-    } 
     
     @Test
-    public void testUPArrows() {
+    public void testUp() {
         createPlayer();
         int START_Y = player.getPosY();
-        //input_proc.keyDown(Input.Keys.UP);
-        //playstate.handleInput();
-        assertEquals(START_Y, player.getPosY());
-        //assertEquals(START_Y + player.speed + player.acceleration, player.getPosY());
+        playstate.up_pressed = true;
+        playstate.handleInputLogic();
+        assertEquals(START_Y + player.speed + player.acceleration, player.getPosY());
+    }
+
+    @Test
+    public void testDown() {
+        createPlayer();
+        int START_Y = player.getPosY();
+        playstate.down_pressed = true;
+        playstate.handleInputLogic();
+        assertEquals(START_Y + player.speed - (player.maneuverability/2), player.getPosY());
     }
 }

@@ -49,6 +49,11 @@ public class PlayState extends State{
     private static final String ORANGE = "F95738";
     private static final String YELLOW ="F2BB05";
 
+    public Boolean up_pressed = false;
+    public Boolean down_pressed = false;
+    public Boolean left_pressed = false;
+    public Boolean right_pressed = false;
+
     private static final int LEG_TIME = 20;
 
     public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg){
@@ -110,12 +115,20 @@ public class PlayState extends State{
      */
     @Override
     public void handleInput() {
+        up_pressed = (Gdx.input.isKeyPressed(Input.Keys.W) || (Gdx.input.isKeyPressed(Input.Keys.UP)));
+        left_pressed = (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT));
+        right_pressed = (Gdx.input.isKeyPressed(Input.Keys.D)|| Gdx.input.isKeyPressed(Input.Keys.RIGHT));
+        down_pressed = (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN));
+        handleInputLogic();
+    }
+
+    public void handleInputLogic() {
         player.setPosY(player.getPosY() + player.speed);
         cam.position.y += player.speed;
         if (time == 0){
             time = System.currentTimeMillis();
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.W) || (Gdx.input.isKeyPressed(Input.Keys.UP))){
+        if (up_pressed) {
             if (player.getFatigue() > 0 && player.getTotalLegTime() == 0){
                 player.setPosY(player.getPosY() + player.acceleration);
                 player.setFatigue(player.getFatigue() - 2);
@@ -126,13 +139,13 @@ public class PlayState extends State{
             if (player.getFatigue() < 600) { player.setFatigue(player.getFatigue() + 1); }
         }
 
-        if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+        if (left_pressed) {
             player.setPosX(player.getPosX() - player.maneuverability/2);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+        if (right_pressed) {
             player.setPosX(player.getPosX() + player.maneuverability/2);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+        if (down_pressed) {
             player.setPosY(player.getPosY() - player.maneuverability/2);
             if (player.getTotalLegTime() == 0) {
                     cam.position.y -= (player.maneuverability/2);

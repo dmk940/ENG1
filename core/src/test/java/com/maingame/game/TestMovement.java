@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.maingame.UnitTestInit;
@@ -21,8 +22,7 @@ public class TestMovement extends UnitTestInit {
 
     protected Boat player;
     protected List<Boat> boats = new ArrayList<>();
-
-    protected InputProcessor input_proc;
+    
     protected PlayState playstate;
     protected static Application app;
 
