@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -73,13 +73,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.com.maingame.game.states.State">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -127,6 +127,29 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <!--   -->
 </a>
 <h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>java.lang.Boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#down_pressed">down_pressed</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>java.lang.Boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#left_pressed">left_pressed</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>java.lang.Boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#right_pressed">right_pressed</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>java.lang.Boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#up_pressed">up_pressed</a></span></code>&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.com.maingame.game.states.State">
 <!--   -->
@@ -182,11 +205,15 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#handleInputLogic--">handleInputLogic</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render</a></span>(com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;sb)</code>
 <div class="block">Renders the different elements in a state</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#update-float-">update</a></span>(float&nbsp;dt)</code>
 <div class="block">Updates other functions/values in a state.</div>
@@ -208,6 +235,50 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="up_pressed">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>up_pressed</h4>
+<pre>public&nbsp;java.lang.Boolean up_pressed</pre>
+</li>
+</ul>
+<a name="down_pressed">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>down_pressed</h4>
+<pre>public&nbsp;java.lang.Boolean down_pressed</pre>
+</li>
+</ul>
+<a name="left_pressed">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>left_pressed</h4>
+<pre>public&nbsp;java.lang.Boolean left_pressed</pre>
+</li>
+</ul>
+<a name="right_pressed">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>right_pressed</h4>
+<pre>public&nbsp;java.lang.Boolean right_pressed</pre>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -249,6 +320,15 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/maingame/game/states/State.html#handleInput--">handleInput</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></code></dd>
 </dl>
+</li>
+</ul>
+<a name="handleInputLogic--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>handleInputLogic</h4>
+<pre>public&nbsp;void&nbsp;handleInputLogic()</pre>
 </li>
 </ul>
 <a name="update-float-">
@@ -351,13 +431,13 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.com.maingame.game.states.State">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
