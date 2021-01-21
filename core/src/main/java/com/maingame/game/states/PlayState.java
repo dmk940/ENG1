@@ -116,7 +116,7 @@ public class PlayState extends State{
             time = System.currentTimeMillis();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W) || (Gdx.input.isKeyPressed(Input.Keys.UP))){
-            if (player.getFatigue() > 0 && (System.currentTimeMillis() - countDown/1000 > LEG_TIME) && finishLinePosition == 0){
+            if (player.getFatigue() > 0 && player.getTotalLegTime() == 0){
                 player.setPosY(player.getPosY() + player.acceleration);
                 player.setFatigue(player.getFatigue() - 2);
                 cam.position.y += player.acceleration;
@@ -134,7 +134,9 @@ public class PlayState extends State{
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)){
             player.setPosY(player.getPosY() - player.maneuverability/2);
-            cam.position.y -= (player.maneuverability/2);
+            if (player.getTotalLegTime() == 0) {
+                    cam.position.y -= (player.maneuverability/2);
+            }
         }
         cam.update();
     }

@@ -1,10 +1,14 @@
 sourceCompatibility = 1.8
 dependencies {
     implementation 'junit:junit:4.12'
+    implementation "org.mockito:mockito-core:2.23.4"
 }
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = [ "src/main/java/" ]
 sourceSets.test.java.srcDirs = [ "src/test/java/" ]
+
+project.ext.assetsDir = new File("../core/assets")
+sourceSets.main.resources.srcDirs = ["../core/assets"]
 
 eclipse.project.name = appName + "-core"
