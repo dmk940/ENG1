@@ -1,9 +1,12 @@
-package com.maingame;
+package com.maingame; // .game when inside /game/ test folder
 
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
-public class TestTemplate {
+/**
+ * A simple test template.
+ */
+public class TestTemplate extends UnitTestInit {
 
     @Test
     public void testMethod() {

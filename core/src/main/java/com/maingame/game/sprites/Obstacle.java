@@ -15,12 +15,16 @@ public class Obstacle {
     private int posY;
     private final boolean isMovable;
     private boolean direction; // the direction of the boat with true being left and false being right.
-    private Rectangle collisionBounds; // a box used to identify collisions.
+    public Rectangle collisionBounds; // a box used to identify collisions.
     private static final String ROCK_1 = "rock1";
     private static final String ROCK_2 = "rock2";
-
+    //TEAM19-START : move the rest of these hardcoded strings to constants
+    private static final String GOOSE = "goose";
+    private static final String DUCK_1 = "duck1";
+    private static final String DUCK_2 = "duck2";
+    //TEAM19-END
+    
     HashMap<String, Integer> obstacleDamage = new HashMap<>();
-
 
     public Obstacle(String obstacleName) {
         name = obstacleName;
@@ -62,12 +66,15 @@ public class Obstacle {
     private void buildObstacleData() {
         obstacleDamage.put(ROCK_1, 10);
         obstacleDamage.put(ROCK_2, 10);
-        obstacleDamage.put("goose", 15);
-        obstacleDamage.put("duck1", 5);
-        obstacleDamage.put("duck2", 5);
+        //TEAM19-START replace with new constant names
+        obstacleDamage.put(GOOSE, 15);
+        obstacleDamage.put(DUCK_1, 5);
+        obstacleDamage.put(DUCK_2, 5);
+        //TEAM19-END
 
     }
 
+    //TEAM19-START : made cases GOOSE and DUCK_1 constants
     /**
      * Updates the collision bounds to match the current obstacle position.
      */
@@ -79,10 +86,10 @@ public class Obstacle {
             case ROCK_2:
                 collisionBounds = new Rectangle((float) posX + 5, (float) posY + 35, 30, 25);
                 break;
-            case "goose":
+            case GOOSE:
                 collisionBounds = new Rectangle(posX, (float) posY + 10, 70, 60);
                 break;
-            case "duck1":
+            case DUCK_1:
                 collisionBounds = new Rectangle((float) posX + 20, (float) posY + 27, 33, 33);
                 break;
             default:
@@ -90,6 +97,7 @@ public class Obstacle {
                 break;
         }
     }
+    //TEAM19-END
 
     /**
      * Moves movable obstacles on the screen.

@@ -33,6 +33,11 @@ public class Boat {
     private int frame; // a integer representing which boat texture would be loaded.
     private boolean hasLost; // a boolean indicating if a boat has lost.
 
+    //TEAM19-START : created named constants for these variables
+    private static final int PEN_START = 100; // penalty bar start val
+    private static final int PEN_SUB = 2; // penalty bar subtraction each frame outside lane
+    //TEAM19-END
+
     public Boat(String col){
         this.buildBoatData();
         colour = col;
@@ -115,23 +120,26 @@ public class Boat {
         boatMap.put("purple", arr2);
     }
 
+    //TEAM19-START : replaced hardcoded values with 
+    // constants PEN_SUB, PEN_START
     /**
      * Checks if a boat is outside of its lane.
      * If yes, it decreases the penaltyBar.
      */
     public void isBoatOutOfLane() {
         if( posX < leftBound || posX > rightBound) {
-            if (penaltyBar - 0.00000005 < 0) {
+            if (penaltyBar - PEN_SUB < 0) {
                 penaltyBar = 0;
             }else {
-                penaltyBar -= 0.00000005;
+                penaltyBar -= PEN_SUB;
             }
         }else {
             if (penaltyBar > 0) {
-                penaltyBar = 100;
+                penaltyBar = PEN_START;
             }
         }
     }
+    //TEAM19-END
 
     /**
      * Sets the lane limits for a boat.
@@ -364,4 +372,12 @@ public class Boat {
     public int getCumulativeLegTime() {
         return cumulativeLegTime;
     }
+
+    // TEAM19-START
+    /** Updates the collision bounds of the boat
+     */
+    public void updateCollisionBounds() {
+        collisionBounds.setPosition((float) getPosX() + 10, (float) getPosY() + 10);
+    }
+    // TEAM19-END
 }

@@ -27,7 +27,7 @@ public class PlayState extends State{
     private final Texture finishLine;
     private final List<Boat> boats; // a list containing all the boats
     private final int leg; // the current leg number
-    private int finishLinePosition; // an integer to keep track of the current leg
+    public int finishLinePosition; // an integer to keep track of the finishLine coord pos
     private long time; // Used to track time elapsed from the start of a leg
     private final long countDown; // a countdown used to show when the game starts.
     private final Boat player;
@@ -41,20 +41,26 @@ public class PlayState extends State{
     private final Pixmap penaltyMap; // a map to render the penalty bar.
     private final Pixmap penaltyMap2; // a map to render the penalty bar background.
     private final List<Obstacle> obstacleList = new ArrayList<>(); // a list containing all the obstacles.
-    private Rectangle finishLineBounds; // a box to detect when a boat reaches the finish line.
+    public Rectangle finishLineBounds; // a box to detect when a boat reaches the finish line.
     private final Random generator = new Random();
     private static final String GREEN = "345830";
     private static final String WHITE = "eeeded";
     private static final String RED = "823038";
     private static final String ORANGE = "F95738";
     private static final String YELLOW ="F2BB05";
+    //TEAM19-START : made this a constant instead of hardcoded variable
+    private static final int PENALTY_SEC = 2;
+    //TEAM19-END
 
     public Boolean up_pressed = false;
     public Boolean down_pressed = false;
     public Boolean left_pressed = false;
     public Boolean right_pressed = false;
 
+    //TEAM19-START : moved to constant leg time, and reduced leg length from 48 to 20 seconds
+    // as this is more fun
     private static final int LEG_TIME = 20;
+    //TEAM19-END
 
     public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg){
         super(gsm);
@@ -107,6 +113,8 @@ public class PlayState extends State{
         countDown = System.currentTimeMillis();
     }
 
+    //TEAM19-START : moved input logic to new function handleInputLogic() to allow for testing
+    // as GDX inputs cannot easily be simulated.
     /**
      * {@inheritDoc}
      * Gives the player an initial speed and makes the camera follow the player.
@@ -135,7 +143,7 @@ public class PlayState extends State{
                 cam.position.y += player.acceleration;
             }
         } else {
-            // user is not currently boosting, slowly restore fatigue
+            //TEAM19-START: user is not currently boosting, slowly restore fatigue
             if (player.getFatigue() < 600) { player.setFatigue(player.getFatigue() + 1); }
         }
 
@@ -144,7 +152,7 @@ public class PlayState extends State{
         }
         if (right_pressed) {
             player.setPosX(player.getPosX() + player.maneuverability/2);
-        }
+        } //TEAM19-START : added ability to slow down slightly
         if (down_pressed) {
             player.setPosY(player.getPosY() - player.maneuverability/2);
             if (player.getTotalLegTime() == 0) {
@@ -153,6 +161,7 @@ public class PlayState extends State{
         }
         cam.update();
     }
+    //TEAM19-END
 
     /**
      * {@inheritDoc}
@@ -181,11 +190,16 @@ public class PlayState extends State{
             player.hasCollided(boats,player);
             checkBoatHealth();
             if ((System.currentTimeMillis() - countDown)/1000> LEG_TIME && finishLinePosition == 0) {
-                finishLinePosition = getWinningBoat().getPosY() + river.getHeight() +100;
-                finishLineBounds = new Rectangle(0,finishLinePosition,finishLine.getWidth(),finishLine.getHeight());
+                isLegOver();
             }
             finishLeg();
         }
+    }
+
+    //TEAM19-START : refactored some tightly coupled game logic into its own method
+    public void isLegOver() {
+            finishLinePosition = getWinningBoat().getPosY() + river.getHeight() +100;
+            finishLineBounds = new Rectangle(0,finishLinePosition,finishLine.getWidth(),finishLine.getHeight());
     }
 
     /**
@@ -308,9 +322,11 @@ public class PlayState extends State{
             fatigueMap.setColor(Color.valueOf(ORANGE));
         }else if (fatiguePercent <= 75){
             fatigueMap.setColor(Color.valueOf(YELLOW));
+        //TEAM19-START : corrected fatigue bar so correctly 
+        //goes back to green after regeneration > 76
         } else if (fatiguePercent > 76){
             fatigueMap.setColor(Color.valueOf(GREEN));
-        }
+        } //TEAM19-END
         if (player.getPenaltyBar() <= 25){
             penaltyMap.setColor(Color.valueOf(RED));
         }else if (player.getPenaltyBar() <=50){
@@ -371,7 +387,9 @@ public class PlayState extends State{
      */
     private void updateCollisionBoundaries() {
         for (Boat boat : boats) {
-            boat.collisionBounds.setPosition((float) boat.getPosX() + 10, (float) boat.getPosY() + 10);
+            //TEAM19-START : moved hardcoded logic into Boat logic class
+            boat.updateCollisionBounds();
+            //TEAM19-END
         }
         player.collisionBounds.setPosition((float) player.getPosX() +10,(float) player.getPosY() +10);
         for (int i = 0; i < obstacleList.size() - 1; i++){
@@ -394,27 +412,32 @@ public class PlayState extends State{
         }
     }
 
+    //TEAM19-START : replace hardcoded values with constants
     /**
      * Adds a time penalty to each boat including the player boat when the penaltyBar is empty.
      */
-    private void updateBoatPenalties() {
+    public void updateBoatPenalties() {
         for (Boat boat : boats) {
             if (boat.getPenaltyBar() == 0) {
                 boat.setPenaltyBar(100);
-                boat.setTimePenalty(boat.getTimePenalty() + 2);
+                boat.setTimePenalty(boat.getTimePenalty() + PENALTY_SEC);
             }
         }
         if (player.getPenaltyBar() == 0) {
             player.setPenaltyBar(100);
-            player.setTimePenalty(player.getTimePenalty() + 2);
+            player.setTimePenalty(player.getTimePenalty() + PENALTY_SEC);
         }
     }
-
+    //TEAM19-END
+    //TEAM19-START : changed visibility of these to public to allow testing.
+    // This isn't necessarily a good idea - it suggests this class should be 
+    // refactored to separate game logic into more functions, but with how 
+    // tightly coupled it is this would require major structural change.
     /**
      * Checks if the boat has depleted its health and changes hasLost
      * @see Boat#setHasLost(boolean)
      */
-    private void checkBoatHealth() {
+    public void checkBoatHealth() {
         for (Boat boat : boats) {
             if (boat.getHealth() <= 0) {
                 boat.setHasLost(true);
@@ -429,7 +452,7 @@ public class PlayState extends State{
     /**
      * checks if the leg is over and transitions to the leaderboard state.
      */
-    private void finishLeg() {
+    public void finishLeg() {
         if (finishLineBounds != null){
             for (Boat boat:boats) {
                 if (boat.getPosY() > finishLinePosition +10 && boat.isHasNotLost()) {
@@ -439,7 +462,7 @@ public class PlayState extends State{
                     boat.setPosY(finishLinePosition +10);
                 }
             }
-            if (player.getPosY() > finishLinePosition +10) {
+            if (player.getPosY() >= finishLinePosition +10) {
                 player.setPosY(finishLinePosition + 10);
                 cam.position.y -= player.speed;
                 if (player.getTotalLegTime() == 0) {
@@ -466,6 +489,7 @@ public class PlayState extends State{
             }
         }
     }
+    //TEAM19-END
 
     /**
      * Draw the boats on specified locations depending on which lap it is.

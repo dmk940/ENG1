@@ -13,8 +13,8 @@ import org.mockito.Mockito;
 
 /**
  * This is the base class for all game tests. It takes care of starting
- * the game headlessly and mocking OpenGL. Simply extend it for each class
- * that requires initialisation of a game instance!
+ * the game headlessly and mocking OpenGL. It is extended for each testing
+ * class that requires initialisation of a game instance / graphics context.
  */
 public abstract class UnitTestInit {
 	
@@ -26,7 +26,9 @@ public abstract class UnitTestInit {
 		Gdx.gl20 = Mockito.mock(GL20.class);
 		Gdx.gl = Gdx.gl20;
 		// mocks the OpenGL methods since we're running headlessly 
-		//(no graphics context)
+		// (no graphics context). Otherwise any e.g., Texture() call
+		// would cause an error. Unavoidable without significant rewrite
+		// separating game logic and graphics calls entirely.
 	}
 
 	@After

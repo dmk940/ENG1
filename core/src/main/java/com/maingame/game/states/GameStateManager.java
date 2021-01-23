@@ -24,12 +24,21 @@ public class GameStateManager {
         states.push(state);
     }
 
+    //TEAM19-START : add in check to ensure not trying to pop empty deque
     /**
      * Removes the top state on the stack.
      */
     public void pop() {
-        states.pop().dispose();
+        if (states.size() > 0) {
+            states.pop().dispose();
+        }        
     }
+
+    //TEAM19-START : allows peek at top state, for testing purposes
+    public State peek() {
+        return states.peek();
+    }
+    //TEAM19-END
 
     /**
      * Replaces the top state on the stack with the input state.

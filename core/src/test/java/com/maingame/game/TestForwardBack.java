@@ -3,6 +3,9 @@ package com.maingame.game;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+/** Tests that forward and backwards game movement works
+ * correctly, as well as the fatigue game mechanic.
+ */
 public class TestForwardBack extends TestMovement {
 
     @Test
@@ -26,7 +29,7 @@ public class TestForwardBack extends TestMovement {
     }
 
     @Test
-    public void testMoveFatigueUp() {
+    public void testMoveUpFatigue() {
         createPlayer();
         playstate.up_pressed = true;
         playstate.handleInputLogic();
@@ -34,7 +37,7 @@ public class TestForwardBack extends TestMovement {
     }
 
     @Test
-    public void testMoveFatigueDown() {
+    public void testMoveDownFatigue() {
         createPlayer();
         playstate.down_pressed = true;
         playstate.handleInputLogic();
@@ -42,7 +45,7 @@ public class TestForwardBack extends TestMovement {
     }
     
     @Test
-    public void testUp() {
+    public void testMoveUp() {
         createPlayer();
         int START_Y = player.getPosY();
         playstate.up_pressed = true;
@@ -51,7 +54,7 @@ public class TestForwardBack extends TestMovement {
     }
 
     @Test
-    public void testDown() {
+    public void testMoveDown() {
         createPlayer();
         int START_Y = player.getPosY();
         playstate.down_pressed = true;

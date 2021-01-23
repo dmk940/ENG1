@@ -4,6 +4,9 @@ import static org.junit.Assert.assertTrue;
 import com.maingame.UnitTestInit;
 import org.junit.Test;
 
+/**
+ * Tests that all required asset files are present.
+ */
 public class TestAssetsExist extends UnitTestInit {
 
     static final String[] assets = { "advance.png", "arrows.png", "background.png", "Boat1.1.png", "Boat1.2.png",
@@ -13,6 +16,8 @@ public class TestAssetsExist extends UnitTestInit {
             "gameOverSpeed.png", "goose.png", "leftArrow.png", "play.png", "rightArrow.png", "river.png",
             "river_reversed.png", "rock1.png", "rock2.png", "synth_pop_game.mp3", "title.png", "wasd.png" };
 
+    /** Tests that all required asset files are present.
+     */
     @Test
     public void allAssetsPresent() {
         for (String asset : assets) {

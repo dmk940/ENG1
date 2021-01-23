@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class AI {
     private final Boat boat;
+    private Boat playerBoat;
     private final List<Obstacle> obstacleList;
     private final List<Boat> boats;
     private double randomVariable; // a double used to control how many times can the AI make the right move.
@@ -39,6 +40,7 @@ public class AI {
         leftSideBox = new Rectangle((float) boat.getPosX() - 20, (float) boat.getPosY() +10, 30,130);
         this.boats = new ArrayList<>(boats);
         this.boats.add(player);
+        playerBoat = player;
         this.boats.remove(boat);
     }
 
@@ -58,6 +60,10 @@ public class AI {
         }else if (weight < 0 && chance > randomVariable) {
             moveRight(weight);
         }
+
+        //TEAM19-START : make AI boats more likely to boost the further behind other boats they are
+        // TODO
+        //TEAM19-END
     }
 
     /**
