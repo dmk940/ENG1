@@ -100,11 +100,17 @@
 <dl>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/State.html#cam">cam</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#checkBoatHealth--">checkBoatHealth()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
+<dd>
+<div class="block">Checks if the boat has depleted its health and changes hasLost</div>
+</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/sprites/Obstacle.html#checkHit-com.maingame.game.sprites.Boat-">checkHit(Boat)</a></span> - Method in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/Obstacle.html" title="class in com.maingame.game.sprites">Obstacle</a></dt>
 <dd>
 <div class="block">Checks if a boat has collided with an obstacle.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/sprites/Boat.html#collisionBounds">collisionBounds</a></span> - Variable in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/sprites/Obstacle.html#collisionBounds">collisionBounds</a></span> - Variable in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/Obstacle.html" title="class in com.maingame.game.sprites">Obstacle</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/sprites/Boat.html#colour">colour</a></span> - Variable in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a></dt>
 <dd>&nbsp;</dd>
@@ -165,6 +171,14 @@
 <dt><span class="memberNameLink"><a href="com/maingame/game/sprites/AI.html#farLeftBox">farLeftBox</a></span> - Variable in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/AI.html" title="class in com.maingame.game.sprites">AI</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/sprites/AI.html#farRightBox">farRightBox</a></span> - Variable in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/AI.html" title="class in com.maingame.game.sprites">AI</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#finishLeg--">finishLeg()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
+<dd>
+<div class="block">checks if the leg is over and transitions to the leaderboard state.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#finishLineBounds">finishLineBounds</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#finishLinePosition">finishLinePosition</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:G">
@@ -314,6 +328,8 @@
 <dd>
 <div class="block">Has the boat not lost</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#isLegOver--">isLegOver()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:L">
 <!--   -->
@@ -382,6 +398,8 @@
 </a>
 <h2 class="title">P</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/GameStateManager.html#peek--">peek()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/GameStateManager.html" title="class in com.maingame.game.states">GameStateManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states"><span class="typeNameLink">PlayState</span></a> - Class in <a href="com/maingame/game/states/package-summary.html">com.maingame.game.states</a></dt>
 <dd>
 <div class="block">Handles the logic of the main game and loading of assets.</div>
@@ -560,6 +578,14 @@
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/WelcomeState.html#update-float-">update(float)</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/WelcomeState.html" title="class in com.maingame.game.states">WelcomeState</a></dt>
 <dd>
 <div class="block">Updates other functions/values in a state.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#updateBoatPenalties--">updateBoatPenalties()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
+<dd>
+<div class="block">Adds a time penalty to each boat including the player boat when the penaltyBar is empty.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/sprites/Boat.html#updateCollisionBounds--">updateCollisionBounds()</a></span> - Method in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a></dt>
+<dd>
+<div class="block">Updates the collision bounds of the boat</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/sprites/Obstacle.html#updateCollisionBounds--">updateCollisionBounds()</a></span> - Method in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/Obstacle.html" title="class in com.maingame.game.sprites">Obstacle</a></dt>
 <dd>

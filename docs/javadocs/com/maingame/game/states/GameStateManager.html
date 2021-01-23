@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -146,30 +146,34 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/GameStateManager.html#peek--">peek</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/GameStateManager.html#pop--">pop</a></span>()</code>
 <div class="block">Removes the top state on the stack.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/GameStateManager.html#push-com.maingame.game.states.State-">push</a></span>(<a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a>&nbsp;state)</code>
 <div class="block">Puts the input state at the top of the stack.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/GameStateManager.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render</a></span>(com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;sb)</code>
 <div class="block">Renders the top state on the stack</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/GameStateManager.html#set-com.maingame.game.states.State-">set</a></span>(<a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a>&nbsp;state)</code>
 <div class="block">Replaces the top state on the stack with the input state.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/GameStateManager.html#update-float-">update</a></span>(float&nbsp;dt)</code>
 <div class="block">Updates the delta time of the top state on the stack</div>
@@ -238,6 +242,15 @@ extends java.lang.Object</pre>
 <h4>pop</h4>
 <pre>public&nbsp;void&nbsp;pop()</pre>
 <div class="block">Removes the top state on the stack.</div>
+</li>
+</ul>
+<a name="peek--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>peek</h4>
+<pre>public&nbsp;<a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a>&nbsp;peek()</pre>
 </li>
 </ul>
 <a name="set-com.maingame.game.states.State-">
