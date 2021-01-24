@@ -18,11 +18,11 @@ _Before submitting these need to be converted to PDFs, hosted on the GitHub, and
 
 ### [Continuous Integration Report](https://docs.google.com/document/d/1uPOeCuq9njOT-iumFfcvIN9Zi4aBj53KgcBZkbaZHK0/edit) ###
 
-## Assessment 1 Deliverables ##
+## Assessment 1 Updated Deliverables ##
 
 _Before submitting these need to be converted to PDFs, hosted on the GitHub, and named Req1.pdf, Arch1.pdf, Plan1.pdf, Risk1.pdf, Impl1.pdf._
 
-### [Changelog of the below](https://docs.google.com/document/d/1k61Wg650iQLQjronkTEW4EfHVgtKKOUg5CahM-15H5s/edit) ###
+### [Changelog of the below](https://docs.google.com/document/d/1k61Wg650iQLQjronkTEW4EfHVgtKKOUg5CahM-15H5s/edit) removed before submit ###
 
 ### [Requirements](https://docs.google.com/document/d/19fdPYbHeBCcetLBsKJ8jMJbGSVPP-ZfQ/edit) ###
 
@@ -36,3 +36,14 @@ _Before submitting these need to be converted to PDFs, hosted on the GitHub, and
 
 
 
+## Assessment 1 Original Deliverables
+
+### [Requirements](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/inheritedFiles/Req1.pdf) ###
+
+### [Architecture](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/inheritedFiles/Arch1.pdf) ###
+
+### [Method Selection and Planning](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/inheritedFiles/Plan1.pdf) ###
+
+### [Risk Assessment and Mitigation](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/inheritedFiles/Risk1.pdf) ###
+
+### [Implementation](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/inheritedFiles/Impl1.pdf) ###

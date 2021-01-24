@@ -62,9 +62,18 @@ public class AI {
         }
 
         //TEAM19-START : make AI boats more likely to boost the further behind other boats they are
-        // TODO
-        //TEAM19-END
+        //double chanceBoost = calculateDistance();
+        //if (chanceBoost > 0.5) {
+        //    boat.setPosY(boat.getPosY() + boat.acceleration);
+        //}
+        
     }
+
+    //private double calculateDistance() {
+    //    double distance = playerBoat.getPosY() - boat.getPosY();
+    //    return 1 - (1/Math.pow(20, distance));
+    //}
+    //TEAM19-END
 
     /**
      * Moves the AI boat to the right depending on the weight and the boat's maneuverability.
