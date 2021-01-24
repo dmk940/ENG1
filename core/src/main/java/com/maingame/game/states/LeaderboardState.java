@@ -111,10 +111,11 @@ public class LeaderboardState extends State{
      * @param leg the current leg
      * @see GameStateManager#set(State)
      */
-    private void moveToNewState(int leg) {
+    public void moveToNewState(int leg) {
         if (leg == 4) {
+            // TODO win moves immediately back to welcome screen
             gsm.set(new WelcomeState(gsm));
-        }else if (leg == 3) {
+        }else  { //TEAM19-START make lose if doesn't finish in top 3 if (leg == 3) {
             boatsInOrder = boatsInOrder.subList(0,3);
             boolean gameOver = true;
             for (Boat boat: boatsInOrder) {
@@ -136,16 +137,6 @@ public class LeaderboardState extends State{
                 boatsInOrder.remove(player);
                 gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1));
             }
-        }else {
-            // resets the boat attributes
-            for (Boat boat:boatsInOrder) {
-                boat.setPosY(0);
-                boat.setHealth(100);
-                boat.setFatigue(600);
-                boat.setTotalLegTime(0);
-            }
-            boatsInOrder.remove(player);
-            gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1));
         }
-    }
+    } //TEAM19-END
 }

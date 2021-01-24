@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class AI {
     private final Boat boat;
-    private Boat playerBoat;
     private final List<Obstacle> obstacleList;
     private final List<Boat> boats;
     private double randomVariable; // a double used to control how many times can the AI make the right move.
@@ -69,6 +68,8 @@ public class AI {
         
     }
 
+    // TODO
+    // remember to define Boat playerBoat in class
     //private double calculateDistance() {
     //    double distance = playerBoat.getPosY() - boat.getPosY();
     //    return 1 - (1/Math.pow(20, distance));
