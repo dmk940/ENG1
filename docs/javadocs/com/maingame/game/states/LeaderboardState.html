@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -182,11 +182,17 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/LeaderboardState.html#moveToNewState-int-">moveToNewState</a></span>(int&nbsp;leg)</code>
+<div class="block">Transitions to a different state depending on the current leg</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/LeaderboardState.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render</a></span>(com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;sb)</code>
 <div class="block">Renders the different elements in a state</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/LeaderboardState.html#update-float-">update</a></span>(float&nbsp;dt)</code>
 <div class="block">Updates other functions/values in a state.</div>
@@ -283,7 +289,7 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <a name="dispose--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>dispose</h4>
 <pre>public&nbsp;void&nbsp;dispose()</pre>
@@ -291,6 +297,22 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/maingame/game/states/State.html#dispose--">dispose</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="moveToNewState-int-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>moveToNewState</h4>
+<pre>public&nbsp;void&nbsp;moveToNewState(int&nbsp;leg)</pre>
+<div class="block">Transitions to a different state depending on the current leg</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>leg</code> - the current leg</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../com/maingame/game/states/GameStateManager.html#set-com.maingame.game.states.State-"><code>GameStateManager.set(State)</code></a></dd>
 </dl>
 </li>
 </ul>
