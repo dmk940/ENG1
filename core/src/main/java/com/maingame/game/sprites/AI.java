@@ -39,7 +39,6 @@ public class AI {
         leftSideBox = new Rectangle((float) boat.getPosX() - 20, (float) boat.getPosY() +10, 30,130);
         this.boats = new ArrayList<>(boats);
         this.boats.add(player);
-        playerBoat = player;
         this.boats.remove(boat);
     }
 
@@ -69,7 +68,7 @@ public class AI {
     }
 
     // TODO
-    // remember to define Boat playerBoat in class
+    // remember to define Boat playerBoat in class and constrcutor
     //private double calculateDistance() {
     //    double distance = playerBoat.getPosY() - boat.getPosY();
     //    return 1 - (1/Math.pow(20, distance));
