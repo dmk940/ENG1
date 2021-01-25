@@ -24,13 +24,13 @@ _Before submitting these need to be converted to PDFs, hosted on the GitHub, and
 
 ### [Changelog of the below](https://docs.google.com/document/d/1k61Wg650iQLQjronkTEW4EfHVgtKKOUg5CahM-15H5s/edit) removed before submit ###
 
-### [Requirements](https://docs.google.com/document/d/19fdPYbHeBCcetLBsKJ8jMJbGSVPP-ZfQ/edit) ###
+### [Requirements](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/updatedDocs/Req1.pdf) ###
 
 ### [Architecture](https://docs.google.com/document/d/14XOxfdx9k772uunp7oCNqeZKcUW2ZWd8/edit) ###
 
-### [Method Selection and Planning](https://docs.google.com/document/d/1Ivn8EV0VX260AtbZe619-eBnOeSSp96V/edit) ###
+### [Method Selection and Planning](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/updatedDocs/Plan1.pdf) ###
 
-### [Risk Assessment and Mitigation](https://docs.google.com/document/d/1ZHW2Zr0Uzeh3p1G3WjoQ8qIvs57g-JPO/edit) ###
+### [Risk Assessment and Mitigation](https://raw.githubusercontent.com/dmk940/ENG1-002/master/docs/updatedDocs/Risk1.pdf) ###
 
 ### [Implementation](https://docs.google.com/document/d/1ggVM43uvi_uNcGo4uPQ4EkgkYMznGn4k/edit) ###
 
