@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -110,6 +110,10 @@ var activeTableTab = "activeTableTab";
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../com/maingame/game/states/DemoPlayState.html" title="class in com.maingame.game.states">DemoPlayState</a></dd>
+</dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">PlayState</span>
@@ -134,6 +138,14 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#boats">boats</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#countDown">countDown</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#down_pressed">down_pressed</a></span></code>&nbsp;</td>
 </tr>
@@ -148,6 +160,22 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <tr class="rowColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#left_pressed">left_pressed</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#leg">leg</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#LEG_TIME">LEG_TIME</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Obstacle.html" title="class in com.maingame.game.sprites">Obstacle</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#obstacleList">obstacleList</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#player">player</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
@@ -200,53 +228,89 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#boatsOutOfBounds--">boatsOutOfBounds</a></span>()</code>
+<div class="block">Checks if for each boat it is out of its lane including the player boat.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#checkBoatHealth--">checkBoatHealth</a></span>()</code>
 <div class="block">Checks if the boat has depleted its health and changes hasLost</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#collisionDetection--">collisionDetection</a></span>()</code>
+<div class="block">Detects collisions by calling checkHit for each obstacle and boat combination.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#dispose--">dispose</a></span>()</code>
 <div class="block">Disposes of assets when they're no longer in use.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#finishLeg--">finishLeg</a></span>()</code>
 <div class="block">checks if the leg is over and transitions to the leaderboard state.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#handleInput--">handleInput</a></span>()</code>
 <div class="block">Handles user input within a state.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#handleInputLogic--">handleInputLogic</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#isLegOver--">isLegOver</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render</a></span>(com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;sb)</code>
 <div class="block">Renders the different elements in a state</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#repositionObstacles--">repositionObstacles</a></span>()</code>
+<div class="block">Repositions Obstacles once they are off the screen.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#update-float-">update</a></span>(float&nbsp;dt)</code>
 <div class="block">Updates other functions/values in a state.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#updateBoatPenalties--">updateBoatPenalties</a></span>()</code>
 <div class="block">Adds a time penalty to each boat including the player boat when the penaltyBar is empty.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#updateCollisionBoundaries--">updateCollisionBoundaries</a></span>()</code>
+<div class="block">Updates the collisionBoundaries for the boats and the obstacles.</div>
+</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#updateMapColour--">updateMapColour</a></span>()</code>
+<div class="block">Changes the colours of bars depending on the percentage left in each bar.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PlayState.html#updateRiver--">updateRiver</a></span>()</code>
+<div class="block">Repositions the river assets once they are under a player's x position.</div>
 </td>
 </tr>
 </table>
@@ -271,6 +335,24 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <!--   -->
 </a>
 <h3>Field Detail</h3>
+<a name="boats">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>boats</h4>
+<pre>protected final&nbsp;java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt; boats</pre>
+</li>
+</ul>
+<a name="leg">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>leg</h4>
+<pre>protected final&nbsp;int leg</pre>
+</li>
+</ul>
 <a name="finishLinePosition">
 <!--   -->
 </a>
@@ -278,6 +360,33 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <li class="blockList">
 <h4>finishLinePosition</h4>
 <pre>public&nbsp;int finishLinePosition</pre>
+</li>
+</ul>
+<a name="countDown">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>countDown</h4>
+<pre>protected final&nbsp;long countDown</pre>
+</li>
+</ul>
+<a name="player">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>player</h4>
+<pre>protected final&nbsp;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a> player</pre>
+</li>
+</ul>
+<a name="obstacleList">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>obstacleList</h4>
+<pre>protected final&nbsp;java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Obstacle.html" title="class in com.maingame.game.sprites">Obstacle</a>&gt; obstacleList</pre>
 </li>
 </ul>
 <a name="finishLineBounds">
@@ -319,10 +428,23 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <a name="right_pressed">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>right_pressed</h4>
 <pre>public&nbsp;java.lang.Boolean right_pressed</pre>
+</li>
+</ul>
+<a name="LEG_TIME">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>LEG_TIME</h4>
+<pre>protected static final&nbsp;int LEG_TIME</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../constant-values.html#com.maingame.game.states.PlayState.LEG_TIME">Constant Field Values</a></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -432,6 +554,84 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../com/maingame/game/states/State.html#dispose--">dispose</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="updateRiver--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>updateRiver</h4>
+<pre>protected&nbsp;void&nbsp;updateRiver()</pre>
+<div class="block">Repositions the river assets once they are under a player's x position.</div>
+</li>
+</ul>
+<a name="boatsOutOfBounds--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>boatsOutOfBounds</h4>
+<pre>protected&nbsp;void&nbsp;boatsOutOfBounds()</pre>
+<div class="block">Checks if for each boat it is out of its lane including the player boat.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../com/maingame/game/sprites/Boat.html#isBoatOutOfLane--"><code>Boat.isBoatOutOfLane()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="updateMapColour--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>updateMapColour</h4>
+<pre>protected&nbsp;void&nbsp;updateMapColour()</pre>
+<div class="block">Changes the colours of bars depending on the percentage left in each bar.</div>
+</li>
+</ul>
+<a name="repositionObstacles--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>repositionObstacles</h4>
+<pre>protected&nbsp;void&nbsp;repositionObstacles()</pre>
+<div class="block">Repositions Obstacles once they are off the screen.
+ The obstacles are repositioned randomly to have a y value higher the top edge of the screen.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../com/maingame/game/sprites/Obstacle.html#moveObstacle--"><code>Obstacle.moveObstacle()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="updateCollisionBoundaries--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>updateCollisionBoundaries</h4>
+<pre>protected&nbsp;void&nbsp;updateCollisionBoundaries()</pre>
+<div class="block">Updates the collisionBoundaries for the boats and the obstacles.
+ This is done to match the current position of a boat/obstacle.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../com/maingame/game/sprites/Obstacle.html#updateCollisionBounds--"><code>Obstacle.updateCollisionBounds()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="collisionDetection--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>collisionDetection</h4>
+<pre>protected&nbsp;void&nbsp;collisionDetection()</pre>
+<div class="block">Detects collisions by calling checkHit for each obstacle and boat combination.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../com/maingame/game/sprites/Obstacle.html#checkHit-com.maingame.game.sprites.Boat-"><code>Obstacle.checkHit(Boat)</code></a></dd>
 </dl>
 </li>
 </ul>
