@@ -30,7 +30,7 @@ public class MenuState extends State {
 	private final Rectangle btnBounds;
 	private final BitmapFont font = new BitmapFont(Gdx.files.internal("font.fnt"),false); // a font to draw text
 	private final Random generator = new Random();
-	//TEAM19-START
+	//TEAM19-START -- also made many variables / methods protected for access by Demo class which extends this class
 	private final Texture backBtn;
 	private final Rectangle backBtnBounds;
 	//TEAM19-END
@@ -102,7 +102,7 @@ public class MenuState extends State {
 			} else if (backBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
 				gsm.set(new WelcomeState(gsm));
 			}
-			//TEAM19-START
+			//TEAM19-END
 		}else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) || (Gdx.input.isKeyJustPressed(Input.Keys.D))){
 			x += 1;
 		}else if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) || (Gdx.input.isKeyJustPressed(Input.Keys.A))) {

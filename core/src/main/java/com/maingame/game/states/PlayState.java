@@ -58,7 +58,8 @@ public class PlayState extends State{
     public Boolean right_pressed = false;
 
     //TEAM19-START : moved to constant leg time, and reduced leg length from 48 to 20 seconds
-    // as this is more fun
+    // as this is more fun. Also changed some variables to be protected instead of private
+    // so they can be accessed through the demo playstate class that extends this one.
     protected static final int LEG_TIME = 10;
     //TEAM19-END
 
@@ -136,6 +137,8 @@ public class PlayState extends State{
         if (time == 0){
             time = System.currentTimeMillis();
         }
+        //TEAM19-START - updated so that no movement is possible when the player touches the
+        // finish line
         if (player.getTotalLegTime() == 0) {
             if (up_pressed) {
                 if (player.getFatigue() > 0 ){

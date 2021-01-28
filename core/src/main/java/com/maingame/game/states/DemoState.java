@@ -3,7 +3,7 @@ package com.maingame.game.states;
 import com.maingame.game.sprites.Boat;
 
 /**
- * Automates the PlayState, in the demo mode.
+ * Automates the PlayState, in the demo mode. Driver class.
  */
 public class DemoState extends MenuState {
 

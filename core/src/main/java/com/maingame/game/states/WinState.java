@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.maingame.game.MainGame;
 
+//TEAM19-START
+/** This is the screen displayed to the user when they have won the game. */
 public class WinState extends State {
 
     private final Texture background;
@@ -55,3 +57,4 @@ public class WinState extends State {
     }
     
 }
+//TEAM19-END

@@ -5,6 +5,11 @@ import java.util.List;
 import com.maingame.game.sprites.AI;
 import com.maingame.game.sprites.Boat;
 
+//TEAM19-START
+/**
+ * This class handles the playstate for the Demo version of the game - no input, and the 
+ * player boat moves by itself.
+ */
 public class DemoPlayState extends PlayState {
     
     public DemoPlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg){
@@ -48,3 +53,4 @@ public class DemoPlayState extends PlayState {
         }
     }
 }
+//TEAM19-END
