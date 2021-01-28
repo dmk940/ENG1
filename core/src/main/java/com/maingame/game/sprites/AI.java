@@ -1,6 +1,10 @@
 package com.maingame.game.sprites;
 
 import com.badlogic.gdx.math.Rectangle;
+import com.maingame.game.states.PlayState;
+
+import net.bytebuddy.asm.Advice.OffsetMapping.ForOrigin.Renderer.ForReturnTypeName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +13,7 @@ import java.util.List;
  */
 public class AI {
     private final Boat boat;
+    private final Boat playerBoat; // <Team19> clone of the player boat
     private final List<Obstacle> obstacleList;
     private final List<Boat> boats;
     private double randomVariable; // a double used to control how many times can the AI make the right move.
@@ -21,6 +26,7 @@ public class AI {
 
     public AI(Boat boat, int leg, List<Obstacle> obstacleList, List<Boat> boats, Boat player) {
         this.boat = boat;
+        this.playerBoat = player;
         this.obstacleList = obstacleList;
         if (leg == 1) {
             randomVariable = 0.3;
@@ -60,19 +66,22 @@ public class AI {
         }
 
         //TEAM19-START : make AI boats more likely to boost the further behind other boats they are
-        //double chanceBoost = calculateDistance();
-        //if (chanceBoost > 0.5) {
-        //    boat.setPosY(boat.getPosY() + boat.acceleration);
-        //}
+        boolean chanceBoost = calculateDistance();
+        if (chanceBoost == true) {
+            boat.setPosY(boat.getPosY() + boat.acceleration);
+        }
         
     }
 
-    // TODO
-    // remember to define Boat playerBoat in class and constrcutor
-    //private double calculateDistance() {
-    //    double distance = playerBoat.getPosY() - boat.getPosY();
-    //    return 1 - (1/Math.pow(20, distance));
-    //}
+    //calucuates the distance between player and boats and whether the AI should get more acceleation
+    private boolean calculateDistance() {
+        double distance = playerBoat.getPosY() - boat.getPosY();
+
+        if (distance > 30 ){ // 70 is easy, 50 medium, 30 hard
+            return true;
+        }
+        return false;
+    }
     //TEAM19-END
 
     /**
