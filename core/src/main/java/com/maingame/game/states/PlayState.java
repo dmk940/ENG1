@@ -132,6 +132,10 @@ public class PlayState extends State{
         if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
             player.setPosX(player.getPosX() + player.maneuverability/2);
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+            player.setPosY(player.getPosY() - player.maneuverability/2);
+            cam.position.y -= (player.maneuverability/2);
+        }
         cam.update();
     }
 
