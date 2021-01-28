@@ -68,7 +68,7 @@ public class LeaderboardState extends State{
         }
         for (int i = 0; i < boatsInOrder.size(); i++){
             sb.draw(boatsInOrder.get(i).images.get(0), (float) MainGame.WIDTH/4 + 100,500 - (float) (i * 120),125,125);
-            font.draw(sb,boatsInOrder.get(i).getCumulativeLegTime() + "s",(float) MainGame.WIDTH/2 + 100,600  - (float)(i * 120));
+            font.draw(sb, boatsInOrder.get(i).getCumulativeLegTime() + "s",(float) MainGame.WIDTH/2 + 100,600  - (float)(i * 120));
         }
         sb.end();
     }
@@ -113,9 +113,8 @@ public class LeaderboardState extends State{
      */
     public void moveToNewState(int leg) {
         if (leg == 4) {
-            // TODO win moves immediately back to welcome screen
-            gsm.set(new WelcomeState(gsm));
-        }else  { //TEAM19-START make lose if doesn't finish in top 3 if (leg == 3) {
+            gsm.set(new WinState(gsm));
+        }else if (leg == 3) {
             boatsInOrder = boatsInOrder.subList(0,3);
             boolean gameOver = true;
             for (Boat boat: boatsInOrder) {
@@ -126,7 +125,7 @@ public class LeaderboardState extends State{
             }
             if (gameOver) {
                 gsm.set(new GameOverSpeed(gsm));
-            }else {
+            } else {
                 // resets the boat attributes
                 for (Boat boat:boatsInOrder) {
                     boat.setPosY(0);
@@ -137,6 +136,16 @@ public class LeaderboardState extends State{
                 boatsInOrder.remove(player);
                 gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1));
             }
+        } else {
+            // resets the boat attributes
+            for (Boat boat:boatsInOrder) {
+                boat.setPosY(0);
+                boat.setHealth(100);
+                boat.setFatigue(600);
+                boat.setTotalLegTime(0);
+            }
+            boatsInOrder.remove(player);
+            gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1));
         }
-    } //TEAM19-END
+    }
 }

@@ -18,9 +18,11 @@ public class AI {
     public final Rectangle farLeftBox; // a rectangle on the far left in front of the boat.
     public final Rectangle rightSideBox; // a rectangle on the right of the boat.
     public final Rectangle leftSideBox; // a rectangle on the left of the boat.
+    private final Boat playerBoat; //Team19-START clone of the player boat
 
     public AI(Boat boat, int leg, List<Obstacle> obstacleList, List<Boat> boats, Boat player) {
         this.boat = boat;
+        this.playerBoat = player;
         this.obstacleList = obstacleList;
         if (leg == 1) {
             randomVariable = 0.3;
@@ -60,19 +62,17 @@ public class AI {
         }
 
         //TEAM19-START : make AI boats more likely to boost the further behind other boats they are
-        //double chanceBoost = calculateDistance();
-        //if (chanceBoost > 0.5) {
-        //    boat.setPosY(boat.getPosY() + boat.acceleration);
-        //}
-        
+        boolean chanceBoost = calculateDistance();
+        if (chanceBoost == true && Math.random() > 0.4) {
+            boat.setPosY(boat.getPosY() + boat.acceleration);
+        }
     }
 
-    // TODO
-    // remember to define Boat playerBoat in class and constrcutor
-    //private double calculateDistance() {
-    //    double distance = playerBoat.getPosY() - boat.getPosY();
-    //    return 1 - (1/Math.pow(20, distance));
-    //}
+    // Calculates the distance between player and boats and whether the AI should get more acceleation
+    private boolean calculateDistance() {
+        double distance = playerBoat.getPosY() - boat.getPosY();
+        return distance > 1000; // 60 hard, 80, medium, 100 hard
+    }
     //TEAM19-END
 
     /**

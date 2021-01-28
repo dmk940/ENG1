@@ -25,12 +25,12 @@ public class PlayState extends State{
     private final Texture river; // the river asset
     private final Texture riverReversed; // the river asset reversed
     private final Texture finishLine;
-    private final List<Boat> boats; // a list containing all the boats
-    private final int leg; // the current leg number
+    protected final List<Boat> boats; // a list containing all the boats
+    protected final int leg; // the current leg number
     public int finishLinePosition; // an integer to keep track of the finishLine coord pos
     private long time; // Used to track time elapsed from the start of a leg
-    private final long countDown; // a countdown used to show when the game starts.
-    private final Boat player;
+    protected final long countDown; // a countdown used to show when the game starts.
+    protected final Boat player;
     private float riverPos1; // A tracker for the positions of the river assets
     private float riverPos2; // A tracker for the positions of the river assets
     private final BitmapFont font = new BitmapFont(Gdx.files.internal("font.fnt"),false); // a font to draw text
@@ -40,7 +40,7 @@ public class PlayState extends State{
     private final Pixmap fatigueMap2; // a map to render the fatigue bar background.
     private final Pixmap penaltyMap; // a map to render the penalty bar.
     private final Pixmap penaltyMap2; // a map to render the penalty bar background.
-    private final List<Obstacle> obstacleList = new ArrayList<>(); // a list containing all the obstacles.
+    protected final List<Obstacle> obstacleList = new ArrayList<>(); // a list containing all the obstacles.
     public Rectangle finishLineBounds; // a box to detect when a boat reaches the finish line.
     private final Random generator = new Random();
     private static final String GREEN = "345830";
@@ -59,7 +59,7 @@ public class PlayState extends State{
 
     //TEAM19-START : moved to constant leg time, and reduced leg length from 48 to 20 seconds
     // as this is more fun
-    private static final int LEG_TIME = 20;
+    protected static final int LEG_TIME = 10;
     //TEAM19-END
 
     public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg){
@@ -136,30 +136,30 @@ public class PlayState extends State{
         if (time == 0){
             time = System.currentTimeMillis();
         }
-        if (up_pressed) {
-            if (player.getFatigue() > 0 && player.getTotalLegTime() == 0){
-                player.setPosY(player.getPosY() + player.acceleration);
-                player.setFatigue(player.getFatigue() - 2);
-                cam.position.y += player.acceleration;
+        if (player.getTotalLegTime() == 0) {
+            if (up_pressed) {
+                if (player.getFatigue() > 0 ){
+                    player.setPosY(player.getPosY() + player.acceleration);
+                    player.setFatigue(player.getFatigue() - 2);
+                    cam.position.y += player.acceleration;
+                }
+            } else {
+                //TEAM19-START: user is not currently boosting, slowly restore fatigue
+                if (player.getFatigue() < 600) { player.setFatigue(player.getFatigue() + 1); }
             }
-        } else {
-            //TEAM19-START: user is not currently boosting, slowly restore fatigue
-            if (player.getFatigue() < 600) { player.setFatigue(player.getFatigue() + 1); }
-        }
 
-        if (left_pressed) {
-            player.setPosX(player.getPosX() - player.maneuverability/2);
-        }
-        if (right_pressed) {
-            player.setPosX(player.getPosX() + player.maneuverability/2);
-        } //TEAM19-START : added ability to slow down slightly
-        if (down_pressed) {
-            player.setPosY(player.getPosY() - player.maneuverability/2);
-            if (player.getTotalLegTime() == 0) {
-                    cam.position.y -= (player.maneuverability/2);
+            if (left_pressed) {
+                player.setPosX(player.getPosX() - player.maneuverability/2);
             }
-        }
-        cam.update();
+            if (right_pressed) {
+                player.setPosX(player.getPosX() + player.maneuverability/2);
+            } //TEAM19-START : added ability to slow down slightly
+            if (down_pressed) {
+                player.setPosY(player.getPosY() - player.maneuverability/2);
+                cam.position.y -= (player.maneuverability/2);
+                }
+            cam.update();
+            }
     }
     //TEAM19-END
 
@@ -285,7 +285,7 @@ public class PlayState extends State{
     /**
      * Repositions the river assets once they are under a player's x position.
      */
-    private void updateRiver() {
+    protected void updateRiver() {
         if (player.getPosY() > riverPos1 + river.getHeight()){
             riverPos1 += river.getHeight() * 2;
         }else if (player.getPosY() > riverPos2 + river.getHeight()){
@@ -297,7 +297,7 @@ public class PlayState extends State{
      * Checks if for each boat it is out of its lane including the player boat.
      * @see Boat#isBoatOutOfLane()
      */
-    private void boatsOutOfBounds() {
+    protected void boatsOutOfBounds() {
         for (Boat boat : boats) {
             boat.isBoatOutOfLane();
         }
@@ -307,7 +307,7 @@ public class PlayState extends State{
     /**
      * Changes the colours of bars depending on the percentage left in each bar.
      */
-    private void updateMapColour() {
+    protected void updateMapColour() {
         if (player.getHealth() <= 25){
             healthMap.setColor(Color.valueOf(RED));
         }else if (player.getHealth() <=50){
@@ -369,7 +369,7 @@ public class PlayState extends State{
      * The obstacles are repositioned randomly to have a y value higher the top edge of the screen.
      * @see Obstacle#moveObstacle()
      */
-    private void repositionObstacles() {
+    protected void repositionObstacles() {
         for (int i = 0; i < obstacleList.size() - 1; i++){
             Obstacle obstacle = obstacleList.get(i);
             if ((obstacle.getPosY() + obstacle.img.getHeight() < player.getPosY()) || (obstacle.getPosX() > river.getWidth() * 5) || (obstacle.getPosX() + obstacle.img.getWidth() < 0) ){
@@ -385,7 +385,7 @@ public class PlayState extends State{
      * This is done to match the current position of a boat/obstacle.
      * @see Obstacle#updateCollisionBounds()
      */
-    private void updateCollisionBoundaries() {
+    protected void updateCollisionBoundaries() {
         for (Boat boat : boats) {
             //TEAM19-START : moved hardcoded logic into Boat logic class
             boat.updateCollisionBounds();
@@ -402,7 +402,7 @@ public class PlayState extends State{
      * Detects collisions by calling checkHit for each obstacle and boat combination.
      * @see Obstacle#checkHit(Boat)
      */
-    private void collisionDetection() {
+    protected void collisionDetection() {
         for (int x = 0; x < obstacleList.size()-1; x++) {
             Obstacle obstacle = obstacleList.get(x);
             for (Boat boat : boats) {

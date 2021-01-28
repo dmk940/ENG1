@@ -1,7 +1,8 @@
 package com.maingame.game.states;
 
+
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.maingame.game.MainGame;
@@ -14,7 +15,11 @@ public class WelcomeState extends State {
 	private final Texture background;
 	private final Texture playBtn;
 	private final Texture title;
-	private final Texture advance; // a message telling users what input is expected
+	//TEAM19-START, changed to demo button, add playBtnBounds so clicking play plays game
+	private final Texture demo; 
+	private final Rectangle demoBtnBounds;
+	private final Rectangle playBtnBounds;
+	//TEAM19-END
 	
 
 	public WelcomeState(GameStateManager gsm) {
@@ -22,8 +27,12 @@ public class WelcomeState extends State {
 		background = new Texture("background.png");
 		playBtn = new Texture("play.png");
 		title = new Texture("title.png");
-		advance = new Texture("advance.png");
-	}
+		//TEAM19-START
+		playBtnBounds = new Rectangle(((float) MainGame.WIDTH / 3) - ((float) playBtn.getWidth() / 10), (float) MainGame.HEIGHT / 50, playBtn.getWidth(), playBtn.getHeight());
+		demo = new Texture("demo.png");
+		demoBtnBounds = new Rectangle((float) MainGame.HEIGHT/100, (float) MainGame.HEIGHT / 100, demo.getWidth(), demo.getHeight());
+		//TEAM19-END
+	}	
 
 	/**
 	 * {@inheritDoc}
@@ -32,15 +41,18 @@ public class WelcomeState extends State {
 	 */
 	@Override
 	public void handleInput() {
-	
-		if(Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)){
-			gsm.set(new MenuState(gsm));
-			dispose();
+		//TEAM19-START
+		// change from any button moves forward to must click play button, so we can add demo button that moves
+		// to demo mode
+		if (Gdx.input.justTouched()) {
+			if (playBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
+				gsm.set(new MenuState(gsm));
+				dispose();
+			} else if (demoBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
+				gsm.set(new DemoState(gsm));
+			}
 		}
-		if(Gdx.input.justTouched()) {
-			gsm.set(new MenuState(gsm));
-			dispose();
-		}
+		//TEAM19-END
 	}
 
 	/**
@@ -62,8 +74,9 @@ public class WelcomeState extends State {
 		sb.draw(background, 0, 0, MainGame.WIDTH , MainGame.HEIGHT);
 		sb.draw(playBtn, ((float)MainGame.WIDTH / 3) - ((float) playBtn.getWidth() / 10), (float) MainGame.HEIGHT / 50);
 		sb.draw(title, ((float)MainGame.WIDTH / 5) - ((float)title.getWidth() / 10), (float)MainGame.HEIGHT / 50);
-		sb.draw(advance, ((float)MainGame.WIDTH / 20) - ((float) advance.getWidth() / 250), (float) MainGame.HEIGHT / 50);
+		sb.draw(demo, (float) MainGame.HEIGHT/100, (float) MainGame.HEIGHT / 100);
 		sb.end();
+		
 	}
 
 	/**
@@ -74,7 +87,7 @@ public class WelcomeState extends State {
 		background.dispose();
 		playBtn.dispose();
 		title.dispose();
-		advance.dispose();
+		demo.dispose();
 	}
 }
 

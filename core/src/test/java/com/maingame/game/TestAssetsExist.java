@@ -9,7 +9,7 @@ import org.junit.Test;
  */
 public class TestAssetsExist extends UnitTestInit {
 
-    static final String[] assets = { "advance.png", "arrows.png", "background.png", "Boat1.1.png", "Boat1.2.png",
+    static final String[] assets = {"youWon.png", "demo.png", "arrows.png", "background.png", "Boat1.1.png", "Boat1.2.png",
             "Boat2.1.png", "Boat2.2.png", "Boat3.1.png", "Boat3.2.png", "Boat4.1.png", "Boat4.2.png", "Boat5.1.png",
             "Boat5.2.png", "Boat6.1.png", "Boat6.2.png", "Boat7.1.png", "Boat7.2.png", "branch.png", "duck1.png",
             "duck2.png", "finishLine.png", "font.fnt", "font.png", "gameOver.png", "gameOverHealth.png",

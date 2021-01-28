@@ -23,13 +23,17 @@ public class MenuState extends State {
 	private final Texture playBtn;
 	private final Texture arrows;
 	private final Texture wasd;
-	private List<Boat> boats = new ArrayList<>();
-	private int x; // current boat index
+	protected List<Boat> boats = new ArrayList<>();
+	protected int x; // current boat index
 	private final Rectangle rightBounds; // a rectangle around the right arrow used for detecting a click.
 	private final Rectangle leftBounds; // a rectangle around the left arrow used for detecting a click.
 	private final Rectangle btnBounds;
 	private final BitmapFont font = new BitmapFont(Gdx.files.internal("font.fnt"),false); // a font to draw text
 	private final Random generator = new Random();
+	//TEAM19-START
+	private final Texture backBtn;
+	private final Rectangle backBtnBounds;
+	//TEAM19-END
 
 	public MenuState(GameStateManager gsm) {
 		super(gsm);
@@ -44,6 +48,10 @@ public class MenuState extends State {
 		leftBounds = new Rectangle(50,(float) MainGame.HEIGHT/2 + 50,200,200);
 		btnBounds = new Rectangle((float) MainGame.WIDTH - 300 - 100,0,300,300);
 		x = 0;
+		//TEAM19-START
+		backBtn = new Texture("backButton.png");
+		backBtnBounds = new Rectangle(0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight());
+		//TEAM19-END
 	}
 
 	/**
@@ -64,7 +72,7 @@ public class MenuState extends State {
 	 * @see PlayState#PlayState(GameStateManager, List, Boat, int)
 	 * @return a random list of enemy boats.
 	 */
-	private List<Boat> playStateBoats() {
+	protected List<Boat> playStateBoats() {
 		List<Boat> output = new ArrayList<>();
 		for (int i = 0; i < 4; i++) {
 			Boat boat = this.boats.get(generator.nextInt(this.boats.size() - 1));
@@ -81,16 +89,20 @@ public class MenuState extends State {
 	@Override
 	public void handleInput() {
 		if (Gdx.input.justTouched()) {
-			if (rightBounds.contains(Gdx.input.getX(),(float) Gdx.graphics.getHeight() - Gdx.input.getY())){
+			if (rightBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
 				x+= 1;
-			}else if (leftBounds.contains(Gdx.input.getX(),(float) Gdx.graphics.getHeight() - Gdx.input.getY())){
+			}else if (leftBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
 				x -= 1;
-			}else if (btnBounds.contains(Gdx.input.getX(), (float) Gdx.graphics.getHeight() - Gdx.input.getY())){
+			}else if (btnBounds.contains(Gdx.input.getX(), (float) MainGame.HEIGHT - Gdx.input.getY())){
 				Boat playerBoat = boats.get(x);
 				this.boats.remove(x);
 				this.boats = playStateBoats();
 				gsm.set(new PlayState(gsm,boats, playerBoat,1));
+			//TEAM19-START
+			} else if (backBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
+				gsm.set(new WelcomeState(gsm));
 			}
+			//TEAM19-START
 		}else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) || (Gdx.input.isKeyJustPressed(Input.Keys.D))){
 			x += 1;
 		}else if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT) || (Gdx.input.isKeyJustPressed(Input.Keys.A))) {
@@ -142,6 +154,7 @@ public class MenuState extends State {
 		sb.draw(playBtn, (float) MainGame.WIDTH - 300 - 100, 0, 300,300);
 		sb.draw(arrows,(float) MainGame.WIDTH - 325,400,(float) arrows.getWidth()/4,(float) arrows.getHeight()/4);
 		sb.draw(wasd,(float) MainGame.WIDTH - 325,250,(float) arrows.getWidth()/4,(float) arrows.getHeight()/4);
+		sb.draw(backBtn, 0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight()); //TEAM-19
 		sb.end();
 	}
 
@@ -157,6 +170,7 @@ public class MenuState extends State {
 		arrows.dispose();
 		wasd.dispose();
 		font.dispose();
+		backBtn.dispose();
 	}
 }
 

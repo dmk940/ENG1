@@ -28,11 +28,11 @@ public class TestScreensGameFlow extends TestMovement {
         boats.add(player);
 
         gsm = new GameStateManager();
-        playstate = new PlayState(gsm, boats, player, 0);
+        playstate = new PlayState(gsm, boats, player, 3);
     }
 
     @Test
-    public void testGameOverSpeed() {
+    public void testGameOverSpeedLeg3() {
         initFullGame();
         winner.setPosY(100);
         playstate.isLegOver();
@@ -51,7 +51,7 @@ public class TestScreensGameFlow extends TestMovement {
         player.setHasLost(false);
         playstate.finishLeg();
         assertTrue("leaderboard failed", gsm.peek() instanceof LeaderboardState);
-        ((LeaderboardState) gsm.peek()).moveToNewState(0);
+        ((LeaderboardState) gsm.peek()).moveToNewState(3);
         assertTrue("gameover failed", gsm.peek() instanceof GameOverSpeed);
 
     }
