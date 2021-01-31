@@ -22,6 +22,12 @@ public class Obstacle {
     private static final String GOOSE = "goose";
     private static final String DUCK_1 = "duck1";
     private static final String DUCK_2 = "duck2";
+    private static final String HEALTHUP = "healthUp";
+    private static final String FATIGUEUP = "fatigueUp";
+    private static final String HEALTHUP2 = "healthUp2";
+    private static final String FATIGUEUP2 = "fatigueUp2";
+    private static final String SPEEDUP = "speedUp";
+
     //TEAM19-END
     
     HashMap<String, Integer> obstacleDamage = new HashMap<>();
@@ -37,7 +43,14 @@ public class Obstacle {
         if ((obstacleName.equals(ROCK_1)) || (obstacleName.equals(ROCK_2))){
             isMovable = false;
             collisionBounds = new Rectangle(posX,posY,30,30);
-        }else {
+        }
+        //TEAM19-START: Make it so powerups don't move
+        else if(obstacleName == "healthUp" || obstacleName == "fatigueUp" || obstacleName == "fatigueUp2" || obstacleName == "healthUp2" || obstacleName == "speedUp") {
+            isMovable = false;
+            collisionBounds = new Rectangle(posX,posY,80,80);
+        }
+        //TEAM19-END
+        else {
             isMovable = true;
             collisionBounds = new Rectangle(posX,posY,70,70);
         }
@@ -50,7 +63,22 @@ public class Obstacle {
      */
     public void checkHit(Boat boat) {
         if (collisionBounds.overlaps(boat.collisionBounds) && (boat.isHasNotLost())){
-            boat.setHealth(boat.getHealth() - obstacleDamage.get(name));
+            //TEAM19-START stops health from going above max when picking up power-up
+            if(boat.getHealth()-obstacleDamage.get(name) < 100) {
+                boat.setHealth(boat.getHealth() - obstacleDamage.get(name));
+            }
+            else if(boat.getHealth()-obstacleDamage.get(name) >= 100) {
+                boat.setHealth(100);
+            }
+            if(name == "fatigueUp"){
+                boat.setFatigue(boat.getFatigue()+15);
+            }
+            else if(name == "fatigueUp2"){
+                boat.setFatigue(boat.getFatigue()+30);
+            }
+            else if(name == "speedUp"){
+                boat.setSpeed( boat.getSpeed() + 1);
+            }
             posX = -9000;
             posY = -9000;
             collisionBounds.setPosition(posX,posY);
@@ -70,6 +98,11 @@ public class Obstacle {
         obstacleDamage.put(GOOSE, 15);
         obstacleDamage.put(DUCK_1, 5);
         obstacleDamage.put(DUCK_2, 5);
+        obstacleDamage.put(HEALTHUP,-10);
+        obstacleDamage.put(FATIGUEUP,0);
+        obstacleDamage.put(HEALTHUP2,-20);
+        obstacleDamage.put(FATIGUEUP2,0);
+        obstacleDamage.put(SPEEDUP,0);
         //TEAM19-END
 
     }
