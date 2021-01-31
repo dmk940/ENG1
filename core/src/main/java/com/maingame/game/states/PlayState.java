@@ -350,7 +350,10 @@ public class PlayState extends State{
      * @param leg an int representing the current leg.
      */
     private void buildObstaclesList(int leg) {
-        String[] possibleObstacles = {"rock1","rock2","goose","duck1","duck2"};
+        //TEAM19-START: Added powerups to obstacle list and set total number of powerups
+        String[] possibleObstacles = {"rock1","rock2","goose","duck1","duck2","healthUp","fatigueUp","fatigueUp2","healthUp2","speedUp"};
+        int totalPowerUp = 7;
+        //TEAM19-END
         int obstacleCount;
         if (leg == 1) {
             obstacleCount = 20;
@@ -359,10 +362,21 @@ public class PlayState extends State{
         }else {
             obstacleCount = 40;
         }
+        //TEAM19-START: Power-up spawning added, keeping total number at 5
+        int powerUpCount = 0;
         for (int i = 0; i < obstacleCount; i++) {
             Obstacle obstacle = new Obstacle(possibleObstacles[generator.nextInt(possibleObstacles.length)]);
-            obstacle.setDirection(generator.nextFloat() > 0.5);
-            this.obstacleList.add(obstacle);
+            if (obstacle.name == "healthUp" || obstacle.name == "fatigueUp" || obstacle.name == "healthUp2" || obstacle.name == "fatigueUp2" || obstacle.name =="speedUp"){
+                if(powerUpCount < totalPowerUp){
+                    obstacle.setDirection(generator.nextFloat() > 0.5);
+                    this.obstacleList.add(obstacle);
+                    powerUpCount += 1;
+                }
+            }
+            else {
+                obstacle.setDirection(generator.nextFloat() > 0.5);
+                this.obstacleList.add(obstacle);
+            }
         }
         repositionObstacles();
     }
@@ -379,7 +393,7 @@ public class PlayState extends State{
                 obstacle.setPosX(ThreadLocalRandom.current().nextInt(river.getWidth()*5));
                 obstacle.setPosY(ThreadLocalRandom.current().nextInt(player.getPosY() + river.getHeight(),player.getPosY() + (river.getHeight()*3)));
             }
-            obstacle.moveObstacle();
+                obstacle.moveObstacle();
         }
     }
 
