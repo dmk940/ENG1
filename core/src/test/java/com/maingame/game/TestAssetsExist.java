@@ -9,13 +9,15 @@ import org.junit.Test;
  */
 public class TestAssetsExist extends UnitTestInit {
 
-    static final String[] assets = {"easy.png", "medium.png", "hard.png", "backButton.png", "youWon.png", "demo.png", 
-            "arrows.png", "background.png", "Boat1.1.png", "Boat1.2.png",
-            "Boat2.1.png", "Boat2.2.png", "Boat3.1.png", "Boat3.2.png", "Boat4.1.png", "Boat4.2.png", "Boat5.1.png",
-            "Boat5.2.png", "Boat6.1.png", "Boat6.2.png", "Boat7.1.png", "Boat7.2.png", "branch.png", "duck1.png",
-            "duck2.png", "finishLine.png", "font.fnt", "font.png", "gameOver.png", "gameOverHealth.png",
-            "gameOverSpeed.png", "goose.png", "leftArrow.png", "play.png", "rightArrow.png", "river.png",
-            "river_reversed.png", "rock1.png", "rock2.png", "synth_pop_game.mp3", "title.png", "wasd.png" };
+    static final String[] assets = {"arrows.png", "backButton.png", "background.png", "Boat1.1.png", 
+    "Boat1.2.png", "Boat2.1.png", "Boat2.2.png", "Boat3.1.png", "Boat3.2.png", "Boat4.1.png", 
+    "Boat4.2.png", "Boat5.1.png", "Boat5.2.png", "Boat6.1.png", "Boat6.2.png", "Boat7.1.png", 
+    "Boat7.2.png", "branch.png", "demo.png", "duck1.png", "duck2.png", "easy.png", "easyClicked.png", 
+    "fatigueUp.png", "fatigueUp2.png", "finishLine.png", "font.fnt", "font.png", "gameOver.png", 
+    "goose.png", "hard.png", "hardClicked.png", "healthUp.png", "healthUp2.png", "leftArrow.png", 
+    "medium.png", "mediumClicked.png", "play.png", "rightArrow.png", "river.png", "river_reversed.png", 
+    "rock1.png", "rock2.png", "speedUp.png", "synth_pop_game.mp3", "title.png", "wasd.png", "youWon.png"
+};
 
     /** Tests that all required asset files are present.
      */
