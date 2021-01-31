@@ -17,7 +17,7 @@ public class DemoState extends MenuState {
 		this.boats.remove(x);
         this.boats = playStateBoats();
         //this.boats.add(playerBoat);
-        gsm.set(new DemoPlayState(gsm,boats, playerBoat,1));
+        gsm.set(new DemoPlayState(gsm,boats, playerBoat,1, 2));
         
 
     }

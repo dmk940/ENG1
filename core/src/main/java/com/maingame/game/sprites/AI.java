@@ -20,10 +20,15 @@ public class AI {
     public final Rectangle leftSideBox; // a rectangle on the left of the boat.
     private final Boat playerBoat; //Team19-START clone of the player boat
 
-    public AI(Boat boat, int leg, List<Obstacle> obstacleList, List<Boat> boats, Boat player) {
-        this.boat = boat;
-        this.playerBoat = player;
-        this.obstacleList = obstacleList;
+    //TEAM19-START -- added difficulty
+    private final int EASY_DIFFICULTY = 1000;
+	private final int MEDIUM_DIFFICULTY = 100;
+    private final int HARD_DIFFICULTY = 10;
+    
+    public int DIFFICULTY = EASY_DIFFICULTY; // by default easy
+    // 10 hard, 50+ medium, 
+
+    public AI(Boat boat, int leg, List<Obstacle> obstacleList, List<Boat> boats, Boat player, int difficulty) {
         if (leg == 1) {
             randomVariable = 0.3;
         }else if (leg == 2) {
@@ -33,6 +38,24 @@ public class AI {
         }else {
             randomVariable = 0;
         }
+        
+        // Added difficulty parameter, TEAM19-START
+        if (difficulty == 1) {
+            DIFFICULTY = MEDIUM_DIFFICULTY;
+        } else if (difficulty == 2) {
+            DIFFICULTY = HARD_DIFFICULTY;
+        } else if (difficulty == 4) {
+            // demo difficulty
+            DIFFICULTY = MEDIUM_DIFFICULTY;
+            randomVariable = 0;
+        } else {
+            difficulty = EASY_DIFFICULTY;
+        }
+        //TEAM19-END
+        this.boat = boat;
+        this.playerBoat = player;
+        this.obstacleList = obstacleList;
+        
         farRightBox = new Rectangle((float) boat.getPosX() + 70,(float) boat.getPosY() +90,20,50);
         midRightBox = new Rectangle((float) boat.getPosX() + 50,(float) boat.getPosY() +90,20,50);
         midLeftBox = new Rectangle((float) boat.getPosX() + 30,(float) boat.getPosY() +90,20,50);
@@ -49,7 +72,13 @@ public class AI {
      * @see #isNearBoats(int) ,#isNearObstacles(int) ,{@link #moveLeft(int)} ,{@link #moveRight(int)}
      */
     public void update() {
-        boat.setPosY(boat.getPosY() + boat.speed);
+        //TEAM19-START : make AI boats more likely to boost the further behind other boats they are
+        boolean chanceBoost = calculateDistance();
+        int additional = 0;
+        if (chanceBoost == true && Math.random() > 0.1 + (DIFFICULTY * 0.0004)) {
+            additional = boat.acceleration;
+        } //TEAM19-END
+        boat.setPosY(boat.getPosY() + boat.speed + additional);
         int weight = 0;
         weight = isNearObstacles(weight);
         weight = isNearBoats(weight);
@@ -60,18 +89,13 @@ public class AI {
         }else if (weight < 0 && chance > randomVariable) {
             moveRight(weight);
         }
-
-        //TEAM19-START : make AI boats more likely to boost the further behind other boats they are
-        boolean chanceBoost = calculateDistance();
-        if (chanceBoost == true && Math.random() > 0.4) {
-            boat.setPosY(boat.getPosY() + boat.acceleration);
-        }
     }
 
+    //TEAM19-START
     // Calculates the distance between player and boats and whether the AI should get more acceleation
     private boolean calculateDistance() {
         double distance = playerBoat.getPosY() - boat.getPosY();
-        return distance > 1000; // 60 hard, 80, medium, 100 hard
+        return distance > DIFFICULTY; // 60 hard, 80, medium, 100 hard
     }
     //TEAM19-END
 

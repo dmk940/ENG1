@@ -61,13 +61,16 @@ public class PlayState extends State{
     // as this is more fun. Also changed some variables to be protected instead of private
     // so they can be accessed through the demo playstate class that extends this one.
     protected static final int LEG_TIME = 10;
+    protected static int DIFFICULTY = 0;
     //TEAM19-END
 
-    public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg){
+    public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg, int difficulty){
         super(gsm);
         finishLine = new Texture("finishLine.png");
         river = new Texture("river.png");
         riverReversed = new Texture("river_reversed.png");
+
+        DIFFICULTY = difficulty;
 
         healthMap = new Pixmap(200,30, Pixmap.Format.RGBA8888);
         healthMap2 = new Pixmap(210,40, Pixmap.Format.RGBA8888);
@@ -184,7 +187,7 @@ public class PlayState extends State{
             updateBoatPenalties();
             for (int i = 0; i < boats.size(); i++) {
                 boats.get(i).update(dt);
-                AI ai = new AI(boats.get(i), leg,obstacleList, boats, player);
+                AI ai = new AI(boats.get(i), leg,obstacleList, boats, player, DIFFICULTY);
                 ai.update();
                 List<Boat> newBoatList = new ArrayList<>(boats);
                 boats.get(i).hasCollided(newBoatList,player);
@@ -487,7 +490,7 @@ public class PlayState extends State{
                             boat.images.get(1).dispose();
                         }
                     }
-                    gsm.set(new LeaderboardState(gsm,leg,newList,player));
+                    gsm.set(new LeaderboardState(gsm,leg,newList,player, DIFFICULTY));
                 }
             }
         }

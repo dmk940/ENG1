@@ -21,12 +21,16 @@ public class LeaderboardState extends State{
     private final Boat player;
     private final int leg;
 
-    public LeaderboardState(GameStateManager gsm, int leg, List<Boat> boats, Boat player) {
+    protected int DIFFICULTY;
+
+    //TEAM19-START -- added difficulty
+    public LeaderboardState(GameStateManager gsm, int leg, List<Boat> boats, Boat player, int difficulty) {
         super(gsm);
         background = new Texture("background.png");
         this.player = player;
         this.leg = leg;
         buildBoatsInOrder(boats);
+        DIFFICULTY = difficulty;
     }
 
     /**
@@ -134,7 +138,7 @@ public class LeaderboardState extends State{
                     boat.setTotalLegTime(0);
                 }
                 boatsInOrder.remove(player);
-                gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1));
+                gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1, DIFFICULTY));
             }
         } else {
             // resets the boat attributes
@@ -145,7 +149,7 @@ public class LeaderboardState extends State{
                 boat.setTotalLegTime(0);
             }
             boatsInOrder.remove(player);
-            gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1));
+            gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1, DIFFICULTY));
         }
     }
 }

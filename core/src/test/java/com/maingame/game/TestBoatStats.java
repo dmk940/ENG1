@@ -37,11 +37,11 @@ public class TestBoatStats extends UnitTestInit {
         // followed by ...posX, posY (not included here as unneeded)
         testBoatMap.put(RED, new Integer[] {7, 7, 7, 7});
         testBoatMap.put(PINK, new Integer[] {8, 6, 8, 6});
-        testBoatMap.put(BLUE, new Integer[] {9, 9, 4, 5});
-        testBoatMap.put(YELLOW, new Integer[] {8, 8, 5, 7});
+        testBoatMap.put(BLUE, new Integer[] {9, 4, 4, 5});
+        testBoatMap.put(YELLOW, new Integer[] {8, 7, 5, 7});
         testBoatMap.put(ORANGE, new Integer[] {8, 5, 10, 5});
-        testBoatMap.put(GREEN, new Integer[] {6, 6, 9, 7,});
-        testBoatMap.put(PURPLE, new Integer[] {6, 6, 6, 10});
+        testBoatMap.put(GREEN, new Integer[] {7, 6, 9, 7,});
+        testBoatMap.put(PURPLE, new Integer[] {7, 6, 6, 10});
     }
 
     public Integer[] getBoatData(String boatColour) {

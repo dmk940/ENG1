@@ -35,6 +35,6 @@ public class TestMovement extends UnitTestInit {
         boats.add(player);
 
         gsm = new GameStateManager();
-        playstate = new PlayState(gsm, boats, player, 0);
+        playstate = new PlayState(gsm, boats, player, 0, 0);
 	}
 }

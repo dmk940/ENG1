@@ -108,15 +108,15 @@ public class Boat {
         boatMap.put("red", arr2);
         arr2 = new Integer[]{8, 6, 8, 6,0,0};
         boatMap.put("pink", arr2);
-        arr2 = new Integer[]{9, 9, 4, 5,0,0};
+        arr2 = new Integer[]{9, 4, 4, 5,0,0};
         boatMap.put("blue", arr2);
-        arr2 = new Integer[]{8, 8, 5, 7,0,0};
+        arr2 = new Integer[]{8, 7, 5, 7,0,0};
         boatMap.put("yellow", arr2);
         arr2 = new Integer[]{8, 5, 10, 5,0,0};
         boatMap.put("orange", arr2);
-        arr2 = new Integer[]{6, 6, 9, 7,0,0};
+        arr2 = new Integer[]{7, 6, 9, 7,0,0};
         boatMap.put("green", arr2);
-        arr2 = new Integer[]{6, 6, 6, 10,0,0};
+        arr2 = new Integer[]{7, 6, 6, 10,0,0};
         boatMap.put("purple", arr2);
     }
 

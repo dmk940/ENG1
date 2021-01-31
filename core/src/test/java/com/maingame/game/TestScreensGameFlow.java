@@ -28,7 +28,7 @@ public class TestScreensGameFlow extends TestMovement {
         boats.add(player);
 
         gsm = new GameStateManager();
-        playstate = new PlayState(gsm, boats, player, 3);
+        playstate = new PlayState(gsm, boats, player, 3, 0);
     }
 
     @Test

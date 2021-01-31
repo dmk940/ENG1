@@ -33,6 +33,16 @@ public class MenuState extends State {
 	//TEAM19-START -- also made many variables / methods protected for access by Demo class which extends this class
 	private final Texture backBtn;
 	private final Rectangle backBtnBounds;
+	private Texture easyBtn;
+	private final Rectangle easyBtnBounds;
+	private Texture mediumBtn;
+	private final Rectangle mediumBtnBounds;
+	private Texture hardBtn;
+	private final Rectangle hardBtnBounds;
+
+	private int DIFFICULTY = 0;
+
+
 	//TEAM19-END
 
 	public MenuState(GameStateManager gsm) {
@@ -51,6 +61,15 @@ public class MenuState extends State {
 		//TEAM19-START
 		backBtn = new Texture("backButton.png");
 		backBtnBounds = new Rectangle(0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight());
+		
+		hardBtn = new Texture("hard.png");
+		hardBtnBounds = new Rectangle(MainGame.WIDTH - hardBtn.getWidth(), (float) MainGame.HEIGHT - hardBtn.getHeight(), hardBtn.getWidth(), hardBtn.getHeight());
+		
+		mediumBtn = new Texture("medium.png");
+		mediumBtnBounds = new Rectangle(MainGame.WIDTH - mediumBtn.getWidth()-hardBtn.getWidth(), (float) MainGame.HEIGHT - mediumBtn.getHeight(), mediumBtn.getWidth(), mediumBtn.getHeight());
+
+		easyBtn = new Texture("easy.png");
+		easyBtnBounds = new Rectangle(MainGame.WIDTH - easyBtn.getWidth()-hardBtn.getWidth()-mediumBtn.getWidth(), (float) MainGame.HEIGHT - easyBtn.getHeight(), easyBtn.getWidth(), easyBtn.getHeight());
 		//TEAM19-END
 	}
 
@@ -97,7 +116,7 @@ public class MenuState extends State {
 				Boat playerBoat = boats.get(x);
 				this.boats.remove(x);
 				this.boats = playStateBoats();
-				gsm.set(new PlayState(gsm,boats, playerBoat,1));
+				gsm.set(new PlayState(gsm,boats, playerBoat,1, DIFFICULTY));
 			//TEAM19-START
 			} else if (backBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
 				gsm.set(new WelcomeState(gsm));
@@ -111,7 +130,7 @@ public class MenuState extends State {
 			Boat playerBoat = boats.get(x);
 			this.boats.remove(x);
 			this.boats = playStateBoats();
-			gsm.set(new PlayState(gsm,boats, playerBoat,1));
+			gsm.set(new PlayState(gsm,boats, playerBoat,1, DIFFICULTY));
 		}
 		if (x < 0) {
 			x = 0;
@@ -154,7 +173,32 @@ public class MenuState extends State {
 		sb.draw(playBtn, (float) MainGame.WIDTH - 300 - 100, 0, 300,300);
 		sb.draw(arrows,(float) MainGame.WIDTH - 325,400,(float) arrows.getWidth()/4,(float) arrows.getHeight()/4);
 		sb.draw(wasd,(float) MainGame.WIDTH - 325,250,(float) arrows.getWidth()/4,(float) arrows.getHeight()/4);
-		sb.draw(backBtn, 0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight()); //TEAM-19
+		sb.draw(backBtn, 0, MainGame.HEIGHT - backBtn.getHeight(), (float) backBtn.getWidth(),  (float) backBtn.getHeight()); //TEAM-19
+
+
+		if (Gdx.input.justTouched()) {
+			if (easyBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
+				mediumBtn = new Texture("medium.png");
+				easyBtn = new Texture("easyClicked.png");
+				hardBtn = new Texture("hard.png");
+				DIFFICULTY = 0;
+			} else if (mediumBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
+				mediumBtn = new Texture("mediumClicked.png");
+				easyBtn = new Texture("easy.png");
+				hardBtn = new Texture("hard.png");
+				DIFFICULTY = 1;
+			} else if (hardBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
+				mediumBtn = new Texture("medium.png");
+				easyBtn = new Texture("easy.png");
+				hardBtn = new Texture("hardClicked.png");
+				DIFFICULTY = 2;
+			}
+		}
+
+		sb.draw(hardBtn, MainGame.WIDTH - hardBtn.getWidth(), (float) MainGame.HEIGHT - hardBtn.getHeight(), hardBtn.getWidth(), hardBtn.getHeight());
+		sb.draw(mediumBtn, MainGame.WIDTH - mediumBtn.getWidth()-hardBtn.getWidth(), (float) MainGame.HEIGHT - mediumBtn.getHeight(), mediumBtn.getWidth(), mediumBtn.getHeight());
+		sb.draw(easyBtn, MainGame.WIDTH - easyBtn.getWidth()-hardBtn.getWidth()-mediumBtn.getWidth(), (float) MainGame.HEIGHT - easyBtn.getHeight(), easyBtn.getWidth(), easyBtn.getHeight());
+
 		sb.end();
 	}
 
@@ -171,6 +215,9 @@ public class MenuState extends State {
 		wasd.dispose();
 		font.dispose();
 		backBtn.dispose();
+		hardBtn.dispose();
+		mediumBtn.dispose();
+		easyBtn.dispose();
 	}
 }
 
