@@ -72,7 +72,7 @@ public class LeaderboardState extends State{
         }
         for (int i = 0; i < boatsInOrder.size(); i++){
             sb.draw(boatsInOrder.get(i).images.get(0), (float) MainGame.WIDTH/4 + 100,500 - (float) (i * 120),125,125);
-            font.draw(sb, boatsInOrder.get(i).getCumulativeLegTime() + "s",(float) MainGame.WIDTH/2 + 100,600  - (float)(i * 120));
+            font.draw(sb,  String.format("%.02f", boatsInOrder.get(i).getCumulativeLegTime()) + "s",(float) MainGame.WIDTH/2 + 100,600  - (float)(i * 120));
         }
         sb.end();
     }
@@ -135,8 +135,9 @@ public class LeaderboardState extends State{
                     boat.setPosY(0);
                     boat.setHealth(100);
                     boat.setFatigue(600);
+                    //TEAM19-START resets player speed and time penalty
+                    boat.setTimePenalty(0);
                     boat.setTotalLegTime(0);
-                    //TEAM19-START resets player speed
                     boat.resetSpeed();
                     //TEAM19-END
                 }
@@ -149,7 +150,11 @@ public class LeaderboardState extends State{
                 boat.setPosY(0);
                 boat.setHealth(100);
                 boat.setFatigue(600);
+                //TEAM19-START resets player speed and time penalty
+                boat.setTimePenalty(0);
                 boat.setTotalLegTime(0);
+                boat.resetSpeed();
+                //TEAM19-END
             }
             boatsInOrder.remove(player);
             gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1, DIFFICULTY));

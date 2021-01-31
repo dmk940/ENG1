@@ -57,11 +57,11 @@ public class PlayState extends State{
     public Boolean left_pressed = false;
     public Boolean right_pressed = false;
 
-    //TEAM19-START : moved to constant leg time, and reduced leg length from 48 to 20 seconds
-    // as this is more fun. Also changed some variables to be protected instead of private
-    // so they can be accessed through the demo playstate class that extends this one.
-    protected static final int LEG_TIME = 10;
-    protected static int DIFFICULTY = 0;
+    //TEAM19-START : moved to constant leg distance, changed from time to distance
+    // as this is more fun
+    private static final double LEG_LENGTH = 5000; //distance in meters
+    private int DIFFICULTY = 0;
+    private int distanceTravelled; //distance travelled by the boats
     //TEAM19-END
 
     public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg, int difficulty){
@@ -70,7 +70,9 @@ public class PlayState extends State{
         river = new Texture("river.png");
         riverReversed = new Texture("river_reversed.png");
 
+        //TEAM19 resets distance to 0 each time the map is created
         DIFFICULTY = difficulty;
+        distanceTravelled = 0; 
 
         healthMap = new Pixmap(200,30, Pixmap.Format.RGBA8888);
         healthMap2 = new Pixmap(210,40, Pixmap.Format.RGBA8888);
@@ -148,9 +150,12 @@ public class PlayState extends State{
                     player.setPosY(player.getPosY() + player.acceleration);
                     player.setFatigue(player.getFatigue() - 2);
                     cam.position.y += player.acceleration;
+                    //TEAM 19 START: assuming speed and acceleration is in m, it adds it to distance travelled
+                    distanceTravelled += (player.speed + player.acceleration);                 
                 }
             } else {
                 //TEAM19-START: user is not currently boosting, slowly restore fatigue
+                distanceTravelled += player.speed; //assuming speed is in m, it adds it to distance travelled
                 if (player.getFatigue() < 600) { player.setFatigue(player.getFatigue() + 1); }
             }
 
@@ -176,7 +181,7 @@ public class PlayState extends State{
      */
     @Override
     public void update(float dt) {
-        if ((System.currentTimeMillis() - countDown)/1000 > 3) {
+        if ((System.currentTimeMillis() - countDown)/1000f > 3) {
             handleInput();
             updateCollisionBoundaries();
             updateRiver();
@@ -195,7 +200,7 @@ public class PlayState extends State{
             player.update(dt);
             player.hasCollided(boats,player);
             checkBoatHealth();
-            if ((System.currentTimeMillis() - countDown)/1000> LEG_TIME && finishLinePosition == 0) {
+            if ((distanceTravelled > LEG_LENGTH && finishLinePosition == 0)) {
                 isLegOver();
             }
             finishLeg();
@@ -228,7 +233,7 @@ public class PlayState extends State{
         sb.draw(river, (float) river.getWidth() * 4, riverPos1);
         sb.draw(riverReversed, (float) river.getWidth() * 4, riverPos2);
 
-        if ((System.currentTimeMillis() - countDown)/1000> 10) {
+        if ((distanceTravelled > LEG_LENGTH - 10)) { //TEAM 19: shows the finish line if its 10m away from the end
             sb.draw(finishLine,0,finishLinePosition);
         }
         drawBoats(leg,sb);
@@ -259,11 +264,11 @@ public class PlayState extends State{
         int penaltyBar = (player.getPenaltyBar() * 200)/100;
         sb.draw(pix, cam.position.x/2 - pix.getWidth() - 5,cam.position.y + 217, penaltyBar, 30);
         if (time != 0){
-            font.draw(sb,"Time: " + ((System.currentTimeMillis() - time)/1000 + player.getTimePenalty()) + "s" ,cam.position.x/2 - pix.getWidth() - 200,cam.position.y + 210);
+            font.draw(sb,"Time: " + String.format("%.02f", (System.currentTimeMillis() - time)/1000f + player.getTimePenalty()) + "s" ,cam.position.x/2 - pix.getWidth() - 200,cam.position.y + 210);
         }
 
         // renders a countdown at the start of each leg.
-        if ((System.currentTimeMillis() - countDown)/1000 < 3) {
+        if ((System.currentTimeMillis() - countDown)/1000f < 3) {
             font.draw(sb,"Countdown: " + (3 - (System.currentTimeMillis() - countDown)/1000),cam.position.x - 170,cam.position.y+50);
         }
         sb.end();
@@ -477,7 +482,7 @@ public class PlayState extends State{
             for (Boat boat:boats) {
                 if (boat.getPosY() > finishLinePosition +10 && boat.isHasNotLost()) {
                     if (boat.getTotalLegTime() == 0){
-                        boat.setTotalLegTime((int) (System.currentTimeMillis() - time)/1000);
+                        boat.setTotalLegTime((System.currentTimeMillis() - time)/1000f);
                     }
                     boat.setPosY(finishLinePosition +10);
                 }
@@ -486,7 +491,7 @@ public class PlayState extends State{
                 player.setPosY(finishLinePosition + 10);
                 cam.position.y -= player.speed;
                 if (player.getTotalLegTime() == 0) {
-                    player.setTotalLegTime((int) (System.currentTimeMillis() - time)/1000);
+                    player.setTotalLegTime((System.currentTimeMillis() - time)/1000f);
                 }
                 boolean haveBoatsFinished = true;
                 for (Boat boat:boats) {

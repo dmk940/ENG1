@@ -48,7 +48,7 @@ public class GameOverSpeed extends State {
 	 */
 	@Override
 	public void update(float dt) {
-		if ((float) (System.currentTimeMillis() - countDown)/1000 > 0.1) {
+		if ((System.currentTimeMillis() - countDown)/1000f > 0.1) {
 			handleInput();
 		}
 	}

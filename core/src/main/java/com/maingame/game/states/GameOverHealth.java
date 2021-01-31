@@ -35,6 +35,7 @@ public class GameOverHealth extends State {
 	@Override
 	public void handleInput() {
 	
+		// TODO add a button to clickthrough
 		if(Gdx.input.isKeyPressed(Input.Keys.ANY_KEY)){
 			gsm.set(new WelcomeState(gsm));
 			dispose();
@@ -51,7 +52,7 @@ public class GameOverHealth extends State {
 	 */
 	@Override
 	public void update(float dt) {
-		if ((float)(System.currentTimeMillis() - countDown)/1000 > 0.2) {
+		if ((System.currentTimeMillis() - countDown)/1000f > 0.2) {
 			handleInput();
 		}
 	}

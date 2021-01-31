@@ -57,7 +57,7 @@ public class TestObstacles extends UnitTestInit {
         player = new Boat("red");
         player.setPosX(START_X);
         player.setPosY(START_Y);
-        player.updateCollisionBounds();;
+        player.updateCollisionBounds();
 
         obstacle = new Obstacle(obstacleName);
         obstacle.setPosX(START_X);

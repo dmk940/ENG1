@@ -45,9 +45,9 @@ public class TestScreensGameFlow extends TestMovement {
                 counter = counter - 1;
             }
         }
-        winner.setTotalLegTime(1);
+        winner.setTotalLegTime(1.0f);
         player.setPosY(playstate.finishLinePosition+100000);
-        player.setTotalLegTime(31);
+        player.setTotalLegTime(31.0f);
         player.setHasLost(false);
         playstate.finishLeg();
         assertTrue("leaderboard failed", gsm.peek() instanceof LeaderboardState);

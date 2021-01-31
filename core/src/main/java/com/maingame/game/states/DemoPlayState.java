@@ -18,7 +18,7 @@ public class DemoPlayState extends PlayState {
 
     @Override
     public void update(float dt) {
-        if ((System.currentTimeMillis() - countDown)/1000 > 3) {
+        if ((System.currentTimeMillis() - countDown)/1000f > 3) {
             //handleInput();
             cam.position.y += player.speed;
             cam.update();
@@ -46,7 +46,7 @@ public class DemoPlayState extends PlayState {
             }
             //player.hasCollided(boats,player);
             checkBoatHealth();
-            //if ((System.currentTimeMillis() - countDown)/1000 > LEG_TIME && finishLinePosition == 0) {
+            //if ((distanceTravelled > LEG_LENGTH && finishLinePosition == 0)) {
             //    isLegOver();
             //}
             //finishLeg();
