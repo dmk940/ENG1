@@ -78,7 +78,7 @@
 <dd>
 <div class="block">A class to define the Artificial Intelligence for non-player boats.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/maingame/game/sprites/AI.html#AI-com.maingame.game.sprites.Boat-int-java.util.List-java.util.List-com.maingame.game.sprites.Boat-">AI(Boat, int, List&lt;Obstacle&gt;, List&lt;Boat&gt;, Boat)</a></span> - Constructor for class com.maingame.game.sprites.<a href="com/maingame/game/sprites/AI.html" title="class in com.maingame.game.sprites">AI</a></dt>
+<dt><span class="memberNameLink"><a href="com/maingame/game/sprites/AI.html#AI-com.maingame.game.sprites.Boat-int-java.util.List-java.util.List-com.maingame.game.sprites.Boat-int-">AI(Boat, int, List&lt;Obstacle&gt;, List&lt;Boat&gt;, Boat, int)</a></span> - Constructor for class com.maingame.game.sprites.<a href="com/maingame/game/sprites/AI.html" title="class in com.maingame.game.sprites">AI</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:B">
@@ -150,13 +150,19 @@
 <div class="block">This class handles the playstate for the Demo version of the game - no input, and the 
  player boat moves by itself.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoPlayState.html#DemoPlayState-com.maingame.game.states.GameStateManager-java.util.List-com.maingame.game.sprites.Boat-int-">DemoPlayState(GameStateManager, List&lt;Boat&gt;, Boat, int)</a></span> - Constructor for class com.maingame.game.states.<a href="com/maingame/game/states/DemoPlayState.html" title="class in com.maingame.game.states">DemoPlayState</a></dt>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoPlayState.html#DemoPlayState-com.maingame.game.states.GameStateManager-java.util.List-com.maingame.game.sprites.Boat-int-int-">DemoPlayState(GameStateManager, List&lt;Boat&gt;, Boat, int, int)</a></span> - Constructor for class com.maingame.game.states.<a href="com/maingame/game/states/DemoPlayState.html" title="class in com.maingame.game.states">DemoPlayState</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/maingame/game/states/DemoState.html" title="class in com.maingame.game.states"><span class="typeNameLink">DemoState</span></a> - Class in <a href="com/maingame/game/states/package-summary.html">com.maingame.game.states</a></dt>
 <dd>
 <div class="block">Automates the PlayState, in the demo mode.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoState.html#DemoState-com.maingame.game.states.GameStateManager-">DemoState(GameStateManager)</a></span> - Constructor for class com.maingame.game.states.<a href="com/maingame/game/states/DemoState.html" title="class in com.maingame.game.states">DemoState</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/sprites/AI.html#DIFFICULTY">DIFFICULTY</a></span> - Variable in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/AI.html" title="class in com.maingame.game.sprites">AI</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/LeaderboardState.html#DIFFICULTY">DIFFICULTY</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/LeaderboardState.html" title="class in com.maingame.game.states">LeaderboardState</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#DIFFICULTY">DIFFICULTY</a></span> - Static variable in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/MainGame.html#dispose--">dispose()</a></span> - Method in class com.maingame.game.<a href="com/maingame/game/MainGame.html" title="class in com.maingame.game">MainGame</a></dt>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/GameOverHealth.html#dispose--">dispose()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/GameOverHealth.html" title="class in com.maingame.game.states">GameOverHealth</a></dt>
@@ -377,7 +383,7 @@
 <dd>
 <div class="block">Shows a leaderboard with the boats ranked according to how much time they took.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/maingame/game/states/LeaderboardState.html#LeaderboardState-com.maingame.game.states.GameStateManager-int-java.util.List-com.maingame.game.sprites.Boat-">LeaderboardState(GameStateManager, int, List&lt;Boat&gt;, Boat)</a></span> - Constructor for class com.maingame.game.states.<a href="com/maingame/game/states/LeaderboardState.html" title="class in com.maingame.game.states">LeaderboardState</a></dt>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/LeaderboardState.html#LeaderboardState-com.maingame.game.states.GameStateManager-int-java.util.List-com.maingame.game.sprites.Boat-int-">LeaderboardState(GameStateManager, int, List&lt;Boat&gt;, Boat, int)</a></span> - Constructor for class com.maingame.game.states.<a href="com/maingame/game/states/LeaderboardState.html" title="class in com.maingame.game.states">LeaderboardState</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#left_pressed">left_pressed</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
 <dd>&nbsp;</dd>
@@ -453,7 +459,7 @@
 <dd>
 <div class="block">Handles the logic of the main game and loading of assets.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#PlayState-com.maingame.game.states.GameStateManager-java.util.List-com.maingame.game.sprites.Boat-int-">PlayState(GameStateManager, List&lt;Boat&gt;, Boat, int)</a></span> - Constructor for class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#PlayState-com.maingame.game.states.GameStateManager-java.util.List-com.maingame.game.sprites.Boat-int-int-">PlayState(GameStateManager, List&lt;Boat&gt;, Boat, int, int)</a></span> - Constructor for class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/MenuState.html#playStateBoats--">playStateBoats()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">MenuState</a></dt>
 <dd>

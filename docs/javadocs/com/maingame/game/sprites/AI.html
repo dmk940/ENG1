@@ -129,26 +129,30 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#DIFFICULTY">DIFFICULTY</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>com.badlogic.gdx.math.Rectangle</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#farLeftBox">farLeftBox</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>com.badlogic.gdx.math.Rectangle</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#farRightBox">farRightBox</a></span></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>com.badlogic.gdx.math.Rectangle</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#leftSideBox">leftSideBox</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>com.badlogic.gdx.math.Rectangle</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#midLeftBox">midLeftBox</a></span></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>com.badlogic.gdx.math.Rectangle</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#midRightBox">midRightBox</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>com.badlogic.gdx.math.Rectangle</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#rightSideBox">rightSideBox</a></span></code>&nbsp;</td>
 </tr>
@@ -167,11 +171,12 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#AI-com.maingame.game.sprites.Boat-int-java.util.List-java.util.List-com.maingame.game.sprites.Boat-">AI</a></span>(<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;boat,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/AI.html#AI-com.maingame.game.sprites.Boat-int-java.util.List-java.util.List-com.maingame.game.sprites.Boat-int-">AI</a></span>(<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;boat,
   int&nbsp;leg,
   java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Obstacle.html" title="class in com.maingame.game.sprites">Obstacle</a>&gt;&nbsp;obstacleList,
   java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;&nbsp;boats,
-  <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player)</code>&nbsp;</td>
+  <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player,
+  int&nbsp;difficulty)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -264,10 +269,19 @@ extends java.lang.Object</pre>
 <a name="leftSideBox">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>leftSideBox</h4>
 <pre>public final&nbsp;com.badlogic.gdx.math.Rectangle leftSideBox</pre>
+</li>
+</ul>
+<a name="DIFFICULTY">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DIFFICULTY</h4>
+<pre>public&nbsp;int DIFFICULTY</pre>
 </li>
 </ul>
 </li>
@@ -278,7 +292,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="AI-com.maingame.game.sprites.Boat-int-java.util.List-java.util.List-com.maingame.game.sprites.Boat-">
+<a name="AI-com.maingame.game.sprites.Boat-int-java.util.List-java.util.List-com.maingame.game.sprites.Boat-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -288,7 +302,8 @@ extends java.lang.Object</pre>
           int&nbsp;leg,
           java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Obstacle.html" title="class in com.maingame.game.sprites">Obstacle</a>&gt;&nbsp;obstacleList,
           java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;&nbsp;boats,
-          <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player)</pre>
+          <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player,
+          int&nbsp;difficulty)</pre>
 </li>
 </ul>
 </li>

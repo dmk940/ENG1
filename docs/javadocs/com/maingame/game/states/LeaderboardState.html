@@ -73,13 +73,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.com.maingame.game.states.State">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -127,6 +127,17 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <!--   -->
 </a>
 <h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/LeaderboardState.html#DIFFICULTY">DIFFICULTY</a></span></code>&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.com.maingame.game.states.State">
 <!--   -->
@@ -148,10 +159,11 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/LeaderboardState.html#LeaderboardState-com.maingame.game.states.GameStateManager-int-java.util.List-com.maingame.game.sprites.Boat-">LeaderboardState</a></span>(<a href="../../../../com/maingame/game/states/GameStateManager.html" title="class in com.maingame.game.states">GameStateManager</a>&nbsp;gsm,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/LeaderboardState.html#LeaderboardState-com.maingame.game.states.GameStateManager-int-java.util.List-com.maingame.game.sprites.Boat-int-">LeaderboardState</a></span>(<a href="../../../../com/maingame/game/states/GameStateManager.html" title="class in com.maingame.game.states">GameStateManager</a>&nbsp;gsm,
                 int&nbsp;leg,
                 java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;&nbsp;boats,
-                <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player)</code>&nbsp;</td>
+                <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player,
+                int&nbsp;difficulty)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -214,13 +226,30 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="DIFFICULTY">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DIFFICULTY</h4>
+<pre>protected&nbsp;int DIFFICULTY</pre>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="LeaderboardState-com.maingame.game.states.GameStateManager-int-java.util.List-com.maingame.game.sprites.Boat-">
+<a name="LeaderboardState-com.maingame.game.states.GameStateManager-int-java.util.List-com.maingame.game.sprites.Boat-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -229,7 +258,8 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <pre>public&nbsp;LeaderboardState(<a href="../../../../com/maingame/game/states/GameStateManager.html" title="class in com.maingame.game.states">GameStateManager</a>&nbsp;gsm,
                         int&nbsp;leg,
                         java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;&nbsp;boats,
-                        <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player)</pre>
+                        <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player,
+                        int&nbsp;difficulty)</pre>
 </li>
 </ul>
 </li>
@@ -369,13 +399,13 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.com.maingame.game.states.State">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
