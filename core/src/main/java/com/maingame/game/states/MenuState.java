@@ -88,7 +88,7 @@ public class MenuState extends State {
 
 	/**
 	 * Generates a random list of enemy boats for the PlayState.
-	 * @see PlayState#PlayState(GameStateManager, List, Boat, int)
+	 * @see PlayState#PlayState(GameStateManager, List, Boat, int, int)
 	 * @return a random list of enemy boats.
 	 */
 	protected List<Boat> playStateBoats() {
