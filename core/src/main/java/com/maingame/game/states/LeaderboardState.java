@@ -133,6 +133,9 @@ public class LeaderboardState extends State{
                     boat.setHealth(100);
                     boat.setFatigue(600);
                     boat.setTotalLegTime(0);
+                    //TEAM19-START resets player speed
+                    boat.resetSpeed();
+                    //TEAM19-END
                 }
                 boatsInOrder.remove(player);
                 gsm.set(new PlayState(gsm,boatsInOrder,player,leg + 1));

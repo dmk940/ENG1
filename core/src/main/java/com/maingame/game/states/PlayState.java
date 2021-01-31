@@ -348,8 +348,8 @@ public class PlayState extends State{
      */
     private void buildObstaclesList(int leg) {
         //TEAM19-START: Added powerups to obstacle list and set total number of powerups
-        String[] possibleObstacles = {"rock1","rock2","goose","duck1","duck2","healthUp","fatigueUp"};
-        int totalPowerUp = 5;
+        String[] possibleObstacles = {"rock1","rock2","goose","duck1","duck2","healthUp","fatigueUp","fatigueUp2","healthUp2","speedUp"};
+        int totalPowerUp = 7;
         //TEAM19-END
         int obstacleCount;
         if (leg == 1) {
@@ -363,7 +363,7 @@ public class PlayState extends State{
         int powerUpCount = 0;
         for (int i = 0; i < obstacleCount; i++) {
             Obstacle obstacle = new Obstacle(possibleObstacles[generator.nextInt(possibleObstacles.length)]);
-            if (obstacle.name == "healthUp" || obstacle.name == "fatigueUp"){
+            if (obstacle.name == "healthUp" || obstacle.name == "fatigueUp" || obstacle.name == "healthUp2" || obstacle.name == "fatigueUp2" || obstacle.name =="speedUp"){
                 if(powerUpCount < totalPowerUp){
                     obstacle.setDirection(generator.nextFloat() > 0.5);
                     this.obstacleList.add(obstacle);
@@ -371,7 +371,6 @@ public class PlayState extends State{
                 }
             }
             else {
-                System.out.print(powerUpCount);
                 obstacle.setDirection(generator.nextFloat() > 0.5);
                 this.obstacleList.add(obstacle);
             }

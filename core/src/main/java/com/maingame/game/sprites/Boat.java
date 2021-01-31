@@ -12,7 +12,7 @@ public class Boat {
     public final String colour;
     public final List<Texture> images;
     public final Rectangle collisionBounds; // a box used to identify collisions.
-    public final int speed;
+    public  int speed;
     public final int maneuverability;
     public final int robustness;
     public final int acceleration;
@@ -380,4 +380,28 @@ public class Boat {
         collisionBounds.setPosition((float) getPosX() + 10, (float) getPosY() + 10);
     }
     // TEAM19-END
+
+    //TEAM19-START
+
+    /**
+     * Sets the boats speed
+     *
+     * @param newSpeed boats new speed
+     */
+    public void setSpeed(int newSpeed){
+        this.speed = newSpeed;
+    }
+
+    /**
+     * Gets boats current speed
+     *
+     * @return the boats current speed
+     */
+    public int getSpeed(){ return this.speed;}
+
+    /**
+     * resets the boats speed to its default
+     */
+    public void resetSpeed(){this.speed = boatMap.get(colour)[0];}
+    //TEAM19-END
 }

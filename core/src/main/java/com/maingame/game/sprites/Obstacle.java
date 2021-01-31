@@ -24,6 +24,10 @@ public class Obstacle {
     private static final String DUCK_2 = "duck2";
     private static final String HEALTHUP = "healthUp";
     private static final String FATIGUEUP = "fatigueUp";
+    private static final String HEALTHUP2 = "healthUp2";
+    private static final String FATIGUEUP2 = "fatigueUp2";
+    private static final String SPEEDUP = "speedUp";
+
     //TEAM19-END
     
     HashMap<String, Integer> obstacleDamage = new HashMap<>();
@@ -41,7 +45,7 @@ public class Obstacle {
             collisionBounds = new Rectangle(posX,posY,30,30);
         }
         //TEAM19-START: Make it so powerups don't move
-        else if(obstacleName == "healthUp" || obstacleName == "fatigueUp") {
+        else if(obstacleName == "healthUp" || obstacleName == "fatigueUp" || obstacleName == "fatigueUp2" || obstacleName == "healthUp2" || obstacleName == "speedUp") {
             isMovable = false;
             collisionBounds = new Rectangle(posX,posY,80,80);
         }
@@ -63,8 +67,17 @@ public class Obstacle {
             if(boat.getHealth()-obstacleDamage.get(name) < 100) {
                 boat.setHealth(boat.getHealth() - obstacleDamage.get(name));
             }
+            else if(boat.getHealth()-obstacleDamage.get(name) >= 100) {
+                boat.setHealth(100);
+            }
             if(name == "fatigueUp"){
                 boat.setFatigue(boat.getFatigue()+15);
+            }
+            else if(name == "fatigueUp2"){
+                boat.setFatigue(boat.getFatigue()+30);
+            }
+            else if(name == "speedUp"){
+                boat.setSpeed( boat.getSpeed() + 1);
             }
             posX = -9000;
             posY = -9000;
@@ -87,6 +100,9 @@ public class Obstacle {
         obstacleDamage.put(DUCK_2, 5);
         obstacleDamage.put(HEALTHUP,-10);
         obstacleDamage.put(FATIGUEUP,0);
+        obstacleDamage.put(HEALTHUP2,-20);
+        obstacleDamage.put(FATIGUEUP2,0);
+        obstacleDamage.put(SPEEDUP,0);
         //TEAM19-END
 
     }
