@@ -370,7 +370,15 @@ public class PlayState extends State{
         }else {
             obstacleCount = 40;
         }
-        //TEAM19-START: Power-up spawning added, keeping total number at 5
+        //TEAM19-START: Power-up spawning added, keeping total number at 5. Added more obstacles at greate difficulties
+        if (DIFFICULTY == 1) {
+            obstacleCount += 10;
+        } else if (DIFFICULTY == 2) {
+            obstacleCount += 20;
+        } else if (DIFFICULTY == 3) {
+            obstacleCount += 30;
+        }
+        
         int powerUpCount = 0;
         for (int i = 0; i < obstacleCount; i++) {
             Obstacle obstacle = new Obstacle(possibleObstacles[generator.nextInt(possibleObstacles.length)]);

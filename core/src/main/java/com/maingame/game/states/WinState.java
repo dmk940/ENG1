@@ -13,7 +13,9 @@ public class WinState extends State {
 
     private final Texture background;
     private final Texture finishBtn;
+    private final Texture exitBtn;
     private final Rectangle finishBtnBounds;
+    private final Rectangle exitBtnBounds;
     private final BitmapFont font = new BitmapFont(Gdx.files.internal("font.fnt"),false); 
 
     public WinState(GameStateManager gsm) {
@@ -21,7 +23,9 @@ public class WinState extends State {
 
         background = new Texture("background.png");
         finishBtn = new Texture("youWon.png");
-        finishBtnBounds =  new Rectangle(((float) MainGame.WIDTH / 3) - ((float) finishBtn.getWidth() / 10), (float) MainGame.HEIGHT / 50, finishBtn.getWidth(), finishBtn.getHeight());
+        exitBtn = new Texture("exit.png");
+        finishBtnBounds =  new Rectangle(MainGame.WIDTH /2f - finishBtn.getWidth()/2, MainGame.HEIGHT/2f - finishBtn.getHeight()/2, finishBtn.getWidth(), finishBtn.getHeight());
+        exitBtnBounds =  new Rectangle(MainGame.WIDTH /2f - exitBtn.getWidth()/2, MainGame.HEIGHT/2f - exitBtn.getHeight()/2 - finishBtn.getHeight()*2, exitBtn.getWidth(), exitBtn.getHeight());
     }
 
 	public void handleInput() {
@@ -29,7 +33,9 @@ public class WinState extends State {
 			if (finishBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
 				gsm.set(new WelcomeState(gsm));
 				dispose();
-		    }
+		    } else if (exitBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
+				Gdx.app.exit();
+            }
         }
     }
 
@@ -44,8 +50,10 @@ public class WinState extends State {
         sb.setProjectionMatrix(cam.combined);
         sb.draw(background, 0, 0, MainGame.WIDTH , MainGame.HEIGHT);
 
-        font.draw(sb, "YOU WON",(float) MainGame.WIDTH/2-250, 700);
-        sb.draw(finishBtn, ((float)MainGame.WIDTH / 3) - ((float) finishBtn.getWidth() / 10), (float) MainGame.HEIGHT / 50);
+        font.draw(sb, "YOU WON", MainGame.WIDTH/2 - 170, 700);
+        sb.draw(finishBtn, MainGame.WIDTH /2f - finishBtn.getWidth()/2, MainGame.HEIGHT/2f - finishBtn.getHeight()/2);
+        sb.draw(exitBtn, MainGame.WIDTH /2f - exitBtn.getWidth()/2, MainGame.HEIGHT/2f - exitBtn.getHeight()/2 - finishBtn.getHeight()*2);
+        
         sb.end();
     }
 

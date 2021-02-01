@@ -23,10 +23,9 @@ public class AI {
     //TEAM19-START -- added difficulty
     private final int EASY_DIFFICULTY = 1000;
 	private final int MEDIUM_DIFFICULTY = 100;
-    private final int HARD_DIFFICULTY = 10;
+    private final int HARD_DIFFICULTY = 25;
     
     public int DIFFICULTY = EASY_DIFFICULTY; // by default easy
-    // 10 hard, 50+ medium, 
 
     public AI(Boat boat, int leg, List<Obstacle> obstacleList, List<Boat> boats, Boat player, int difficulty) {
         if (leg == 1) {

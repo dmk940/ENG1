@@ -68,7 +68,7 @@ public class MenuState extends State {
 		mediumBtn = new Texture("medium.png");
 		mediumBtnBounds = new Rectangle(MainGame.WIDTH - mediumBtn.getWidth()-hardBtn.getWidth(), (float) MainGame.HEIGHT - mediumBtn.getHeight(), mediumBtn.getWidth(), mediumBtn.getHeight());
 
-		easyBtn = new Texture("easy.png");
+		easyBtn = new Texture("easyClicked.png");
 		easyBtnBounds = new Rectangle(MainGame.WIDTH - easyBtn.getWidth()-hardBtn.getWidth()-mediumBtn.getWidth(), (float) MainGame.HEIGHT - easyBtn.getHeight(), easyBtn.getWidth(), easyBtn.getHeight());
 		//TEAM19-END
 	}
