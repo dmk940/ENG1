@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -105,11 +105,20 @@ var activeTableTab = "activeTableTab";
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd>java.io.Serializable</dd>
+</dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">Boat</span>
-extends java.lang.Object</pre>
+extends java.lang.Object
+implements java.io.Serializable</pre>
 <div class="block">A class to hold all the logic and attribute for boats</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../serialized-form.html#com.maingame.game.sprites.Boat">Serialized Form</a></dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -133,6 +142,14 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#acceleration">acceleration</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>java.util.HashMap&lt;java.lang.String,java.util.List&lt;com.badlogic.gdx.graphics.Texture&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#boatImg">boatImg</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>java.util.HashMap&lt;java.lang.String,java.lang.Integer[]&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#boatMap">boatMap</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>com.badlogic.gdx.math.Rectangle</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#collisionBounds">collisionBounds</a></span></code>&nbsp;</td>
 </tr>
@@ -141,18 +158,22 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#colour">colour</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#hasLost">hasLost</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>java.util.List&lt;com.badlogic.gdx.graphics.Texture&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#images">images</a></span></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#maneuverability">maneuverability</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#robustness">robustness</a></span></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#speed">speed</a></span></code>&nbsp;</td>
 </tr>
@@ -189,170 +210,176 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#buildBoatData--">buildBoatData</a></span>()</code>
+<div class="block">Builds the hashmaps for the boat data.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getCumulativeLegTime--">getCumulativeLegTime</a></span>()</code>
 <div class="block">Gets cumulative leg time.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getFatigue--">getFatigue</a></span>()</code>
 <div class="block">Gets fatigue.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getFrame--">getFrame</a></span>()</code>
 <div class="block">Gets frame.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getHealth--">getHealth</a></span>()</code>
 <div class="block">Gets health.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getLeftBound--">getLeftBound</a></span>()</code>
 <div class="block">Gets left bound.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getPenaltyBar--">getPenaltyBar</a></span>()</code>
 <div class="block">Gets penalty bar.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getPosX--">getPosX</a></span>()</code>
 <div class="block">Gets pos x.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getPosY--">getPosY</a></span>()</code>
 <div class="block">Gets pos y.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getRightBound--">getRightBound</a></span>()</code>
 <div class="block">Gets right bound.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getSpeed--">getSpeed</a></span>()</code>
 <div class="block">Gets boats current speed</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getTimePenalty--">getTimePenalty</a></span>()</code>
 <div class="block">Gets time penalty.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>float</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#getTotalLegTime--">getTotalLegTime</a></span>()</code>
 <div class="block">Gets total leg time.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#hasCollided-java.util.List-com.maingame.game.sprites.Boat-">hasCollided</a></span>(java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;&nbsp;boats,
            <a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&nbsp;player)</code>
 <div class="block">Checks if a boat has hit another boat and decreases the boat's health.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#isBoatOutOfLane--">isBoatOutOfLane</a></span>()</code>
 <div class="block">Checks if a boat is outside of its lane.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#isHasNotLost--">isHasNotLost</a></span>()</code>
 <div class="block">Has the boat not lost</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#resetSpeed--">resetSpeed</a></span>()</code>
 <div class="block">resets the boats speed to its default</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setBounds-float-float-">setBounds</a></span>(float&nbsp;leftBound,
          float&nbsp;rightBound)</code>
 <div class="block">Sets the lane limits for a boat.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setFatigue-int-">setFatigue</a></span>(int&nbsp;fatigue)</code>
 <div class="block">Sets fatigue.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setHasLost-boolean-">setHasLost</a></span>(boolean&nbsp;hasLost)</code>
 <div class="block">Sets hasLost.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setHealth-int-">setHealth</a></span>(int&nbsp;health)</code>
 <div class="block">Sets health.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setPenaltyBar-int-">setPenaltyBar</a></span>(int&nbsp;penaltyBar)</code>
 <div class="block">Sets penalty bar.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setPosX-int-">setPosX</a></span>(int&nbsp;posX)</code>
 <div class="block">Sets pos x.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setPosY-int-">setPosY</a></span>(int&nbsp;posY)</code>
 <div class="block">Sets pos y.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setSpeed-int-">setSpeed</a></span>(int&nbsp;newSpeed)</code>
 <div class="block">Sets the boats speed</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setTimePenalty-int-">setTimePenalty</a></span>(int&nbsp;timePenalty)</code>
 <div class="block">Sets time penalty.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#setTotalLegTime-float-">setTotalLegTime</a></span>(float&nbsp;totalLegTime)</code>
 <div class="block">Sets total leg time and cumulative leg time.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#update-float-">update</a></span>(float&nbsp;dt)</code>
 <div class="block">Changes the current texture used for a boat to provide an animation.</div>
 </td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/sprites/Boat.html#updateCollisionBounds--">updateCollisionBounds</a></span>()</code>
 <div class="block">Updates the collision bounds of the boat</div>
@@ -395,7 +422,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>images</h4>
-<pre>public final&nbsp;java.util.List&lt;com.badlogic.gdx.graphics.Texture&gt; images</pre>
+<pre>public transient&nbsp;java.util.List&lt;com.badlogic.gdx.graphics.Texture&gt; images</pre>
 </li>
 </ul>
 <a name="collisionBounds">
@@ -437,10 +464,37 @@ extends java.lang.Object</pre>
 <a name="acceleration">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>acceleration</h4>
 <pre>public final&nbsp;int acceleration</pre>
+</li>
+</ul>
+<a name="boatImg">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>boatImg</h4>
+<pre>public transient&nbsp;java.util.HashMap&lt;java.lang.String,java.util.List&lt;com.badlogic.gdx.graphics.Texture&gt;&gt; boatImg</pre>
+</li>
+</ul>
+<a name="boatMap">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>boatMap</h4>
+<pre>public transient&nbsp;java.util.HashMap&lt;java.lang.String,java.lang.Integer[]&gt; boatMap</pre>
+</li>
+</ul>
+<a name="hasLost">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>hasLost</h4>
+<pre>public&nbsp;boolean hasLost</pre>
 </li>
 </ul>
 </li>
@@ -468,6 +522,16 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="buildBoatData--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>buildBoatData</h4>
+<pre>public&nbsp;void&nbsp;buildBoatData()</pre>
+<div class="block">Builds the hashmaps for the boat data.</div>
+</li>
+</ul>
 <a name="isBoatOutOfLane--">
 <!--   -->
 </a>
