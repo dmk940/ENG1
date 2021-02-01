@@ -21,7 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Handles the logic of the main game and loading of assets.
  */
-public class PlayState extends State{
+public class PlayState extends State {
     private final Texture river; // the river asset
     private final Texture riverReversed; // the river asset reversed
     private final Texture finishLine;
@@ -61,6 +61,9 @@ public class PlayState extends State{
     // as this is more fun. Also changed some variables to be protected instead of private
     // so they can be accessed through the demo playstate class that extends this one.
     protected static final int LEG_TIME = 10;
+    //add pause 
+    protected boolean paused;
+    public Boolean space_pressed = false;
     //TEAM19-END
 
     public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg){
@@ -128,6 +131,8 @@ public class PlayState extends State{
         left_pressed = (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT));
         right_pressed = (Gdx.input.isKeyPressed(Input.Keys.D)|| Gdx.input.isKeyPressed(Input.Keys.RIGHT));
         down_pressed = (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN));
+        //TEAM-19 pause key
+        space_pressed = Gdx.input.isKeyPressed(Input.Keys.SPACE);
         handleInputLogic();
     }
 
@@ -160,8 +165,18 @@ public class PlayState extends State{
             if (down_pressed) {
                 player.setPosY(player.getPosY() - player.maneuverability/2);
                 cam.position.y -= (player.maneuverability/2);
+            } //pause press
+            if (space_pressed){
+                paused = !paused;
+                //avoid instant pause and unpause
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+        }else{
             cam.update();
+        }
             }
     }
     //TEAM19-END
@@ -195,7 +210,11 @@ public class PlayState extends State{
             if ((System.currentTimeMillis() - countDown)/1000> LEG_TIME && finishLinePosition == 0) {
                 isLegOver();
             }
+
             finishLeg();
+        }
+        if (paused) {
+            gsm.push(new PauseState(gsm));
         }
     }
 

@@ -12,7 +12,7 @@ import com.maingame.game.sprites.Boat;
  */
 public class DemoPlayState extends PlayState {
     
-    public DemoPlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg){
+    public DemoPlayState(GameStateManager gsm, List<Boat> boats, Boat player, int leg) {
         super(gsm, boats, player, leg);
     }
 

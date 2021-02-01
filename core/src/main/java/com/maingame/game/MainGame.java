@@ -8,7 +8,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.maingame.game.states.GameStateManager;
 import com.maingame.game.states.WelcomeState;
 
-public class MainGame extends ApplicationAdapter {
+public class MainGame extends ApplicationAdapter implements java.io.Serializable {
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 1366;
 	public static final int HEIGHT = 768;
 	public static final String TITLE = "Dragonite Dragon Boat Race";

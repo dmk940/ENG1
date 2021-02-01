@@ -19,6 +19,8 @@ public class WelcomeState extends State {
 	private final Texture demo; 
 	private final Rectangle demoBtnBounds;
 	private final Rectangle playBtnBounds;
+	private final Texture loadBtn;
+	private final Rectangle loadBtnBounds;
 	//TEAM19-END
 	
 
@@ -31,6 +33,8 @@ public class WelcomeState extends State {
 		playBtnBounds = new Rectangle(((float) MainGame.WIDTH / 3) - ((float) playBtn.getWidth() / 10), (float) MainGame.HEIGHT / 50, playBtn.getWidth(), playBtn.getHeight());
 		demo = new Texture("demo.png");
 		demoBtnBounds = new Rectangle((float) MainGame.HEIGHT/100, (float) MainGame.HEIGHT / 100, demo.getWidth(), demo.getHeight());
+		loadBtn = new Texture("load.png");
+		loadBtnBounds = new Rectangle(((float) MainGame.WIDTH / 3) - ((float) loadBtn.getWidth() / 10), (float) MainGame.HEIGHT / 50, loadBtn.getWidth(), loadBtn.getHeight());
 		//TEAM19-END
 	}	
 
@@ -50,6 +54,8 @@ public class WelcomeState extends State {
 				dispose();
 			} else if (demoBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
 				gsm.set(new DemoState(gsm));
+			} if (loadBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
+				gsm.set(new LoadState(gsm));
 			}
 		}
 		//TEAM19-END
@@ -75,6 +81,7 @@ public class WelcomeState extends State {
 		sb.draw(playBtn, ((float)MainGame.WIDTH / 3) - ((float) playBtn.getWidth() / 10), (float) MainGame.HEIGHT / 50);
 		sb.draw(title, ((float)MainGame.WIDTH / 5) - ((float)title.getWidth() / 10), (float)MainGame.HEIGHT / 50);
 		sb.draw(demo, (float) MainGame.HEIGHT/100, (float) MainGame.HEIGHT / 100);
+		sb.draw(loadBtn, ((float)MainGame.WIDTH / 3) - ((float) loadBtn.getWidth() / 10), (float) MainGame.HEIGHT / 50);
 		sb.end();
 		
 	}
@@ -88,6 +95,7 @@ public class WelcomeState extends State {
 		playBtn.dispose();
 		title.dispose();
 		demo.dispose();
+		loadBtn.dispose();
 	}
 }
 

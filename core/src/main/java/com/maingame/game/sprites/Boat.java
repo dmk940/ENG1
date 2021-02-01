@@ -8,7 +8,11 @@ import java.util.List;
 /**
  * A class to hold all the logic and attribute for boats
  */
-public class Boat {
+public class Boat implements java.io.Serializable{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     public final String colour;
     public final List<Texture> images;
     public final Rectangle collisionBounds; // a box used to identify collisions.

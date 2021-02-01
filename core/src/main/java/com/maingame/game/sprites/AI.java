@@ -7,7 +7,11 @@ import java.util.List;
 /**
  * A class to define the Artificial Intelligence for non-player boats.
  */
-public class AI {
+public class AI implements java.io.Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private final Boat boat;
     private final List<Obstacle> obstacleList;
     private final List<Boat> boats;
