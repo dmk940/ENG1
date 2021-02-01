@@ -2,6 +2,7 @@ package com.maingame.game;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.maingame.game.sprites.Boat;
@@ -70,6 +71,37 @@ public class TestScreensGameFlow extends TestMovement {
         
     }
 
+    @Test
+    public void testEndOfLegStatsReset() {
+        initFullGame();
+        winner.setPosY(100);
+        playstate.isLegOver();
+        int counter = 30;
+        for (Boat boat : boats) {
+            if (boat != player) {
+                boat.setPosY(1000);
+                boat.setTotalLegTime(counter);
+                boat.setHasLost(false);
+                counter = counter - 1;
+            }
+        }
+        winner.setTotalLegTime(1.0f);
+        player.setPosY(playstate.finishLinePosition+100000);
+        player.setTotalLegTime(20.0f); // player is second
+        player.setHasLost(false);
+        playstate.finishLeg();
+        ((LeaderboardState) gsm.peek()).moveToNewState(3);
+        assertTrue("in leg 4", gsm.peek() instanceof PlayState);
+        assertEquals(0, player.getTimePenalty());
+        assertEquals(100, player.getHealth());
+        assertEquals(600, player.getFatigue());
+        assertEquals(0, player.getPosY());
+        assertEquals(0f, player.getTotalLegTime(), 0.1);
+
+    }
+
+    //public void testDemo() {}
+    // This is also best manually tested.
 
 
 }
