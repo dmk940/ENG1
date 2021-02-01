@@ -7,12 +7,12 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.maingame.game.MainGame;
 import com.maingame.game.sprites.AI;
 import com.maingame.game.sprites.Boat;
 import com.maingame.game.sprites.Obstacle;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,16 +21,16 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Handles the logic of the main game and loading of assets.
  */
-public class PlayState extends State{
+public class PlayState extends State {
     private final Texture river; // the river asset
     private final Texture riverReversed; // the river asset reversed
     private final Texture finishLine;
-    protected final List<Boat> boats; // a list containing all the boats
+    protected List<Boat> boats; // a list containing all the boats
     protected final int leg; // the current leg number
     public int finishLinePosition; // an integer to keep track of the finishLine coord pos
-    private long time; // Used to track time elapsed from the start of a leg
-    protected final long countDown; // a countdown used to show when the game starts.
-    protected final Boat player;
+    long time; // Used to track time elapsed from the start of a leg
+    protected long countDown; // a countdown used to show when the game starts.
+    protected Boat player;
     private float riverPos1; // A tracker for the positions of the river assets
     private float riverPos2; // A tracker for the positions of the river assets
     private final BitmapFont font = new BitmapFont(Gdx.files.internal("font.fnt"),false); // a font to draw text
@@ -40,7 +40,7 @@ public class PlayState extends State{
     private final Pixmap fatigueMap2; // a map to render the fatigue bar background.
     private final Pixmap penaltyMap; // a map to render the penalty bar.
     private final Pixmap penaltyMap2; // a map to render the penalty bar background.
-    protected final List<Obstacle> obstacleList = new ArrayList<>(); // a list containing all the obstacles.
+    public List<Obstacle> obstacleList = new ArrayList<>(); // a list containing all the obstacles.
     public Rectangle finishLineBounds; // a box to detect when a boat reaches the finish line.
     private final Random generator = new Random();
     private static final String GREEN = "345830";
@@ -60,8 +60,11 @@ public class PlayState extends State{
     //TEAM19-START : moved to constant leg distance, changed from time to distance
     // as this is more fun
     private static final double LEG_LENGTH = 5000; //distance in meters
-    private int DIFFICULTY = 0;
-    private int distanceTravelled; //distance travelled by the boats
+    int DIFFICULTY = 0;
+    int distanceTravelled; //distance travelled by the boats
+
+    protected boolean paused;
+    public Boolean space_pressed = false;
     //TEAM19-END
 
     public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg, int difficulty){
@@ -104,9 +107,7 @@ public class PlayState extends State{
                 player.setPosX(river.getWidth()/2 + (river.getWidth()*2)-50);
                 boats.get(2).setPosX(river.getWidth()/2 + (river.getWidth()*3)-50);
                 boats.get(3).setPosX(river.getWidth()/2 + (river.getWidth()*4)-50);
-            }catch (Exception e){
-
-            }
+            }catch (Exception e){ }
         }else {
             boats.get(0).setPosX(river.getWidth()/2-50);
             player.setPosX(river.getWidth()/2 + (river.getWidth()*2)-50);
@@ -117,6 +118,11 @@ public class PlayState extends State{
 
         this.buildObstaclesList(leg);
         countDown = System.currentTimeMillis();
+    }
+
+    public PlayState(GameStateManager gsm, List<Boat> boats, Boat player, int leg, List<Obstacle> obstacleList, int difficulty) {
+        this(gsm, boats, player, leg, difficulty);
+        this.obstacleList = obstacleList;
     }
 
     //TEAM19-START : moved input logic to new function handleInputLogic() to allow for testing
@@ -133,6 +139,7 @@ public class PlayState extends State{
         left_pressed = (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT));
         right_pressed = (Gdx.input.isKeyPressed(Input.Keys.D)|| Gdx.input.isKeyPressed(Input.Keys.RIGHT));
         down_pressed = (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN));
+        space_pressed = Gdx.input.isKeyPressed(Input.Keys.SPACE);
         handleInputLogic();
     }
 
@@ -168,9 +175,19 @@ public class PlayState extends State{
             if (down_pressed) {
                 player.setPosY(player.getPosY() - player.maneuverability/2);
                 cam.position.y -= (player.maneuverability/2);
+            } //pause press
+            if (space_pressed){
+                paused = !paused;
+                //avoid instant pause and unpause
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            cam.update();
+            } else{
+                cam.update();
             }
+        }
     }
     //TEAM19-END
 
@@ -204,6 +221,9 @@ public class PlayState extends State{
                 isLegOver();
             }
             finishLeg();
+        }
+        if (paused) {
+            gsm.push(new PauseState(gsm, System.currentTimeMillis()));
         }
     }
 

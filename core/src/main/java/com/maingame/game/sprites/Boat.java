@@ -8,9 +8,10 @@ import java.util.List;
 /**
  * A class to hold all the logic and attribute for boats
  */
-public class Boat {
+public class Boat implements java.io.Serializable {
+    private static final long serialVersionUID = 1L;
     public final String colour;
-    public final List<Texture> images;
+    transient public List<Texture> images;
     public final Rectangle collisionBounds; // a box used to identify collisions.
     public  int speed;
     public final int maneuverability;
@@ -24,14 +25,14 @@ public class Boat {
     private int fatigue = 600;
     private int posX;
     private int posY;
-    private final HashMap<String, List<Texture>> boatImg = new HashMap<>(); //Contains the images for the boats in an array of strings. The strings are the file names of the images.
-    private final HashMap<String, Integer[]> boatMap = new HashMap<>(); //Contains the attributes for each boat in an array of integers. 0 for speed 1 for acceleration 2 robustness 3 maneuverability.
+    public transient HashMap<String, List<Texture>> boatImg = new HashMap<>(); //Contains the images for the boats in an array of strings. The strings are the file names of the images.
+    public transient HashMap<String, Integer[]> boatMap = new HashMap<>(); //Contains the attributes for each boat in an array of integers. 0 for speed 1 for acceleration 2 robustness 3 maneuverability.
     private float leftBound; // The left edges of a boat's lane.
     private float rightBound; // The right edges of a boat's lane.
     private final float maxFrameTime; // The maximum time allowed allowed for a frame.
     private float currentFrameTime; // The current time for a frame.
     private int frame; // a integer representing which boat texture would be loaded.
-    private boolean hasLost; // a boolean indicating if a boat has lost.
+    public boolean hasLost; // a boolean indicating if a boat has lost.
 
     //TEAM19-START : created named constants for these variables
     private static final int PEN_START = 100; // penalty bar start val
@@ -60,7 +61,7 @@ public class Boat {
     /**
      * Builds the hashmaps for the boat data.
      */
-    private void buildBoatData() {
+    public void buildBoatData() {
         Texture a = new Texture("Boat1.1.png");
         Texture b = new Texture("Boat1.2.png");
         List<Texture> arr = new ArrayList<>();

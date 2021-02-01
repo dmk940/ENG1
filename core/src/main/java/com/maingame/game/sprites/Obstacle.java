@@ -7,9 +7,10 @@ import com.badlogic.gdx.math.Rectangle;
 /**
  * A class to hold all the logic and attribute for obstacles
  */
-public class Obstacle {
+public class Obstacle implements java.io.Serializable {
+    private static final long serialVersionUID = 1L;
     public final String name;
-    public final Texture img;
+    transient public Texture img;
     public final int impactDamage;
     private int posX;
     private int posY;
