@@ -16,6 +16,7 @@ public class WelcomeState extends State {
 	private final Texture playBtn;
 	private final Texture title;
 	//TEAM19-START, changed to demo button, add playBtnBounds so clicking play plays game
+	//add load button to load saved game
 	private final Texture demo; 
 	private final Rectangle demoBtnBounds;
 	private final Rectangle playBtnBounds;

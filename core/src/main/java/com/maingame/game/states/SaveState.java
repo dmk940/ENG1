@@ -7,7 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.maingame.game.MainGame;
-
+//TEAM19-START: 
+/** This is the screen displayed to the user when they are saving the game. */
 public class SaveState extends State {
 
     private final SaveInfo svInfo;
@@ -28,9 +29,9 @@ public class SaveState extends State {
         file1Btn = new Texture("file1.png");
         file2Btn = new Texture("file2.png");
         file3Btn = new Texture("file3.png");
-		file1BtnBounds = new Rectangle(((float) MainGame.WIDTH / 1) - ((float) file1Btn.getWidth() / 10), (float) MainGame.HEIGHT / 10, file1Btn.getWidth(), file1Btn.getHeight());
-		file2BtnBounds = new Rectangle(((float) MainGame.WIDTH / 2) - ((float) file2Btn.getWidth() / 10), (float) MainGame.HEIGHT / 20, file2Btn.getWidth(), file2Btn.getHeight());
-		file3BtnBounds = new Rectangle(((float) MainGame.WIDTH / 3) - ((float) file3Btn.getWidth() / 10), (float) MainGame.HEIGHT / 30, file3Btn.getWidth(), file3Btn.getHeight());
+	    file1BtnBounds = new Rectangle(130, 530, ((float)MainGame.WIDTH) - ((float) file1Btn.getWidth()), (float) MainGame.HEIGHT/6);
+		file2BtnBounds = new Rectangle(130, 330, ((float)MainGame.WIDTH) - ((float) file2Btn.getWidth()), (float) MainGame.HEIGHT/6);
+		file3BtnBounds = new Rectangle(130, 130, ((float)MainGame.WIDTH) - ((float) file3Btn.getWidth()), (float) MainGame.HEIGHT/6);
         backBtn = new Texture("backButton.png");
 		backBtnBounds = new Rectangle(0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight());
 		
@@ -42,7 +43,7 @@ public class SaveState extends State {
         svInfo = new SaveInfo(playstate.boats, playstate.player, playstate.leg, playstate.obstacleList, 
                               pauseStateTime, playstate.finishLineBounds, 
                               playstate.finishLinePosition, playstate.DIFFICULTY, playstate.distanceTravelled);
-    }	
+    }//serialises the svInfo in order to save the game	
     private void saveGame(String filename, SaveInfo svInfo) {
         try {
             FileOutputStream fos = new FileOutputStream(filename);
@@ -54,7 +55,7 @@ public class SaveState extends State {
         } catch (Exception e) {
             System.out.println("Serialization Error! Can't save data." + e);
         }
-    }
+    }//create an area where it recognise the input click for the button file1, file2, file3 and back
     @Override
 	public void handleInput() {
 		if (Gdx.input.justTouched()) {
@@ -74,16 +75,15 @@ public class SaveState extends State {
     public void update(float dt) {
         handleInput();
     }
-
+    //render the button file1, file2, file3, back and background
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
 		sb.draw(background, 0, 0, MainGame.WIDTH , MainGame.HEIGHT);
-        sb.draw(file1Btn, ((float)MainGame.WIDTH / 1) - ((float) file1Btn.getWidth() / 10), (float) MainGame.HEIGHT / 10);
-        sb.draw(file2Btn, ((float)MainGame.WIDTH / 2) - ((float) file2Btn.getWidth() / 10), (float) MainGame.HEIGHT / 20);
-        sb.draw(file3Btn, ((float)MainGame.WIDTH / 3) - ((float) file3Btn.getWidth() / 10), (float) MainGame.HEIGHT / 30);
+        sb.draw(file1Btn, 2, 400, ((float)MainGame.WIDTH ) - ((float) file1Btn.getWidth() / 10), (float) MainGame.HEIGHT/2);
+        sb.draw(file2Btn, 2, 200,((float)MainGame.WIDTH) - ((float) file2Btn.getWidth() / 10), (float) MainGame.HEIGHT/2);
+        sb.draw(file3Btn, 2, 0,((float)MainGame.WIDTH) - ((float) file3Btn.getWidth() / 10), (float) MainGame.HEIGHT/2);
         sb.draw(backBtn, 0, MainGame.HEIGHT - backBtn.getHeight(), (float) backBtn.getWidth(),  (float) backBtn.getHeight()); //TEAM-19
-
         sb.end();
         
 
@@ -99,7 +99,7 @@ public class SaveState extends State {
     }
 
     
-}
+}//TEAM19-END
 
 
 

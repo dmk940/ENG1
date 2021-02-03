@@ -63,7 +63,7 @@ public class PlayState extends State {
     int DIFFICULTY = 0;
     int distanceTravelled; //distance travelled by the boats
     public long lastPressed;
-
+    // declaring pause
     protected boolean paused;
     public Boolean space_pressed = false;
     protected long startTime = 0;
@@ -184,8 +184,7 @@ public class PlayState extends State {
             if (space_pressed && (System.currentTimeMillis() - lastPressed) > 200){
                 paused = !paused;
                 lastPressed = System.currentTimeMillis();
-                //avoid instant pause and unpause
-            } else{
+            } else {
                 cam.update();
             }
         }
