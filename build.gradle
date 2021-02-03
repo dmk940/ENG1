@@ -28,6 +28,8 @@ allprojects {
         aiVersion = '1.8.2'
         junitVersion = "4.12"
         mockitoVersion = "2.23.4"
+        toolVersion = "0.8.5" //jacoco version
+        reportsDir = file("$buildDir/reports/jacoco") //default directory where jacoco generates test reports
     }
 
     repositories {
@@ -55,7 +57,7 @@ project(":desktop") {
 
 project(":core") {
     apply plugin: "java-library"
-
+    apply plugin: "jacoco"
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
@@ -73,6 +75,7 @@ project(":core") {
 
     test {
         dependsOn cleanTest
+        finalizedBy jacocoTestReport
 
         testLogging {
             exceptionFormat "full"
