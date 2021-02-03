@@ -22,7 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Handles the logic of the main game and loading of assets.
  */
 public class PlayState extends State {
-    private final Texture river; // the river asset
+    protected final Texture river; // the river asset
     private final Texture riverReversed; // the river asset reversed
     private final Texture finishLine;
     protected List<Boat> boats; // a list containing all the boats
@@ -31,8 +31,8 @@ public class PlayState extends State {
     long time; // Used to track time elapsed from the start of a leg
     protected long countDown; // a countdown used to show when the game starts.
     protected Boat player;
-    private float riverPos1; // A tracker for the positions of the river assets
-    private float riverPos2; // A tracker for the positions of the river assets
+    protected float riverPos1; // A tracker for the positions of the river assets
+    protected float riverPos2; // A tracker for the positions of the river assets
     private final BitmapFont font = new BitmapFont(Gdx.files.internal("font.fnt"),false); // a font to draw text
     private final Pixmap healthMap; // a map to render the health bar background.
     private final Pixmap healthMap2; // a map to render the health bar background.
@@ -62,10 +62,13 @@ public class PlayState extends State {
     private static final double LEG_LENGTH = 5000; //distance in meters
     int DIFFICULTY = 0;
     int distanceTravelled; //distance travelled by the boats
+    public long lastPressed;
 
     protected boolean paused;
     public Boolean space_pressed = false;
+    protected long startTime = 0;
     //TEAM19-END
+    
 
     public PlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg, int difficulty){
         super(gsm);
@@ -118,12 +121,17 @@ public class PlayState extends State {
 
         this.buildObstaclesList(leg);
         countDown = System.currentTimeMillis();
+        time = 0;
     }
 
+    //TEAM19-START -- added new constructor for LoadState to use to set the obstacle list, boats, and players
     public PlayState(GameStateManager gsm, List<Boat> boats, Boat player, int leg, List<Obstacle> obstacleList, int difficulty) {
         this(gsm, boats, player, leg, difficulty);
         this.obstacleList = obstacleList;
+        this.boats = boats;
+        this.player = player;
     }
+    //TEAM19-END
 
     //TEAM19-START : moved input logic to new function handleInputLogic() to allow for testing
     // as GDX inputs cannot easily be simulated.
@@ -146,9 +154,6 @@ public class PlayState extends State {
     public void handleInputLogic() {
         player.setPosY(player.getPosY() + player.speed);
         cam.position.y += player.speed;
-        if (time == 0){
-            time = System.currentTimeMillis();
-        }
         //TEAM19-START - updated so that no movement is possible when the player touches the
         // finish line
         if (player.getTotalLegTime() == 0) {
@@ -176,14 +181,10 @@ public class PlayState extends State {
                 player.setPosY(player.getPosY() - player.maneuverability/2);
                 cam.position.y -= (player.maneuverability/2);
             } //pause press
-            if (space_pressed){
+            if (space_pressed && (System.currentTimeMillis() - lastPressed) > 200){
                 paused = !paused;
+                lastPressed = System.currentTimeMillis();
                 //avoid instant pause and unpause
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             } else{
                 cam.update();
             }
@@ -198,32 +199,34 @@ public class PlayState extends State {
      */
     @Override
     public void update(float dt) {
-        if ((System.currentTimeMillis() - countDown)/1000f > 3) {
-            handleInput();
-            updateCollisionBoundaries();
-            updateRiver();
-            collisionDetection();
-            boatsOutOfBounds();
-            updateMapColour();
-            repositionObstacles();
-            updateBoatPenalties();
-            for (int i = 0; i < boats.size(); i++) {
-                boats.get(i).update(dt);
-                AI ai = new AI(boats.get(i), leg,obstacleList, boats, player, DIFFICULTY);
-                ai.update();
-                List<Boat> newBoatList = new ArrayList<>(boats);
-                boats.get(i).hasCollided(newBoatList,player);
+        if (!(paused)) {
+            if ((System.currentTimeMillis() - countDown)/1000f > 3) {
+                if (time == 0) {time = System.currentTimeMillis();}
+                handleInput();
+                updateCollisionBoundaries();
+                updateRiver();
+                collisionDetection();
+                boatsOutOfBounds();
+                updateMapColour();
+                repositionObstacles();
+                updateBoatPenalties();
+                for (int i = 0; i < boats.size(); i++) {
+                    boats.get(i).update(dt);
+                    AI ai = new AI(boats.get(i), leg,obstacleList, boats, player, DIFFICULTY);
+                    ai.update();
+                    List<Boat> newBoatList = new ArrayList<>(boats);
+                    boats.get(i).hasCollided(newBoatList,player);
+                }
+                player.update(dt);
+                player.hasCollided(boats,player);
+                checkBoatHealth();
+                if ((distanceTravelled > LEG_LENGTH && finishLinePosition == 0)) {
+                    isLegOver();
+                }
+                finishLeg();
             }
-            player.update(dt);
-            player.hasCollided(boats,player);
-            checkBoatHealth();
-            if ((distanceTravelled > LEG_LENGTH && finishLinePosition == 0)) {
-                isLegOver();
-            }
-            finishLeg();
-        }
-        if (paused) {
-            gsm.push(new PauseState(gsm, System.currentTimeMillis()));
+        } else {
+            gsm.push(new PauseState(gsm, System.currentTimeMillis()-time, this));
         }
     }
 
@@ -283,10 +286,12 @@ public class PlayState extends State {
         sb.draw(pix2, cam.position.x/2 - pix2.getWidth(), cam.position.y + 212);
         int penaltyBar = (player.getPenaltyBar() * 200)/100;
         sb.draw(pix, cam.position.x/2 - pix.getWidth() - 5,cam.position.y + 217, penaltyBar, 30);
-        if (time != 0){
+
+        if ((System.currentTimeMillis() - countDown)/1000f < 3) {
+            font.draw(sb,"Time: " + String.format("%.02f", startTime/1000f) + "s", cam.position.x/2 - pix.getWidth() - 200,cam.position.y + 210);
+        } else {
             font.draw(sb,"Time: " + String.format("%.02f", (System.currentTimeMillis() - time)/1000f + player.getTimePenalty()) + "s" ,cam.position.x/2 - pix.getWidth() - 200,cam.position.y + 210);
         }
-
         // renders a countdown at the start of each leg.
         if ((System.currentTimeMillis() - countDown)/1000f < 3) {
             font.draw(sb,"Countdown: " + (3 - (System.currentTimeMillis() - countDown)/1000),cam.position.x - 170,cam.position.y+50);

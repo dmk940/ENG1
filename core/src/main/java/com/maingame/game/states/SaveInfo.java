@@ -1,6 +1,5 @@
 package com.maingame.game.states;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Rectangle;
 import com.maingame.game.sprites.Boat;
 import com.maingame.game.sprites.Obstacle;

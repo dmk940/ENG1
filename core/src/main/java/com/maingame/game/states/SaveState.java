@@ -40,7 +40,7 @@ public class SaveState extends State {
 
         // Create svInfo
         svInfo = new SaveInfo(playstate.boats, playstate.player, playstate.leg, playstate.obstacleList, 
-                              pauseStateTime - playstate.time, playstate.finishLineBounds, 
+                              pauseStateTime, playstate.finishLineBounds, 
                               playstate.finishLinePosition, playstate.DIFFICULTY, playstate.distanceTravelled);
     }	
     private void saveGame(String filename, SaveInfo svInfo) {

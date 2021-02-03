@@ -17,17 +17,28 @@ public class PauseState extends State {
     private final Texture exitBtn;
     private final Rectangle exitBtnBounds;
     MainGame game; 
-    protected boolean paused;
+    protected boolean paused = true;
     public Boolean space_pressed = false;
+    protected long lastPressed;
+    protected PlayState playstate;
+    private final Texture backBtn;
+	private final Rectangle backBtnBounds;
 
     protected long pauseStateTime;
 
-    public PauseState(GameStateManager gsm, long pauseStateTime_) {
+    public PauseState(GameStateManager gsm, long pauseStateTime_, PlayState playstate_) {
         super(gsm);
         pauseStateTime = pauseStateTime_;
         pauseScreen = new Texture("pause.png");
         saveBtn = new Texture("save.png");
         exitBtn = new Texture("exit.png");
+
+        lastPressed = System.currentTimeMillis();
+
+        playstate = playstate_;
+
+        backBtn = new Texture("backButton.png");
+		backBtnBounds = new Rectangle(0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight());
 
         saveBtnBounds = new Rectangle(((float) MainGame.WIDTH / 3) - ((float) saveBtn.getWidth() / 20),
                 (float) MainGame.HEIGHT / 3, saveBtn.getWidth(), saveBtn.getHeight());
@@ -40,24 +51,28 @@ public class PauseState extends State {
             if (exitBtnBounds.contains(Gdx.input.getX(), (float) MainGame.HEIGHT - Gdx.input.getY())) {
                 gsm.set(new WelcomeState(gsm));
                 dispose();
-            }
-            if (saveBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
+            } else if (saveBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
                 gsm.set(new SaveState(gsm, pauseStateTime));
+            } else if (backBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
+                gsm.pop(); // Back to playstate
+                PlayState ps = (PlayState)gsm.peek();
+                ps.paused = false;
+                ps.time = System.currentTimeMillis() - pauseStateTime;
             }
         }
-    }
+    }   
 
     public void update(float dt) {
         space_pressed = Gdx.input.isKeyPressed(Input.Keys.SPACE);
-        if (space_pressed){
+        if (space_pressed && (System.currentTimeMillis() - lastPressed) > 500){
             paused = !paused;
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            lastPressed = System.currentTimeMillis();
+            playstate.lastPressed = lastPressed;
+
         }
-        if (paused) {
+        if (!(paused)) {
+            playstate.time = System.currentTimeMillis() - pauseStateTime;
+            playstate.paused = false;
             gsm.pop();
         }
         handleInput();
@@ -72,6 +87,7 @@ public class PauseState extends State {
                 (float) MainGame.HEIGHT / 3);
         sb.draw(exitBtn, (float) (((float) MainGame.WIDTH / 1.8) - ((float) exitBtn.getWidth() / 50)),
                 (float) ((float) MainGame.HEIGHT / 3));
+        sb.draw(backBtn, 0, MainGame.HEIGHT - backBtn.getHeight(), (float) backBtn.getWidth(),  (float) backBtn.getHeight()); //TEAM-19
         sb.end();
     }
 

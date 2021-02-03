@@ -11,6 +11,7 @@ import com.maingame.game.MainGame;
 import com.maingame.game.sprites.Boat;
 import com.maingame.game.sprites.Obstacle;
 
+/** Loads a game from a .sav save file. */
 public class LoadState extends State {
 
     protected SaveInfo svInfo;
@@ -18,28 +19,32 @@ public class LoadState extends State {
     private final Texture file1Btn;
     private final Texture file2Btn;
     private final Texture file3Btn;
-	private final Rectangle file1BtnBounds;
+    private final Rectangle file1BtnBounds;
     private final Rectangle file2BtnBounds;
     private final Rectangle file3BtnBounds;
 
     private final Texture backBtn;
-	private final Rectangle backBtnBounds;
+    private final Rectangle backBtnBounds;
 
     public LoadState(GameStateManager gsm_) {
-		super(gsm_);
-		background = new Texture("background.png");
+        super(gsm_);
+        background = new Texture("background.png");
         file1Btn = new Texture("file1.png");
         file2Btn = new Texture("file2.png");
         file3Btn = new Texture("file3.png");
-		file1BtnBounds = new Rectangle(((float) MainGame.WIDTH / 1) - ((float) file1Btn.getWidth() / 10), (float) MainGame.HEIGHT / 10, file1Btn.getWidth(), file1Btn.getHeight());
-		file2BtnBounds = new Rectangle(((float) MainGame.WIDTH / 2) - ((float) file2Btn.getWidth() / 10), (float) MainGame.HEIGHT / 20, file2Btn.getWidth(), file2Btn.getHeight());
-		file3BtnBounds = new Rectangle(((float) MainGame.WIDTH / 3) - ((float) file3Btn.getWidth() / 10), (float) MainGame.HEIGHT / 30, file3Btn.getWidth(), file3Btn.getHeight());
+        file1BtnBounds = new Rectangle(((float) MainGame.WIDTH / 1) - ((float) file1Btn.getWidth() / 10),
+                (float) MainGame.HEIGHT / 10, file1Btn.getWidth(), file1Btn.getHeight());
+        file2BtnBounds = new Rectangle(((float) MainGame.WIDTH / 2) - ((float) file2Btn.getWidth() / 10),
+                (float) MainGame.HEIGHT / 20, file2Btn.getWidth(), file2Btn.getHeight());
+        file3BtnBounds = new Rectangle(((float) MainGame.WIDTH / 3) - ((float) file3Btn.getWidth() / 10),
+                (float) MainGame.HEIGHT / 30, file3Btn.getWidth(), file3Btn.getHeight());
         gsm = gsm_;
 
         backBtn = new Texture("backButton.png");
-		backBtnBounds = new Rectangle(0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight());
-		
-    }	
+        backBtnBounds = new Rectangle(0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight());
+
+    }
+
     private void loadGame(String filename) {
         try {
             FileInputStream fis = new FileInputStream(filename);
@@ -55,7 +60,9 @@ public class LoadState extends State {
     private void rebuildGame(String filename) {
         loadGame(filename);
 
-        for (Obstacle obst : svInfo.obstacleList)  {
+        // Since textures are unserialisable, we must set them again for both the obstacles
+        // and boats (otherwise NPE)
+        for (Obstacle obst : svInfo.obstacleList) {
             obst.img = new Texture(obst.name + ".png");
         }
 
@@ -66,25 +73,31 @@ public class LoadState extends State {
             boat.images = boat.boatImg.get(boat.colour);
         }
 
-        PlayState playstate = new PlayState(gsm, svInfo.boats, svInfo.player, svInfo.leg, svInfo.obstacleList, svInfo.difficulty);
-        // to get a new playstate resets all of the boat etc. information so we must override it
-        playstate.cam.position.y = svInfo.player.getPosY() + 384;
-        cam.update();
-        playstate.boats = svInfo.boats;
-        
-        playstate.countDown = System.currentTimeMillis();
         svInfo.player.boatImg = new java.util.HashMap<>();
         svInfo.player.boatMap = new java.util.HashMap<>();
         svInfo.player.buildBoatData();
         svInfo.player.images = svInfo.player.boatImg.get(svInfo.player.colour);
-        playstate.player = svInfo.player;
+
+        PlayState playstate = new PlayState(gsm, svInfo.boats, svInfo.player, svInfo.leg, svInfo.obstacleList,
+                svInfo.difficulty);
         
-        playstate.time = System.currentTimeMillis() - svInfo.time;
+        // Update the cam position and all other important variables
+        playstate.cam.position.y = playstate.player.getPosY() + 384;
+        playstate.cam.update();
+
+        playstate.paused = true;
         playstate.finishLineBounds = svInfo.finishLineBounds;
         playstate.finishLinePosition = svInfo.finishLinePosition;
-        playstate.DIFFICULTY = svInfo.difficulty;
         playstate.distanceTravelled = svInfo.distanceTravelled;
+        playstate.countDown = System.currentTimeMillis();
+        playstate.time = System.currentTimeMillis() - svInfo.time + 3000; // 3000 to compensate for countdown timer
+        playstate.startTime = svInfo.time;
+        playstate.paused = false;
+        // ensure river position assets are in correct place so naive PlayState.updateRiver() can handle 
+        playstate.riverPos1 = playstate.player.getPosY() - (playstate.player.getPosY() % playstate.river.getHeight());
+        playstate.riverPos2 = playstate.riverPos1 + playstate.river.getHeight();
         gsm.set(playstate);
+        
     }
     
     @Override
