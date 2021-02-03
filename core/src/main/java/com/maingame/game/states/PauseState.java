@@ -80,7 +80,7 @@ public class PauseState extends State {
         handleInput();
     }
     
-    /**Render the pause screen and the save&exit button*/
+    /**Render the pause screen and the save and exit button*/
     public void render(SpriteBatch sb) {
         sb.begin();
         cam.setToOrtho(false, MainGame.WIDTH, MainGame.HEIGHT);
