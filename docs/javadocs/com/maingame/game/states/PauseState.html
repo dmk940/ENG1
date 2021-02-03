@@ -134,12 +134,20 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PauseState.html#lastPressed">lastPressed</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>protected boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PauseState.html#paused">paused</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>protected long</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PauseState.html#pauseStateTime">pauseStateTime</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PauseState.html#playstate">playstate</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
@@ -167,8 +175,9 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PauseState.html#PauseState-com.maingame.game.states.GameStateManager-long-">PauseState</a></span>(<a href="../../../../com/maingame/game/states/GameStateManager.html" title="class in com.maingame.game.states">GameStateManager</a>&nbsp;gsm,
-          long&nbsp;pauseStateTime_)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/PauseState.html#PauseState-com.maingame.game.states.GameStateManager-long-com.maingame.game.states.PlayState-">PauseState</a></span>(<a href="../../../../com/maingame/game/states/GameStateManager.html" title="class in com.maingame.game.states">GameStateManager</a>&nbsp;gsm,
+          long&nbsp;pauseStateTime_,
+          <a href="../../../../com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a>&nbsp;playstate_)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -249,6 +258,24 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <pre>public&nbsp;java.lang.Boolean space_pressed</pre>
 </li>
 </ul>
+<a name="lastPressed">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>lastPressed</h4>
+<pre>protected&nbsp;long lastPressed</pre>
+</li>
+</ul>
+<a name="playstate">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>playstate</h4>
+<pre>protected&nbsp;<a href="../../../../com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a> playstate</pre>
+</li>
+</ul>
 <a name="pauseStateTime">
 <!--   -->
 </a>
@@ -266,14 +293,15 @@ extends <a href="../../../../com/maingame/game/states/State.html" title="class i
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="PauseState-com.maingame.game.states.GameStateManager-long-">
+<a name="PauseState-com.maingame.game.states.GameStateManager-long-com.maingame.game.states.PlayState-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>PauseState</h4>
 <pre>public&nbsp;PauseState(<a href="../../../../com/maingame/game/states/GameStateManager.html" title="class in com.maingame.game.states">GameStateManager</a>&nbsp;gsm,
-                  long&nbsp;pauseStateTime_)</pre>
+                  long&nbsp;pauseStateTime_,
+                  <a href="../../../../com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a>&nbsp;playstate_)</pre>
 </li>
 </ul>
 </li>
