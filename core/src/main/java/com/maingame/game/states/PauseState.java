@@ -45,7 +45,8 @@ public class PauseState extends State {
         exitBtnBounds = new Rectangle((float) (((float) MainGame.WIDTH / 1.8) - ((float) exitBtn.getWidth() / 50)),
                 (float) MainGame.HEIGHT / 3, exitBtn.getWidth(), exitBtn.getHeight());
     }
-    //create an area where it recognise the input click for the button save and exit
+    
+    /**Create an area where it recognise the input click for the button save and exit*/
     public void handleInput() {
         if (Gdx.input.justTouched()) {
             if (exitBtnBounds.contains(Gdx.input.getX(), (float) MainGame.HEIGHT - Gdx.input.getY())) {
@@ -61,7 +62,8 @@ public class PauseState extends State {
             }
         }
     }   
-    // allow the player to resume the game by pressing space again
+    
+    /**Allow the player to resume the game by pressing space again*/
     public void update(float dt) {
         space_pressed = Gdx.input.isKeyPressed(Input.Keys.SPACE);
         if (space_pressed && (System.currentTimeMillis() - lastPressed) > 500){
@@ -77,7 +79,8 @@ public class PauseState extends State {
         }
         handleInput();
     }
-    //render the pause screen and the save&exit button 
+    
+    /**Render the pause screen and the save&exit button*/
     public void render(SpriteBatch sb) {
         sb.begin();
         cam.setToOrtho(false, MainGame.WIDTH, MainGame.HEIGHT);
@@ -96,5 +99,6 @@ public class PauseState extends State {
         saveBtn.dispose();
         exitBtn.dispose();
     }
-}//TEAM19-END
+}
+//TEAM19-END
 

@@ -1,5 +1,7 @@
 package com.maingame.game.states;
 
+import java.io.File;
+//TEAM19-START
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
@@ -16,23 +18,45 @@ public class LoadState extends State {
 
     protected SaveInfo svInfo;
     private final Texture background;
-    private final Texture file1Btn;
-    private final Texture file2Btn;
-    private final Texture file3Btn;
+    private Texture file1Btn;
+    private Texture file2Btn;
+    private Texture file3Btn;
+
     private final Rectangle file1BtnBounds;
     private final Rectangle file2BtnBounds;
     private final Rectangle file3BtnBounds;
 
     private final Texture backBtn;
     private final Rectangle backBtnBounds;
-//TEAM19-START
-/** This is the screen displayed to the user when they are loading the game. */
+    private boolean rebuild = false;
+
+    /** This is the screen displayed to the user when they are loading the game. */
     public LoadState(GameStateManager gsm_) {
         super(gsm_);
+
+        File f1 = new File("Save1.sav");
+        if (f1.exists()) {
+            file1Btn = new Texture("file1Green.png");
+        } else {
+            file1Btn = new Texture("file1Red.png");
+        }
+
+        File f2 = new File("Save2.sav");
+        if (f2.exists()) {
+            file2Btn = new Texture("file2Green.png");
+        } else {
+            file2Btn = new Texture("file2Red.png");
+        }
+
+        File f3 = new File("Save3.sav");
+        if (f3.exists()) {
+            file3Btn = new Texture("file3Green.png");
+        } else {
+            file3Btn = new Texture("file3Red.png");
+        }
+
         background = new Texture("background.png");
-        file1Btn = new Texture("file1.png");
-        file2Btn = new Texture("file2.png");
-        file3Btn = new Texture("file3.png");
+        
         file1BtnBounds = new Rectangle(130, 530, ((float)MainGame.WIDTH) - ((float) file1Btn.getWidth()), (float) MainGame.HEIGHT/6);
 		file2BtnBounds = new Rectangle(130, 330, ((float)MainGame.WIDTH) - ((float) file2Btn.getWidth()), (float) MainGame.HEIGHT/6);
 		file3BtnBounds = new Rectangle(130, 130, ((float)MainGame.WIDTH) - ((float) file3Btn.getWidth()), (float) MainGame.HEIGHT/6);
@@ -42,22 +66,26 @@ public class LoadState extends State {
         backBtnBounds = new Rectangle(0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight());
 
     }
-    //deserialised the filename in order to load the saved game
-    private void loadGame(String filename) {
+    /**Deserialise the file, to load the saved game*/
+    private boolean loadGame(String filename) {
         try {
             FileInputStream fis = new FileInputStream(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
             svInfo = (SaveInfo) ois.readObject();
             ois.close();
-            System.out.print("\n-Game loaded-\n");
+            return true;
         } catch (Exception e) {
-            System.out.print("Serialization Error! Can't load data\n" + e);
+            return false;
+
         }
     }
-    //generate components that couldn't be serialised 
+    /**Generate components that couldn't be serialised*/
     private void rebuildGame(String filename) {
-        loadGame(filename);
-
+        boolean exists = loadGame(filename);
+        if (!(exists)) {
+            return;
+        }
+    
         // Since textures are unserialisable, we must set them again for both the obstacles
         // and boats (otherwise NPE)
         for (Obstacle obst : svInfo.obstacleList) {
@@ -97,9 +125,9 @@ public class LoadState extends State {
         gsm.set(playstate);
         
     }
-    //create an area where it recognise the input click for the button file1, file2, file3 and back
+    /**Create an area where it recognises the input click for the button file1, file2, file3 and back*/
     @Override
-	public void handleInput() {
+    public void handleInput() {
 		if (Gdx.input.justTouched()) {
 			if (file1BtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
                 rebuildGame("Save1.sav");   
@@ -109,15 +137,15 @@ public class LoadState extends State {
                 rebuildGame("Save3.sav");
             } else if (backBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
 				gsm.set(new WelcomeState(gsm));
-			}
-		}
-	}
+            }
+        }
+    }
 
     @Override
     public void update(float dt) {
         handleInput();
     }
-    //render the button file1, file2, file3, back and background
+    /**Render the button file1, file2, file3, back and background*/
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
@@ -138,7 +166,6 @@ public class LoadState extends State {
         file2Btn.dispose();
         file3Btn.dispose();
         backBtn.dispose();
-    }
-
-    
-}//TEAM19-END
+    } 
+}
+//TEAM19-END

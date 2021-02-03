@@ -13,9 +13,9 @@ public class SaveState extends State {
 
     private final SaveInfo svInfo;
     private final Texture background;
-    private final Texture file1Btn;
-    private final Texture file2Btn;
-    private final Texture file3Btn;
+    private Texture file1Btn;
+    private Texture file2Btn;
+    private Texture file3Btn;
 	private final Rectangle file1BtnBounds;
     private final Rectangle file2BtnBounds;
     private final Rectangle file3BtnBounds;
@@ -35,7 +35,6 @@ public class SaveState extends State {
         backBtn = new Texture("backButton.png");
 		backBtnBounds = new Rectangle(0, (float) MainGame.HEIGHT - backBtn.getHeight(), backBtn.getWidth(), backBtn.getHeight());
 		
-        
         gsm.pop();
         PlayState playstate = (PlayState) gsm.peek();
 
@@ -43,7 +42,9 @@ public class SaveState extends State {
         svInfo = new SaveInfo(playstate.boats, playstate.player, playstate.leg, playstate.obstacleList, 
                               pauseStateTime, playstate.finishLineBounds, 
                               playstate.finishLinePosition, playstate.DIFFICULTY, playstate.distanceTravelled);
-    }//serialises the svInfo in order to save the game	
+    }
+    
+    /**Serialises the svInfo in order to save the game*/
     private void saveGame(String filename, SaveInfo svInfo) {
         try {
             FileOutputStream fos = new FileOutputStream(filename);
@@ -55,27 +56,33 @@ public class SaveState extends State {
         } catch (Exception e) {
             System.out.println("Serialization Error! Can't save data." + e);
         }
-    }//create an area where it recognise the input click for the button file1, file2, file3 and back
+    }
+    
+    /**Create an area where it recognise the input click for the button file1, file2, file3 and back*/
     @Override
 	public void handleInput() {
 		if (Gdx.input.justTouched()) {
 			if (file1BtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
                 saveGame("Save1.sav", svInfo);
+                file1Btn = new Texture("file1Green.png");
             } else if (file2BtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
                 saveGame("Save2.sav", svInfo);
+                file2Btn = new Texture("file2Green.png");
             } else if (file3BtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
                 saveGame("Save3.sav", svInfo);
+                file3Btn = new Texture("file3Green.png");
             } else if (backBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())) {
 				gsm.set(new WelcomeState(gsm));
 			}
 		}
-	}
+    }
 
     @Override
     public void update(float dt) {
         handleInput();
     }
-    //render the button file1, file2, file3, back and background
+
+    /**Render the button file1, file2, file3, back and background*/
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
@@ -96,10 +103,9 @@ public class SaveState extends State {
         file2Btn.dispose();
         file3Btn.dispose();
         backBtn.dispose();
-    }
-
-    
-}//TEAM19-END
+    }  
+}
+//TEAM19-END
 
 
 

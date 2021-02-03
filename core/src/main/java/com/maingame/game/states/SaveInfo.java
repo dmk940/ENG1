@@ -16,7 +16,7 @@ public class SaveInfo implements java.io.Serializable {
     protected Boat player;
     long time;
     protected int difficulty;
-    protected List<Obstacle> obstacleList = new ArrayList<>(); // a list containing all the obstacles
+    protected List<Obstacle> obstacleList = new ArrayList<>();
     protected int leg;
     protected Rectangle finishLineBounds;
     protected int finishLinePosition;
