@@ -104,6 +104,7 @@ public class TestPowerUps extends UnitTestInit {
         player.setPosX(START_X);
         player.setPosY(START_Y);
         player.updateCollisionBounds();;
+        player.setFatigue(0);
 
         obstacle = new Obstacle(obstacleName);
         obstacle.setPosX(START_X);
