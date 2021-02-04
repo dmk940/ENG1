@@ -385,26 +385,12 @@ public class PlayState extends State {
         //TEAM19-START: Added powerups to obstacle list and set total number of powerups
         String[] possibleObstacles = {"rock1","rock2","goose","duck1","duck2","healthUp","fatigueUp","fatigueUp2","healthUp2","speedUp"};
         int totalPowerUp = 7;
+
+        int obstacleTotal = setObstacleCount(leg, DIFFICULTY);
         //TEAM19-END
-        int obstacleCount;
-        if (leg == 1) {
-            obstacleCount = 20;
-        }else if (leg == 2) {
-            obstacleCount = 30;
-        }else {
-            obstacleCount = 40;
-        }
-        //TEAM19-START: Power-up spawning added, keeping total number at 5. Added more obstacles at greate difficulties
-        if (DIFFICULTY == 1) {
-            obstacleCount += 10;
-        } else if (DIFFICULTY == 2) {
-            obstacleCount += 20;
-        } else if (DIFFICULTY == 3) {
-            obstacleCount += 30;
-        }
-        
+
         int powerUpCount = 0;
-        for (int i = 0; i < obstacleCount; i++) {
+        for (int i = 0; obstacleList.size() < obstacleTotal; i++) {
             Obstacle obstacle = new Obstacle(possibleObstacles[generator.nextInt(possibleObstacles.length)]);
             if (obstacle.name == "healthUp" || obstacle.name == "fatigueUp" || obstacle.name == "healthUp2" || obstacle.name == "fatigueUp2" || obstacle.name =="speedUp"){
                 if(powerUpCount < totalPowerUp){
@@ -417,9 +403,38 @@ public class PlayState extends State {
                 obstacle.setDirection(generator.nextFloat() > 0.5);
                 this.obstacleList.add(obstacle);
             }
+            System.out.println(obstacleList.size());
         }
         repositionObstacles();
     }
+
+    //TEAM19-START - Separated obstacle count into separate function, increases obstacle count at higher difficutlies
+    /**
+     * Returns how many obstacles there should be on the current leg
+     * @param leg the current leg
+     * @param DIFF the current difficulty
+     * @return the total number of obstacles for the difficulty and leg
+     */
+    public static int setObstacleCount(int leg, int DIFF){
+        int obstacleCount;
+        if (leg == 1) {
+            obstacleCount = 20;
+        }else if (leg == 2) {
+            obstacleCount = 30;
+        }else {
+            obstacleCount = 40;
+        }
+
+        if (DIFF == 0) {
+            obstacleCount += 10;
+        } else if (DIFF == 1) {
+            obstacleCount += 20;
+        } else if (DIFF == 2) {
+            obstacleCount += 30;
+        }
+        return obstacleCount;
+    }
+    //TEAM19-END
 
     /**
      * Repositions Obstacles once they are off the screen.
