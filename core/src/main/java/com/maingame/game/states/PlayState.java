@@ -399,7 +399,7 @@ public class PlayState extends State {
                 obstacle.setDirection(generator.nextFloat() > 0.5);
                 this.obstacleList.add(obstacle);
             }
-            System.out.println(obstacleList.size());
+
         }
         repositionObstacles();
     }
