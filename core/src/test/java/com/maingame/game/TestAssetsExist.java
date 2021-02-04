@@ -18,7 +18,7 @@ public class TestAssetsExist extends UnitTestInit {
     "fatigueUp.png", "fatigueUp2.png", "finishLine.png", "font.fnt", "font.png", "gameOver.png", 
     "goose.png", "hard.png", "hardClicked.png", "healthUp.png", "healthUp2.png", "leftArrow.png", 
     "medium.png", "mediumClicked.png", "play.png", "rightArrow.png", "river.png", "river_reversed.png", 
-    "rock1.png", "rock2.png", "speedUp.png", "synth_pop_game.mp3", "title.png", "wasd.png", "youWon.png"
+    "rock1.png", "rock2.png", "speedUp.png", "synth_pop_game.wav", "title.png", "wasd.png", "youWon.png"
 };
 
     /** Tests that all required asset files are present.
