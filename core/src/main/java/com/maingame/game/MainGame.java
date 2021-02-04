@@ -28,7 +28,7 @@ public class MainGame extends ApplicationAdapter {
 		music = Gdx.audio.newMusic(Gdx.files.internal("synth_pop_game.mp3"));
 		music.setLooping(true);
 		music.setVolume(0.1f);
-		//music.play();
+		music.play();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		gsm.push(new WelcomeState(gsm));
 	}
