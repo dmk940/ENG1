@@ -72,18 +72,14 @@ public class Obstacle implements java.io.Serializable {
                 boat.setHealth(100);
             }
             if(name == "fatigueUp"){
-                if(boat.getFatigue()+15 < 600) {
-                    boat.setFatigue(boat.getFatigue() + 15);
-                }
-                else{
+                boat.setFatigue(boat.getFatigue() + 15);
+                if (boat.getFatigue() > 600) {
                     boat.setFatigue(600);
                 }
             }
             else if(name == "fatigueUp2"){
-                if(boat.getFatigue()+30 < 600) {
-                    boat.setFatigue(boat.getFatigue() + 30);
-                }
-                else{
+                boat.setFatigue(boat.getFatigue() + 30);
+                if (boat.getFatigue() > 600) {
                     boat.setFatigue(600);
                 }
             }

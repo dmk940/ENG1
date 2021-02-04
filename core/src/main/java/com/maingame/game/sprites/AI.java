@@ -74,9 +74,12 @@ public class AI {
         //TEAM19-START : make AI boats more likely to boost the further behind other boats they are
         boolean chanceBoost = calculateDistance();
         int additional = 0;
-        if (chanceBoost == true && Math.random() > 0.1 + (DIFFICULTY * 0.0004)) {
+        
+        if (chanceBoost == true && Math.random() > 0.1 + (DIFFICULTY * 0.0004) && boat.getFatigue() > 0) {
             additional = boat.acceleration;
-        } //TEAM19-END
+        }
+        
+        //TEAM19-END
         boat.setPosY(boat.getPosY() + boat.speed + additional);
         int weight = 0;
         weight = isNearObstacles(weight);

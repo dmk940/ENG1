@@ -14,11 +14,13 @@ public class DemoPlayState extends PlayState {
     
     public DemoPlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg, int difficulty){
         super(gsm, boats, player, leg, difficulty);
+        
     }
 
     @Override
     public void update(float dt) {
         if ((System.currentTimeMillis() - countDown)/1000f > 3) {
+            if (time == 0) {time = System.currentTimeMillis();}
             //handleInput();
             cam.position.y += player.speed;
             cam.update();
@@ -26,7 +28,6 @@ public class DemoPlayState extends PlayState {
             updateRiver();
             collisionDetection();
             boatsOutOfBounds();
-            updateMapColour();
             repositionObstacles();
             updateBoatPenalties();
             for (int i = 0; i < boats.size(); i++) {
@@ -41,9 +42,17 @@ public class DemoPlayState extends PlayState {
             AI ai_player = new AI(player, leg, obstacleList, boats.subList(0, boats.size()-2), boats.get(boats.size()-1), 4);
             ai_player.update();
             if (player.getPosY() > before_y_pos + player.speed) {
+                if (player.getFatigue() > 0) {
+                    player.setFatigue(player.getFatigue()-2);
+                }
                 cam.position.y += player.acceleration;
                 cam.update();
+            } else {
+                if (player.getFatigue() < 600) {
+                    player.setFatigue(player.getFatigue()+1);
+                }
             }
+            updateMapColour();
             //player.hasCollided(boats,player);
             checkBoatHealth();
             //if ((distanceTravelled > LEG_LENGTH && finishLinePosition == 0)) {
