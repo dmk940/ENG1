@@ -21,6 +21,11 @@ a:hover {
 ul {
   list-style: none;
 }
+img {
+  width: 1920px;
+  height: 1080px;
+  object-fit: cover;
+}
 /* Navbar */
 #main-navigation {
   display: flex;
