@@ -12,6 +12,9 @@ body {
   margin: 0;
   padding: 0;
   background-repeat: repeat;
+  align-items: center;
+  justify-content: center;
+  object-fit: center;
 }
 a {
   text-decoration: none;
