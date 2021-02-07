@@ -6,7 +6,7 @@
 }
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  color: #000;
+  color: #fff;
   font-weight: 300;
   margin: 0;
   padding: 0;
@@ -114,10 +114,10 @@ ul {
   max-height: 70vh;
 }
 .links:first-child{
-  color: white;
+  color: black;
   padding: 10rem 0 0 0;
 }
 .links h1{
-  color: white;
+  color: black;
   padding: 0;
 }
