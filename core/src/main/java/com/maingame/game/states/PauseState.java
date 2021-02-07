@@ -18,7 +18,7 @@ public class PauseState extends State {
     private final Rectangle exitBtnBounds;
     MainGame game; 
     protected boolean paused = true;
-    public Boolean space_pressed = false;
+    public Boolean spacePressed = false;
     protected long lastPressed;
     protected PlayState playstate;
     private final Texture backBtn;
@@ -65,8 +65,8 @@ public class PauseState extends State {
     
     /**Allow the player to resume the game by pressing space again*/
     public void update(float dt) {
-        space_pressed = Gdx.input.isKeyPressed(Input.Keys.SPACE);
-        if (space_pressed && (System.currentTimeMillis() - lastPressed) > 500){
+        spacePressed = Gdx.input.isKeyPressed(Input.Keys.SPACE);
+        if (spacePressed && (System.currentTimeMillis() - lastPressed) > 500){
             paused = !paused;
             lastPressed = System.currentTimeMillis();
             playstate.lastPressed = lastPressed;

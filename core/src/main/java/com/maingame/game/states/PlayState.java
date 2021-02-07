@@ -65,7 +65,7 @@ public class PlayState extends State {
     public long lastPressed;
     // declaring pause
     protected boolean paused;
-    public Boolean space_pressed = false;
+    public Boolean spacePressed = false;
     protected long startTime = 0;
     //TEAM19-END
     
@@ -147,7 +147,7 @@ public class PlayState extends State {
         left_pressed = (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT));
         right_pressed = (Gdx.input.isKeyPressed(Input.Keys.D)|| Gdx.input.isKeyPressed(Input.Keys.RIGHT));
         down_pressed = (Gdx.input.isKeyPressed(Input.Keys.S) || Gdx.input.isKeyPressed(Input.Keys.DOWN));
-        space_pressed = Gdx.input.isKeyPressed(Input.Keys.SPACE);
+        spacePressed = Gdx.input.isKeyPressed(Input.Keys.SPACE);
         handleInputLogic();
     }
 
@@ -181,7 +181,7 @@ public class PlayState extends State {
                 player.setPosY(player.getPosY() - player.maneuverability/2);
                 cam.position.y -= (player.maneuverability/2);
             } //pause press
-            if (space_pressed && (System.currentTimeMillis() - lastPressed) > 200){
+            if (spacePressed && (System.currentTimeMillis() - lastPressed) > 200){
                 paused = !paused;
                 lastPressed = System.currentTimeMillis();
             } else {
@@ -198,6 +198,7 @@ public class PlayState extends State {
      */
     @Override
     public void update(float dt) {
+        //TEAM19-START added pause ability
         if (!(paused)) {
             if ((System.currentTimeMillis() - countDown)/1000f > 3) {
                 if (time == 0) {time = System.currentTimeMillis();}
@@ -224,9 +225,12 @@ public class PlayState extends State {
                 }
                 finishLeg();
             }
+        // Go to pause state, giving relevant information to allow pause time back and forth
+        // so it doesn't count towards save info counter
         } else {
             gsm.push(new PauseState(gsm, System.currentTimeMillis()-time, this));
         }
+        //TEAM19-END
     }
 
     //TEAM19-START : refactored some tightly coupled game logic into its own method
@@ -234,6 +238,7 @@ public class PlayState extends State {
             finishLinePosition = getWinningBoat().getPosY() + river.getHeight() +100;
             finishLineBounds = new Rectangle(0,finishLinePosition,finishLine.getWidth(),finishLine.getHeight());
     }
+    //TEAM19-END
 
     /**
      * {@inheritDoc}
