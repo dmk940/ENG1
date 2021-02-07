@@ -21,11 +21,6 @@ a:hover {
 ul {
   list-style: none;
 }
-img {
-  width: 1280px;
-  height: 853px;
-  object-fit: cover;
-}
 /* Navbar */
 #main-navigation {
   display: flex;
@@ -58,6 +53,7 @@ img {
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  object-fit: center;
 }
 .main-image::before {
   content: '';
@@ -68,6 +64,7 @@ img {
   height: 100%;
   width: 100%;
   opacity: 0.4;
+  object-fit: center;
 }
 .container {
   padding: 4rem 0;
