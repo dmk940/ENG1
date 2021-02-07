@@ -44,7 +44,7 @@ ul {
 }
 /* Main Section */
 .main-image {
-  background: #333;
+  background: url('../images/main.jpg') center center/cover;
   color: #fff;
   height: 92.7vh;
   width: 100vw;
