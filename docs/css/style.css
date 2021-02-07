@@ -21,6 +21,11 @@ a:hover {
 ul {
   list-style: none;
 }
+div {
+    background-image: url('../images/main.jpg');
+    width: 1280px;
+    height: 853px;
+}
 /* Navbar */
 #main-navigation {
   display: flex;
