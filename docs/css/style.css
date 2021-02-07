@@ -54,6 +54,7 @@ ul {
   align-items: flex-start;
   justify-content: center;
   object-fit: center;
+  background-repeat: repeat;
 }
 .main-image::before {
   content: '';
@@ -65,6 +66,7 @@ ul {
   width: 100%;
   opacity: 0.4;
   object-fit: center;
+  background-repeat: repeat;
 }
 .container {
   padding: 4rem 0;
@@ -73,6 +75,8 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  object-fit: center;
+  background-repeat: repeat;
 }
 .container h1 {
   padding: 11rem 0rem 0rem 0rem;
