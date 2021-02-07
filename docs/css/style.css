@@ -6,15 +6,10 @@
 }
 body {
   font-family: 'Source Sans Pro', sans-serif;
-  color: #fff;
+  color: #000;
   font-weight: 300;
-  background-image: url('../images/main.jpg') center;
   margin: 0;
   padding: 0;
-  background-repeat: repeat;
-  align-items: center;
-  justify-content: center;
-  object-fit: center;
 }
 a {
   text-decoration: none;
@@ -64,6 +59,7 @@ ul {
 .main-image::before {
   content: '';
   position: absolute;
+  background: url('../images/main.jpg') no-repeat center center/cover;
   top: 0;
   left: 0;
   height: 100%;
