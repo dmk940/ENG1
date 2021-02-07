@@ -28,7 +28,6 @@ public class LoadState extends State {
 
     private final Texture backBtn;
     private final Rectangle backBtnBounds;
-    private boolean rebuild = false;
 
     /** This is the screen displayed to the user when they are loading the game. */
     public LoadState(GameStateManager gsm_) {

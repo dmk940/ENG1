@@ -1,16 +1,13 @@
 
 package com.maingame.game;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.maingame.UnitTestInit;
 import com.maingame.game.sprites.Boat;
 import com.maingame.game.sprites.Obstacle;
-import com.maingame.game.states.GameStateManager;
 import com.maingame.game.states.PlayState;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.*;
