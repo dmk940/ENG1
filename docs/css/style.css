@@ -8,6 +8,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   color: #fff;
   font-weight: 300;
+  background-image: url('../images/main.jpg') center;
   margin: 0;
   padding: 0;
   background-repeat: repeat;
