@@ -59,7 +59,7 @@ ul {
 .main-image::before {
   content: '';
   position: absolute;
-  background: url('../images/main.jpg') no-repeat center center/cover;
+  background: url('../images/main.jpg') center center/cover;
   top: 0;
   left: 0;
   height: 100%;
