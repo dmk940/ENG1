@@ -10,6 +10,10 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
+  background-image: url('../images/main.jpg');
+  width: 1280px;
+  height: 853px;
+  background-repeat: repeat;
 }
 a {
   text-decoration: none;
@@ -21,11 +25,7 @@ a:hover {
 ul {
   list-style: none;
 }
-div {
-    background-image: url('../images/main.jpg');
-    width: 1280px;
-    height: 853px;
-}
+
 /* Navbar */
 #main-navigation {
   display: flex;
