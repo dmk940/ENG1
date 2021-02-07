@@ -39,8 +39,10 @@ With an increase in difficulty the number of **obstacles** increases along with 
 
 ## Saving and Loading ##
 To **save** press space to pause the game and click on the save button. Select a file to save in. 
+When saving a file will be black if it is empty and green if it contains a save file.
 
 To **load** the game press the load button on the main menu and click on the file you want to load.
+When loading a loadable file will be green and it will be red when there is no save file.
 
 ## Tips ##
 Look as far forward as you can to give yourself as much time as possible to avoid obstacles! _Good luck!_ 
