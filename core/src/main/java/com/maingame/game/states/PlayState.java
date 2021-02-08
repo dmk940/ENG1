@@ -59,7 +59,7 @@ public class PlayState extends State {
 
     //TEAM19-START : moved to constant leg distance, changed from time to distance
     // as this is more fun
-    private static final double LEG_LENGTH = 5000; //distance in meters
+    private static final double LEG_LENGTH = 10000; //distance in meters
     int DIFFICULTY = 0;
     int distanceTravelled; //distance travelled by the boats
     public long lastPressed;
