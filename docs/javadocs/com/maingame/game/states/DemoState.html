@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -73,13 +73,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.com.maingame.game.states.MenuState">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -101,12 +101,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">com.maingame.game.states.State</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">com.maingame.game.states.MenuState</a></li>
-<li>
-<ul class="inheritance">
 <li>com.maingame.game.states.DemoState</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -118,7 +113,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">DemoState</span>
-extends <a href="../../../../com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">MenuState</a></pre>
+extends <a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></pre>
 <div class="block">Automates the PlayState, in the demo mode. Driver class.</div>
 </li>
 </ul>
@@ -132,13 +127,21 @@ extends <a href="../../../../com/maingame/game/states/MenuState.html" title="cla
 <!--   -->
 </a>
 <h3>Field Summary</h3>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.com.maingame.game.states.MenuState">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;com.maingame.game.states.<a href="../../../../com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">MenuState</a></h3>
-<code><a href="../../../../com/maingame/game/states/MenuState.html#boats">boats</a>, <a href="../../../../com/maingame/game/states/MenuState.html#x">x</a></code></li>
-</ul>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/DemoState.html#boats">boats</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/DemoState.html#x">x</a></span></code>&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.com.maingame.game.states.State">
 <!--   -->
@@ -179,18 +182,33 @@ extends <a href="../../../../com/maingame/game/states/MenuState.html" title="cla
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/DemoState.html#dispose--">dispose</a></span>()</code>
+<div class="block">Disposes of assets when they're no longer in use.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/DemoState.html#handleInput--">handleInput</a></span>()</code>
 <div class="block">Handles user input within a state.</div>
 </td>
 </tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>protected java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/DemoState.html#playStateBoats--">playStateBoats</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/DemoState.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render</a></span>(com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;sb)</code>
+<div class="block">Renders the different elements in a state</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/maingame/game/states/DemoState.html#update-float-">update</a></span>(float&nbsp;dt)</code>
+<div class="block">Updates other functions/values in a state.</div>
+</td>
+</tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.com.maingame.game.states.MenuState">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;com.maingame.game.states.<a href="../../../../com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">MenuState</a></h3>
-<code><a href="../../../../com/maingame/game/states/MenuState.html#dispose--">dispose</a>, <a href="../../../../com/maingame/game/states/MenuState.html#playStateBoats--">playStateBoats</a>, <a href="../../../../com/maingame/game/states/MenuState.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render</a>, <a href="../../../../com/maingame/game/states/MenuState.html#update-float-">update</a></code></li>
-</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
@@ -206,6 +224,32 @@ extends <a href="../../../../com/maingame/game/states/MenuState.html" title="cla
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="boats">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>boats</h4>
+<pre>protected&nbsp;java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt; boats</pre>
+</li>
+</ul>
+<a name="x">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>x</h4>
+<pre>protected&nbsp;int x</pre>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -229,19 +273,76 @@ extends <a href="../../../../com/maingame/game/states/MenuState.html" title="cla
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="playStateBoats--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>playStateBoats</h4>
+<pre>protected&nbsp;java.util.List&lt;<a href="../../../../com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a>&gt;&nbsp;playStateBoats()</pre>
+</li>
+</ul>
+<a name="render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>render</h4>
+<pre>public&nbsp;void&nbsp;render(com.badlogic.gdx.graphics.g2d.SpriteBatch&nbsp;sb)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/maingame/game/states/State.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">State</a></code></span></div>
+<div class="block">Renders the different elements in a state</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../com/maingame/game/states/State.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>sb</code> - a batch for drawing objects</dd>
+</dl>
+</li>
+</ul>
+<a name="dispose--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dispose</h4>
+<pre>public&nbsp;void&nbsp;dispose()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/maingame/game/states/State.html#dispose--">State</a></code></span></div>
+<div class="block">Disposes of assets when they're no longer in use.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../com/maingame/game/states/State.html#dispose--">dispose</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></code></dd>
+</dl>
+</li>
+</ul>
 <a name="handleInput--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>handleInput</h4>
+<pre>public&nbsp;void&nbsp;handleInput()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/maingame/game/states/State.html#handleInput--">State</a></code></span></div>
+<div class="block">Handles user input within a state.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../com/maingame/game/states/State.html#handleInput--">handleInput</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="update-float-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>handleInput</h4>
-<pre>public&nbsp;void&nbsp;handleInput()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/maingame/game/states/MenuState.html#handleInput--">MenuState</a></code></span></div>
-<div class="block">Handles user input within a state.
- Changes the current boat or Shows the PlayState depending on user input</div>
+<h4>update</h4>
+<pre>public&nbsp;void&nbsp;update(float&nbsp;dt)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../com/maingame/game/states/State.html#update-float-">State</a></code></span></div>
+<div class="block">Updates other functions/values in a state.</div>
 <dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../com/maingame/game/states/MenuState.html#handleInput--">handleInput</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">MenuState</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../com/maingame/game/states/State.html#update-float-">update</a></code>&nbsp;in class&nbsp;<code><a href="../../../../com/maingame/game/states/State.html" title="class in com.maingame.game.states">State</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dt</code> - the time between each start of a render()</dd>
 </dl>
 </li>
 </ul>
@@ -298,13 +399,13 @@ extends <a href="../../../../com/maingame/game/states/MenuState.html" title="cla
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.com.maingame.game.states.MenuState">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
