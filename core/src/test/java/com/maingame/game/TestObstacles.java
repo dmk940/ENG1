@@ -86,6 +86,7 @@ public class TestObstacles extends UnitTestInit {
 
     }
 
+    /** Test that GameOver occurs when the player runs out of health. */
     @Test
     public void testNoHealthGameOver() {
         TestMovement tm = new TestMovement();
@@ -95,51 +96,61 @@ public class TestObstacles extends UnitTestInit {
         assertFalse(tm.player.isHasNotLost());
     }
 
+    /** Test that the obstacle ROCK_1 hit registers and subtracts the correct amount of health. */
     @Test
     public void testRock1Hit() {
         testObstacleHit(ROCK_1);
     }
 
+    /** Test that the obstacle ROCK_1 has the correct bounding rectangle (collision hitbox). */
     @Test
     public void testRock1Bounds() {
         testObstacleBounds(ROCK_1);
     }
 
+    /** Test that the obstacle ROCK_2 hit registers and subtracts the correct amount of health. */
     @Test
     public void testRock2Hit() {
         testObstacleHit(ROCK_2);
     }
 
+    /** Test that the obstacle ROCK_2 has the correct bounding rectangle (collision hitbox). */
     @Test
     public void testRock2Bounds() {
         testObstacleBounds(ROCK_2);
     }
 
+    /** Test that the obstacle GOOSE hit registers and subtracts the correct amount of health. */
     @Test
     public void testGooseHit() {
         testObstacleHit(GOOSE);
     }
 
+    /** Test that the obstacle GOOSE has the correct bounding rectangle (collision hitbox). */
     @Test
     public void testGooseBounds() {
         testObstacleBounds(GOOSE);
     }
 
+    /** Test that the obstacle DUCK_1 hit registers and subtracts the correct amount of health. */
     @Test
     public void testDuck1Hit() {
         testObstacleHit(DUCK_1);
     }
 
+    /** Test that the obstacle DUCK_1 has the correct bounding rectangle (collision hitbox). */
     @Test
     public void testDuck1Bounds() {
         testObstacleBounds(DUCK_1);
     }
 
+    /** Test that the obstacle DUCK_2 hit registers and subtracts the correct amount of health. */
     @Test
     public void testDuck2Hit() {
         testObstacleHit(DUCK_2);
     }
 
+    /** Test that the obstacle DUCK_2 has the correct bounding rectangle (collision hitbox). */
     @Test
     public void testDuck2Bounds() {
         testObstacleBounds(DUCK_2);

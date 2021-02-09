@@ -23,6 +23,7 @@ public class TestDifficulty extends UnitTestInit {
 
     }
 
+    /** Test that the easy difficulty is set correctly (i.e. num of obstacles) */
     @Test
     public void testEasy(){
         DIFFICULTY = 0;
@@ -32,6 +33,7 @@ public class TestDifficulty extends UnitTestInit {
 
     }
 
+    /** Test that the medium difficulty is set correctly (i.e. num of obstacles) */
     @Test
     public void testMedium(){
         DIFFICULTY = 1;
@@ -41,6 +43,7 @@ public class TestDifficulty extends UnitTestInit {
 
     }
 
+    /** Test that the hard difficulty is set correctly (i.e. num of obstacles) */
     @Test
     public void testHard(){
         DIFFICULTY = 2;

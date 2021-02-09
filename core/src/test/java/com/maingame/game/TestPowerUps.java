@@ -34,8 +34,8 @@ public class TestPowerUps extends UnitTestInit {
         // The health amount each obstacle should subtract
         testObstacleHealthMap.put(HEALTHUP,-10);
         testObstacleHealthMap.put(FATIGUEUP,0);
-        testObstacleHealthMap.put(HEALTHUP2,-20);
         testObstacleHealthMap.put(FATIGUEUP2,0);
+        testObstacleHealthMap.put(HEALTHUP2,-20);
         testObstacleHealthMap.put(SPEEDUP,0);
 
         // These values are used to recreate the rectangle collision box
@@ -94,10 +94,9 @@ public class TestPowerUps extends UnitTestInit {
                 (float) obstacle.getPosY() + obs_arr[1],
                 obs_arr[2], obs_arr[3]);
 
-        assertTrue(expect_rect.equals(obstacle.collisionBounds));
+        assertTrue("Obstacle collision bounds were wrong", expect_rect.equals(obstacle.collisionBounds));
 
     }
-
 
     public void testFatigueIncrease(String obstacleName, int increase) {
         player = new Boat("red");
@@ -116,14 +115,15 @@ public class TestPowerUps extends UnitTestInit {
         assertEquals(start_fatigue + increase, player.getFatigue());
     }
 
+    /** Test fatigue is increased by the correct amount when hitting the FATIGUEUP obstacle */
     @Test
-    public void TestFatigueUpIncrease(){testFatigueIncrease(FATIGUEUP,15);
-    }
+    public void TestFatigueUpIncrease() {testFatigueIncrease(FATIGUEUP,15);}
 
+    /** Test fatigue is increased by the correct amount when hitting the FATIGUEUP2 obstacle */
     @Test
-    public void TestFatigueUp2Increase(){testFatigueIncrease(FATIGUEUP2,30);
-    }
+    public void TestFatigueUp2Increase() {testFatigueIncrease(FATIGUEUP2,30);}
 
+    /** Test speed is increased when hitting the SPEEDUP obstacle */
     @Test
     public void testSpeedIncrease(){
         player = new Boat("red");
@@ -141,47 +141,57 @@ public class TestPowerUps extends UnitTestInit {
         assertEquals(start_speed + 1, player.getSpeed());
     }
 
+    /** Test health is increased when hitting the HEALTHUP obstacle */
     @Test
     public void testHealthUpHit() { testHealthUpObstacleHit(HEALTHUP); }
 
+    /** Test the HEALTHUP obstacle's bounds */
     @Test
     public void testHealthUpBounds() { testObstacleBounds(HEALTHUP); }
 
+    /** Test health is increased when hitting the HEALTHUP2 obstacle */
     @Test
     public void testHealthUp2Hit() {
         testHealthUpObstacleHit(HEALTHUP2);
     }
 
+    /** Test that the HEALTHUP2 obstacle's bounds are correct */
     @Test
     public void testHealthUp2Bounds() {
         testObstacleBounds(HEALTHUP2);
     }
 
+    /** Test that the FATIGUEUP obstacle's bounds are correct */
     @Test
     public void testFatigueUpBounds() {
         testObstacleBounds(FATIGUEUP);
     }
 
+    /** Test fatigue is increased when hitting the FATIGUEUP obstacle */
     @Test
     public void testFatigueUpHit() {
         testObstacleHit(FATIGUEUP);
     }
 
+    /** Test that the FATIGUEUP2 obstacle's bounds are correct */
     @Test
     public void testFatigueUp2Bounds() {
         testObstacleBounds(FATIGUEUP2);
     }
 
+    /** Test that the FATIGEUP2 obstacle does no damage. */
     @Test
     public void testFatigueUp2Hit() {
         testObstacleHit(FATIGUEUP2);
     }
 
+    /** Test that the SPEEDUP obstacle's bounds are correct */
     @Test
     public void testSpeedUpBounds() {
         testObstacleBounds(SPEEDUP);
     }
 
+    /** Test that the SPEEDUP obstacle does no damage. */
     @Test
     public void testSpeedUpHit() {
         testObstacleHit(SPEEDUP);

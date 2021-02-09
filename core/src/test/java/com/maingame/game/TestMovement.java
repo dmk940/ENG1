@@ -17,6 +17,7 @@ public class TestMovement extends UnitTestInit {
 
     protected static int FATIGUE_INITIAL_VALUE = 600;
     protected int FATIGUE_FRAME_DECREASE_VALUE = 2;
+    protected int FATIGUE_INCREASE_VALUE = 1;
 
     protected int START_X;
     protected Texture river;

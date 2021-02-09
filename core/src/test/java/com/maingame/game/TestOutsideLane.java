@@ -13,6 +13,7 @@ public class TestOutsideLane extends TestMovement {
     private static final int PEN_SUB = 2; // penalty bar subtraction each frame outside lane
     private static final int PENALTY_SEC = 2;
 
+    /** Test that the time penalty counter starts counting down when outside of the lane. */
     @Test
     public void testMoveOutsideLane() {
         createPlayer();
@@ -21,6 +22,7 @@ public class TestOutsideLane extends TestMovement {
         assertEquals(PEN_START - PEN_SUB, player.getPenaltyBar());
     }
 
+    /** Test that the penalty time is added to the legTime when the penalty counter runs out. */
     @Test
     public void testPenaltyBar() {
         createPlayer();
