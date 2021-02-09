@@ -96,6 +96,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/sprites/Boat.html#boatMap">boatMap</a></span> - Variable in class com.maingame.game.sprites.<a href="com/maingame/game/sprites/Boat.html" title="class in com.maingame.game.sprites">Boat</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoState.html#boats">boats</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/DemoState.html" title="class in com.maingame.game.states">DemoState</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/MenuState.html#boats">boats</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">MenuState</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#boats">boats</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
@@ -175,6 +177,8 @@
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/SaveInfo.html#difficulty">difficulty</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/SaveInfo.html" title="class in com.maingame.game.states">SaveInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/MainGame.html#dispose--">dispose()</a></span> - Method in class com.maingame.game.<a href="com/maingame/game/MainGame.html" title="class in com.maingame.game">MainGame</a></dt>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoState.html#dispose--">dispose()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/DemoState.html" title="class in com.maingame.game.states">DemoState</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/GameOverHealth.html#dispose--">dispose()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/GameOverHealth.html" title="class in com.maingame.game.states">GameOverHealth</a></dt>
 <dd>
 <div class="block">Disposes of assets when they're no longer in use.</div>
@@ -529,6 +533,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/PlayState.html#PlayState-com.maingame.game.states.GameStateManager-java.util.List-com.maingame.game.sprites.Boat-int-java.util.List-int-">PlayState(GameStateManager, List&lt;Boat&gt;, Boat, int, List&lt;Obstacle&gt;, int)</a></span> - Constructor for class com.maingame.game.states.<a href="com/maingame/game/states/PlayState.html" title="class in com.maingame.game.states">PlayState</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoState.html#playStateBoats--">playStateBoats()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/DemoState.html" title="class in com.maingame.game.states">DemoState</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/MenuState.html#playStateBoats--">playStateBoats()</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">MenuState</a></dt>
 <dd>
 <div class="block">Generates a random list of enemy boats for the PlayState.</div>
@@ -548,6 +554,8 @@
 <h2 class="title">R</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="com/maingame/game/MainGame.html#render--">render()</a></span> - Method in class com.maingame.game.<a href="com/maingame/game/MainGame.html" title="class in com.maingame.game">MainGame</a></dt>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoState.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render(SpriteBatch)</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/DemoState.html" title="class in com.maingame.game.states">DemoState</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/GameOverHealth.html#render-com.badlogic.gdx.graphics.g2d.SpriteBatch-">render(SpriteBatch)</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/GameOverHealth.html" title="class in com.maingame.game.states">GameOverHealth</a></dt>
 <dd>
 <div class="block">Renders the different elements in a state</div>
@@ -731,6 +739,11 @@
 <div class="block">Changes the current texture used for a boat to provide an animation.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoPlayState.html#update-float-">update(float)</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/DemoPlayState.html" title="class in com.maingame.game.states">DemoPlayState</a></dt>
+<dd>
+<div class="block">Same as the PlayState except with certain conditions removed (e.g., win condition)
+  so it's more of an infinite scroller as a demo (except for health).</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoState.html#update-float-">update(float)</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/DemoState.html" title="class in com.maingame.game.states">DemoState</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/GameOverHealth.html#update-float-">update(float)</a></span> - Method in class com.maingame.game.states.<a href="com/maingame/game/states/GameOverHealth.html" title="class in com.maingame.game.states">GameOverHealth</a></dt>
 <dd>
@@ -824,6 +837,8 @@
 </a>
 <h2 class="title">X</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/maingame/game/states/DemoState.html#x">x</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/DemoState.html" title="class in com.maingame.game.states">DemoState</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/maingame/game/states/MenuState.html#x">x</a></span> - Variable in class com.maingame.game.states.<a href="com/maingame/game/states/MenuState.html" title="class in com.maingame.game.states">MenuState</a></dt>
 <dd>&nbsp;</dd>
 </dl>
