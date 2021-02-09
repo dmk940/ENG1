@@ -52,11 +52,13 @@ public class WelcomeState extends State {
 		if (Gdx.input.justTouched()) {
 			if (loadBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
 				gsm.set(new LoadState(gsm));
+				dispose();
 			} else if (playBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
 				gsm.set(new MenuState(gsm));
 				dispose();
 			} else if (demoBtnBounds.contains(Gdx.input.getX(),(float) MainGame.HEIGHT - Gdx.input.getY())){
 				gsm.set(new DemoState(gsm));
+				dispose();
 			}
 		}
 		//TEAM19-END

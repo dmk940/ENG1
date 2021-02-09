@@ -11,17 +11,26 @@ import com.maingame.game.sprites.Boat;
  * player boat moves by itself.
  */
 public class DemoPlayState extends PlayState {
+
+    Boat spareBoat;
+    int counter = 0;
     
     public DemoPlayState(GameStateManager gsm, List<Boat> boats,Boat player,int leg, int difficulty){
         super(gsm, boats, player, leg, difficulty);
+
+        // New boat to set at median position so can be passed to AI as player boat to chase
+        spareBoat = new Boat("red");
+        spareBoat.setPosX(-10000);
         
     }
 
+    /** Same as the PlayState except with certain conditions removed (e.g., win condition)
+     *  so it's more of an infinite scroller as a demo (except for health).
+     */
     @Override
     public void update(float dt) {
         if ((System.currentTimeMillis() - countDown)/1000f > 3) {
             if (time == 0) {time = System.currentTimeMillis();}
-            //handleInput();
             cam.position.y += player.speed;
             cam.update();
             updateCollisionBoundaries();
@@ -34,31 +43,40 @@ public class DemoPlayState extends PlayState {
                 boats.get(i).update(dt);
                 AI ai = new AI(boats.get(i), leg,obstacleList, boats, player, 4);
                 ai.update();
-                //List<Boat> newBoatList = new ArrayList<>(boats);
-                //boats.get(i).hasCollided(newBoatList,player);
             }
             player.update(dt);
             int before_y_pos = player.getPosY();
-            AI ai_player = new AI(player, leg, obstacleList, boats.subList(0, boats.size()-2), boats.get(boats.size()-1), 4);
+            // weigh situation to boost "player" boat to mimic player movement
+            int medianTotal = 0;
+            
+            for (Boat nBoat : boats) {
+                medianTotal += nBoat.getPosY();
+            }
+            medianTotal = medianTotal / (boats.size());
+            spareBoat.setPosY(medianTotal);
+
+            AI ai_player = new AI(player, leg, obstacleList, boats, spareBoat, 4);
             ai_player.update();
             if (player.getPosY() > before_y_pos + player.speed) {
                 if (player.getFatigue() > 0) {
+                    System.out.println("-");
                     player.setFatigue(player.getFatigue()-2);
                 }
                 cam.position.y += player.acceleration;
                 cam.update();
+                counter -= 1;
+                if (counter <0) { counter=0;}
             } else {
-                if (player.getFatigue() < 600) {
+                if (player.getFatigue() < 600 && counter == 0) {
+                    System.out.println("+");
                     player.setFatigue(player.getFatigue()+1);
+                    // Counter required as AI is too advanced and feathers boosting frame perfectly
+                    // which doesn't look very realistic
+                    counter += 1;
                 }
             }
             updateMapColour();
-            //player.hasCollided(boats,player);
             checkBoatHealth();
-            //if ((distanceTravelled > LEG_LENGTH && finishLinePosition == 0)) {
-            //    isLegOver();
-            //}
-            //finishLeg();
         }
     }
 }
